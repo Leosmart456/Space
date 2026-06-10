@@ -1,0 +1,13 @@
+Cannot read properties of null (reading 'useState')
+
+TypeError: Cannot read properties of null (reading 'useState')
+    at useState (https://3b765815-ee38-4aff-b80e-f8eaa399796e-00-juroro8b6zee.janeway.replit.dev/@fs/home/runner/workspace/node_modules/.vite/deps/chunk-3TFVT2CW.js?v=2dc441da:1066:29)
+    at ThemeProvider (https://3b765815-ee38-4aff-b80e-f8eaa399796e-00-juroro8b6zee.janeway.replit.dev/src/components/theme-provider.tsx:28:29)
+    at renderWithHooks (https://3b765815-ee38-4aff-b80e-f8eaa399796e-00-juroro8b6zee.janeway.replit.dev/@fs/home/runner/workspace/node_modules/.vite/deps/chunk-WERSD76P.js?v=ec4a5692:11548:26)
+    at mountIndeterminateComponent (https://3b765815-ee38-4aff-b80e-f8eaa399796e-00-juroro8b6zee.janeway.replit.dev/@fs/home/runner/workspace/node_modules/.vite/deps/chunk-WERSD76P.js?v=ec4a5692:14926:21)
+    at beginWork (https://3b765815-ee38-4aff-b80e-f8eaa399796e-00-juroro8b6zee.janeway.replit.dev/@fs/home/runner/workspace/node_modules/.vite/deps/chunk-WERSD76P.js?v=ec4a5692:15914:22)
+    at beginWork$1 (https://3b765815-ee38-4aff-b80e-f8eaa399796e-00-juroro8b6zee.janeway.replit.dev/@fs/home/runner/workspace/node_modules/.vite/deps/chunk-WERSD76P.js?v=ec4a5692:19753:22)
+    at performUnitOfWork (https://3b765815-ee38-4aff-b80e-f8eaa399796e-00-juroro8b6zee.janeway.replit.dev/@fs/home/runner/workspace/node_modules/.vite/deps/chunk-WERSD76P.js?v=ec4a5692:19198:20)
+    at workLoopSync (https://3b765815-ee38-4aff-b80e-f8eaa399796e-00-juroro8b6zee.janeway.replit.dev/@fs/home/runner/workspace/node_modules/.vite/deps/chunk-WERSD76P.js?v=ec4a5692:19137:13)
+    at renderRootSync (https://3b765815-ee38-4aff-b80e-f8eaa399796e-00-juroro8b6zee.janeway.replit.dev/@fs/home/runner/workspace/node_modules/.vite/deps/chunk-WERSD76P.js?v=ec4a5692:19116:15)
+    at recoverFromConcurrentError (https://3b765815-ee38-4aff-b80e-f8eaa399796e-00-juroro8b6zee.janeway.replit.dev/@fs/home/runner/workspace/node_modules/.vite/deps/chunk-WERSD76P.js?v=ec4a5692:18736:28)
