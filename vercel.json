@@ -1,5 +1,5 @@
 {
-  "buildCommand": "vite build",
+  "buildCommand": "vite build && npx esbuild api/index.ts --bundle --platform=node --packages=external --format=esm --outfile=api/index.js && rm api/index.ts",
   "outputDirectory": "dist/public",
   "rewrites": [
     {
