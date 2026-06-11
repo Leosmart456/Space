@@ -32,7 +32,7 @@ class WebSocketManager {
 
   private async checkAuthAndConnect() {
     try {
-      const res = await fetch("/api/user", { credentials: "include", method: "GET" });
+      const res = await fetch("/api/auth/user", { credentials: "include", method: "GET" });
       if (res.ok) {
         this.connect();
       }
