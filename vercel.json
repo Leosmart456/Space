@@ -1,12 +1,13 @@
 {
   "version": 2,
-  "buildCommand": "npm run build",
+  "buildCommand": "npx vite build",
   "builds": [
     {
       "src": "server/index.ts",
       "use": "@vercel/node",
       "config": {
-        "maxLambdaSize": "50mb"
+        "maxLambdaSize": "50mb",
+        "includeFiles": ["dist/public/**"]
       }
     }
   ],
