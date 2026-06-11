@@ -1,20 +1,14 @@
 {
-  "version": 2,
-  "buildCommand": "npm run build && npx esbuild api/index.ts --bundle --platform=node --packages=external --format=esm --outfile=dist/server.js",
-  "builds": [
+  "buildCommand": "vite build",
+  "outputDirectory": "dist/public",
+  "rewrites": [
     {
-      "src": "dist/server.js",
-      "use": "@vercel/node",
-      "config": {
-        "maxLambdaSize": "50mb",
-        "includeFiles": ["dist/public/**"]
-      }
-    }
-  ],
-  "routes": [
+      "source": "/api/(.*)",
+      "destination": "/api"
+    },
     {
-      "src": "/(.*)",
-      "dest": "/dist/server.js"
+      "source": "/(.*)",
+      "destination": "/index.html"
     }
   ]
 }
