@@ -1,0 +1,2 @@
+- [Blocked dependency chain](blocked-dep-chain.md) — @types/nodemailer pulls in @aws-sdk → fast-xml-parser (all versions blocked by Replit CVE policy); fix: remove @types/nodemailer from package.json
+- [Missing backend routes](missing-routes.md) — Three 405 mismatches found: /api/user vs /api/auth/user in websocket.tsx; missing PUT /api/admin/support-chats/:chatId/mark-read; missing GET /api/admin/users/by-wallet/:walletId
