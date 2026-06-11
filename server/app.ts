@@ -3,6 +3,8 @@ import session from "express-session";
 import { storage } from "./storage";
 import { connectDB } from "./db";
 import { serveStatic, log } from "./vite";
+import { startBackgroundJobs } from "./services/background-jobs";
+import { registerRoutes } from "./routes";
 import type { Express } from "express";
 
 declare module 'http' {
@@ -95,10 +97,8 @@ export function getApp(): Promise<Express> {
     await connectDB();
     await storage.init();
 
-    const { startBackgroundJobs } = await import("./services/background-jobs");
     startBackgroundJobs();
 
-    const { registerRoutes } = await import("./routes");
     await registerRoutes(app, sessionParser);
 
     app.use((err: any, _req: Request, res: Response, _next: NextFunction) => {

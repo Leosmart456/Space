@@ -1,9 +1,9 @@
 {
   "version": 2,
-  "buildCommand": "npm run build",
+  "buildCommand": "npm run build && npx esbuild api/index.ts --bundle --platform=node --packages=external --format=esm --outfile=dist/server.js",
   "builds": [
     {
-      "src": "api/index.ts",
+      "src": "dist/server.js",
       "use": "@vercel/node",
       "config": {
         "maxLambdaSize": "50mb",
@@ -14,7 +14,7 @@
   "routes": [
     {
       "src": "/(.*)",
-      "dest": "/api/index.ts"
+      "dest": "/dist/server.js"
     }
   ]
 }

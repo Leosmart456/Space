@@ -1,7 +1,6 @@
 import mongoose from "mongoose";
-import { MongoMemoryReplSet } from "mongodb-memory-server";
 
-let mongoServer: MongoMemoryReplSet | null = null;
+let mongoServer: any | null = null;
 
 export async function connectDB() {
   try {
@@ -9,6 +8,7 @@ export async function connectDB() {
 
     if (!MONGODB_URI) {
       console.log("No MONGODB_URI found, starting in-memory MongoDB replica set (supports transactions)...");
+      const { MongoMemoryReplSet } = await import("mongodb-memory-server");
       mongoServer = await MongoMemoryReplSet.create({ replSet: { count: 1, storageEngine: "wiredTiger" } });
       await mongoServer.waitUntilRunning();
       MONGODB_URI = mongoServer.getUri();
