@@ -15,7 +15,7 @@ export async function connectDB() {
       console.log("In-memory MongoDB replica set started at:", MONGODB_URI);
     }
 
-    await mongoose.connect(MONGODB_URI);
+    await mongoose.connect(MONGODB_URI!);
     console.log("Connected to MongoDB successfully");
   } catch (error) {
     console.error("MongoDB connection error:", error);

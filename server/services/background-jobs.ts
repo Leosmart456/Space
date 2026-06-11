@@ -100,6 +100,7 @@ export async function sendPushNotification(userId: string, payload: { title: str
     };
     const payloadStr = JSON.stringify(enrichedPayload);
     for (const sub of subscriptions) {
+      if (!sub.keys) continue;
       try {
         await webpush.sendNotification(
           {
@@ -139,6 +140,7 @@ async function sendPushToAllUsers(payload: { title: string; body: string; icon?:
     const payloadStr = JSON.stringify(enrichedPayload);
     let sent = 0;
     for (const sub of subscriptions) {
+      if (!sub.keys) continue;
       try {
         await webpush.sendNotification(
           {

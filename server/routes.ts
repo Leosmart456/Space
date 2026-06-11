@@ -3263,11 +3263,11 @@ export async function registerRoutes(app: Express, sessionParser?: any): Promise
 
       // Notify user in real-time
       try {
-        wsService?.sendToUser(approval.userId, {
+        wsService?.sendToUser(approval.userId.toString(), {
           type: "transaction_updated",
           transactionId: approval.transactionId,
           walletId: approval.walletId,
-          userId: approval.userId,
+          userId: approval.userId.toString(),
           status: "confirmed",
         });
       } catch (_) {}
@@ -3345,11 +3345,11 @@ export async function registerRoutes(app: Express, sessionParser?: any): Promise
 
       // Notify user in real-time
       try {
-        wsService?.sendToUser(approval.userId, {
+        wsService?.sendToUser(approval.userId.toString(), {
           type: "transaction_updated",
           transactionId: approval.transactionId,
           walletId: approval.walletId,
-          userId: approval.userId,
+          userId: approval.userId.toString(),
           status: "failed",
         });
       } catch (_) {}
@@ -4342,10 +4342,11 @@ export async function registerRoutes(app: Express, sessionParser?: any): Promise
 
       // Push notifications for sender and recipient — best-effort
       for (const ev of wsEvents) {
-        if (ev.payload.type === 'notification_created' && ev.payload.title) {
+        const evPayload = ev.payload as any;
+        if (evPayload.type === 'notification_created' && evPayload.title) {
           sendPushNotification(ev.userId, {
-            title: ev.payload.title,
-            body: ev.payload.body || "You have a new transaction notification.",
+            title: evPayload.title,
+            body: evPayload.body || "You have a new transaction notification.",
             data: { url: "/dashboard", type: "transaction", tag: "transaction-internal" },
           }).catch(() => {});
         }

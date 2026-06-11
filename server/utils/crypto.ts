@@ -39,9 +39,9 @@ export function encryptMnemonic(mnemonic: string, password: string): string {
   const iv = randomBytes(16);
   
   // Simple XOR encryption for MVP (not production-ready!)
-  const encrypted = Buffer.from(mnemonic)
-    .map((byte, i) => byte ^ key[i % key.length])
-    .toString("base64");
+  const encrypted = Buffer.from(
+    Buffer.from(mnemonic).map((byte, i) => byte ^ key[i % key.length])
+  ).toString("base64");
   
   return iv.toString("hex") + ":" + encrypted;
 }
