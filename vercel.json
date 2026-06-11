@@ -1,9 +1,9 @@
 {
   "version": 2,
-  "buildCommand": "npx vite build",
+  "buildCommand": "npm run build",
   "builds": [
     {
-      "src": "server/index.ts",
+      "src": "api/index.ts",
       "use": "@vercel/node",
       "config": {
         "maxLambdaSize": "50mb",
@@ -14,7 +14,7 @@
   "routes": [
     {
       "src": "/(.*)",
-      "dest": "/server/index.ts"
+      "dest": "/api/index.ts"
     }
   ]
 }
