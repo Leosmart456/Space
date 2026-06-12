@@ -1,3 +1,4 @@
+import type { Express } from "express";
 import { createServer, type Server } from "http";
 import { ethers } from "ethers";
 import mongoose from "mongoose";
@@ -158,7 +159,7 @@ async function getOrCreateToken(walletId: string, tokenSymbol: string, chainId: 
   return token;
 }
 
-export async function registerRoutes(app: any, sessionParser?: any): Promise<Server> {
+export async function registerRoutes(app: Express, sessionParser?: any): Promise<Server> {
   // ==================== ONE-TIME MIGRATION: backfill virtualAddresses ====================
   // Run asynchronously so it doesn't block server startup.
   // Finds all users that have any of the four chain virtual addresses missing or null.
@@ -277,7 +278,7 @@ export async function registerRoutes(app: any, sessionParser?: any): Promise<Ser
       req.session.isAdmin = user.isAdmin || false;
 
       // Auto-create wallet for regular users (not admins)
-      let walletInfo: any = null;
+      let walletInfo = null;
       if (!user.isAdmin) {
         try {
           const mnemonic = generateMnemonic();
@@ -375,7 +376,7 @@ export async function registerRoutes(app: any, sessionParser?: any): Promise<Ser
       req.session.role = 'user';
 
       // Get user's wallet
-      let walletInfo: any = null;
+      let walletInfo = null;
       try {
         const wallets = await storage.getWalletsByUser(userDoc._id!.toString());
         if (wallets.length > 0) {
@@ -580,7 +581,7 @@ export async function registerRoutes(app: any, sessionParser?: any): Promise<Ser
       req.session.isAdmin = false;
 
       // Auto-create wallet
-      let walletInfo: any = null;
+      let walletInfo = null;
       try {
         const mnemonic = generateMnemonic();
         const address = deriveAddress(mnemonic);
@@ -686,7 +687,7 @@ export async function registerRoutes(app: any, sessionParser?: any): Promise<Ser
       req.session.role = 'user';
 
       // Get wallet
-      let walletInfo: any = null;
+      let walletInfo = null;
       try {
         const wallets = await storage.getWalletsByUser((user._id as any).toString());
         if (wallets.length > 0) {
@@ -821,7 +822,7 @@ export async function registerRoutes(app: any, sessionParser?: any): Promise<Ser
       req.session.role = 'user';
 
       // Get user's wallet
-      let walletInfo: any = null;
+      let walletInfo = null;
       try {
         const wallets = await storage.getWalletsByUser(userDoc._id!.toString());
         if (wallets.length > 0) {
@@ -1116,7 +1117,7 @@ export async function registerRoutes(app: any, sessionParser?: any): Promise<Ser
       }
 
       // Get wallet info for non-admin users
-      let wallet: any = null;
+      let wallet = null;
       if (!user.isAdmin) {
         const walletDoc = await Wallet.findOne({ userId: user._id });
         if (walletDoc) {

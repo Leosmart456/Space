@@ -1,6 +1,6 @@
 import { ChevronLeft, Shield, Globe, Users, Zap, Lock, Heart, Code, TrendingUp, Eye } from "lucide-react";
 import { Button } from "@/components/ui/button";
-const logoImage = "/lumirra-logo.png";
+import logoImage from "@assets/Lumirra Logo Design (original)_1761875532047.png";
 
 export default function About() {
   return (

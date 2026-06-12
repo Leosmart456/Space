@@ -1,4 +1,4 @@
-const logoImage = "/lumirra-logo.png";
+import logoImage from "@assets/Lumirra Logo Design (original)_1761608943046.png";
 
 interface LogoProps {
   className?: string;

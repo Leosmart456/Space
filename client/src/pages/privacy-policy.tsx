@@ -1,7 +1,7 @@
 import { useLocation } from "wouter";
 import { Button } from "@/components/ui/button";
 import { ArrowLeft } from "lucide-react";
-const logoImage = "/lumirra-logo.png";
+import logoImage from "@assets/Lumirra Logo Design (original)_1761875532047.png";
 
 export default function PrivacyPolicy() {
   const [, navigate] = useLocation();
