@@ -1,5 +1,4 @@
-import express, { type Request, type Response, type NextFunction } from "express";
-import type { Application } from "express";
+import express from "express";
 import session from "express-session";
 import { storage } from "./storage";
 import { connectDB } from "./db";
@@ -22,9 +21,9 @@ declare module "express-session" {
   }
 }
 
-let appPromise: Promise<Application> | null = null;
+let appPromise: Promise<any> | null = null;
 
-export function getApp(): Promise<Application> {
+export function getApp(): Promise<any> {
   if (appPromise) return appPromise;
 
   appPromise = (async () => {
@@ -32,7 +31,7 @@ export function getApp(): Promise<Application> {
 
     if (process.env.NODE_ENV === "production") {
       app.set('trust proxy', 1);
-      app.use((req: Request, res: Response, next: NextFunction) => {
+      app.use((req: any, res: any, next: any) => {
         if (req.headers['x-forwarded-proto'] === 'http') {
           return res.redirect(301, `https://${req.headers.host}${req.url}`);
         }
@@ -41,7 +40,7 @@ export function getApp(): Promise<Application> {
     }
 
     app.use(express.json({
-      verify: (req: Request, _res: Response, buf: Buffer) => {
+      verify: (req: any, _res: any, buf: Buffer) => {
         req.rawBody = buf;
       }
     }));
@@ -66,15 +65,15 @@ export function getApp(): Promise<Application> {
 
     app.use(sessionParser);
 
-    app.use((req: Request, res: Response, next: NextFunction) => {
+    app.use((req: any, res: any, next: any) => {
       const start = Date.now();
       const path = req.path;
       let capturedJsonResponse: Record<string, any> | undefined = undefined;
 
-      const originalResJson = res.json;
+      const originalResJson = res.json.bind(res);
       res.json = function (bodyJson: any) {
         capturedJsonResponse = bodyJson;
-        return originalResJson.call(res, bodyJson);
+        return originalResJson(bodyJson);
       };
 
       res.on("finish", () => {
@@ -101,7 +100,7 @@ export function getApp(): Promise<Application> {
 
     await registerRoutes(app, sessionParser);
 
-    app.use((err: any, _req: Request, res: Response, _next: NextFunction) => {
+    app.use((err: any, _req: any, res: any, _next: any) => {
       const status = err.status || err.statusCode || 500;
       const message = err.message || "Internal Server Error";
       res.status(status).json({ message });

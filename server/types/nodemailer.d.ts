@@ -1,5 +1,5 @@
 
-3declare module 'nodemailer' {
+declare module 'nodemailer' {
   interface SendMailOptions {
     from?: string;
     to?: string | string[];

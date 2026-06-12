@@ -248,7 +248,7 @@ class CacheManager {
   }
 
   getRecoveryInfo(): string {
-    const info = [];
+    const info: string[] = [];
     info.push(`App Version: ${APP_VERSION}`);
 
     if (this.isStorageDisabled()) {
