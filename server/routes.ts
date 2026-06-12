@@ -1,4 +1,4 @@
-import type { Express } from "express";
+import type { Application } from "express";
 import { createServer, type Server } from "http";
 import { ethers } from "ethers";
 import mongoose from "mongoose";
@@ -159,7 +159,7 @@ async function getOrCreateToken(walletId: string, tokenSymbol: string, chainId: 
   return token;
 }
 
-export async function registerRoutes(app: Express, sessionParser?: any): Promise<Server> {
+export async function registerRoutes(app: Application, sessionParser?: any): Promise<Server> {
   // ==================== ONE-TIME MIGRATION: backfill virtualAddresses ====================
   // Run asynchronously so it doesn't block server startup.
   // Finds all users that have any of the four chain virtual addresses missing or null.
