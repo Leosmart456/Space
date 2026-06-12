@@ -1,7 +1,7 @@
 import { createContext, useContext, useEffect, ReactNode } from "react";
 import { safeStorage } from "@/lib/safe-storage";
 
-type Theme = "light" | "dark";
+type Theme = "light";
 
 type ThemeProviderProps = {
   children: ReactNode;

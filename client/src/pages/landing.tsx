@@ -18,9 +18,9 @@ import {
 import { MobileMenu } from "@/components/mobile-menu";
 import { ThemeToggle } from "@/components/theme-toggle";
 import { useTheme } from "@/components/theme-provider";
-const logoImage = "/lumirra-logo.png";
-const mockupLightImage = "/lumirra-logo.png";
-const mockupDarkImage = "/lumirra-logo.png";
+import logoImage from "@assets/Lumirra Logo Design (original)_1761875532047.png";
+import mockupLightImage from "@assets/LIGHT_THEME_1775364086941.png";
+import mockupDarkImage from "@assets/DARK_THEME_1775364086943.png";
 
 function getDailyNewUsers() {
   const today = new Date();
@@ -310,7 +310,7 @@ export default function Landing() {
                   className="absolute inset-0 w-full h-full object-contain transition-opacity duration-150"
                   style={{ opacity: theme === "light" ? 1 : 0, pointerEvents: theme === "light" ? "auto" : "none" }}
                   loading="eager"
-                  fetchPriority="high"
+                  fetchpriority="high"
                   decoding="sync"
                   data-testid="img-hero-mockup"
                 />
@@ -321,7 +321,7 @@ export default function Landing() {
                   className="absolute inset-0 w-full h-full object-contain transition-opacity duration-150"
                   style={{ opacity: theme === "dark" ? 1 : 0, pointerEvents: theme === "dark" ? "auto" : "none" }}
                   loading="eager"
-                  fetchPriority="high"
+                  fetchpriority="high"
                   decoding="sync"
                   aria-hidden={theme !== "dark"}
                 />
