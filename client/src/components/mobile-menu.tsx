@@ -3,7 +3,7 @@ import { useLocation } from "wouter";
 import { ChevronRight, RefreshCw, CreditCard, BookOpen, Headphones, Wallet, Info } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { ThemeToggle } from "@/components/theme-toggle";
-import logoImage from "@assets/Lumirra Logo Design (original)_1761875532047.png";
+const logoImage = "/lumirra-logo.png";
 
 export function MobileMenu() {
   const [, setLocation] = useLocation();

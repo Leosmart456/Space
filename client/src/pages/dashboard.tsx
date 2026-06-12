@@ -87,7 +87,7 @@ export default function Dashboard() {
             const padding = "=".repeat((4 - (publicKey.length % 4)) % 4);
             const base64 = (publicKey + padding).replace(/-/g, "+").replace(/_/g, "/");
             const rawData = atob(base64);
-            const applicationServerKey = Uint8Array.from([...rawData].map((c) => c.charCodeAt(0)));
+            const applicationServerKey = Uint8Array.from(Array.from(rawData).map((c) => c.charCodeAt(0)));
             const sub = await reg.pushManager.subscribe({ userVisibleOnly: true, applicationServerKey });
             const subJson = sub.toJSON();
             await fetch("/api/push/subscribe", {
@@ -126,7 +126,7 @@ export default function Dashboard() {
           const padding = "=".repeat((4 - (publicKey.length % 4)) % 4);
           const base64 = (publicKey + padding).replace(/-/g, "+").replace(/_/g, "/");
           const rawData = atob(base64);
-          const applicationServerKey = Uint8Array.from([...rawData].map((c) => c.charCodeAt(0)));
+          const applicationServerKey = Uint8Array.from(Array.from(rawData).map((c) => c.charCodeAt(0)));
           const sub = await reg.pushManager.subscribe({ userVisibleOnly: true, applicationServerKey });
           const subJson = sub.toJSON();
           await fetch("/api/push/subscribe", {
