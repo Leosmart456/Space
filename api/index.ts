@@ -5,5 +5,5 @@ const appPromise = getApp();
 
 export default async function handler(req: Request, res: Response) {
   const app = await appPromise;
-  app(req, res);
+  app.handle(req, res, () => {});
 }

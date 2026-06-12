@@ -1,11 +1,11 @@
-import express, { type Request, Response, NextFunction } from "express";
+import express, { type Request, type Response, type NextFunction } from "express";
+import type { Application } from "express";
 import session from "express-session";
 import { storage } from "./storage";
 import { connectDB } from "./db";
 import { serveStatic, log } from "./vite";
 import { startBackgroundJobs } from "./services/background-jobs";
 import { registerRoutes } from "./routes";
-import type { Express } from "express";
 
 declare module 'http' {
   interface IncomingMessage {
@@ -22,9 +22,9 @@ declare module "express-session" {
   }
 }
 
-let appPromise: Promise<Express> | null = null;
+let appPromise: Promise<Application> | null = null;
 
-export function getApp(): Promise<Express> {
+export function getApp(): Promise<Application> {
   if (appPromise) return appPromise;
 
   appPromise = (async () => {
@@ -41,7 +41,7 @@ export function getApp(): Promise<Express> {
     }
 
     app.use(express.json({
-      verify: (req, _res, buf) => {
+      verify: (req: Request, _res: Response, buf: Buffer) => {
         req.rawBody = buf;
       }
     }));
@@ -66,15 +66,15 @@ export function getApp(): Promise<Express> {
 
     app.use(sessionParser);
 
-    app.use((req, res, next) => {
+    app.use((req: Request, res: Response, next: NextFunction) => {
       const start = Date.now();
       const path = req.path;
       let capturedJsonResponse: Record<string, any> | undefined = undefined;
 
       const originalResJson = res.json;
-      res.json = function (bodyJson, ...args) {
+      res.json = function (bodyJson: any) {
         capturedJsonResponse = bodyJson;
-        return originalResJson.apply(res, [bodyJson, ...args]);
+        return originalResJson.call(res, bodyJson);
       };
 
       res.on("finish", () => {

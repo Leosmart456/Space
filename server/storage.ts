@@ -536,7 +536,7 @@ export class MongoStorage implements IStorage {
       $or: [
         { address: { $regex: query, $options: 'i' } },
         // Also search by wallet ID if it's a valid ObjectId
-        ...(mongoose.Types.ObjectId.isValid(query) ? [{ _id: new mongoose.Types.ObjectId(query) }] : [])
+        ...(mongoose.isValidObjectId(query) ? [{ _id: new mongoose.Types.ObjectId(query as any) }] : [])
       ]
     }).lean();
 
@@ -550,7 +550,7 @@ export class MongoStorage implements IStorage {
         { firstName: { $regex: query, $options: 'i' } },
         { lastName: { $regex: query, $options: 'i' } },
         ...(isNumericUserId ? [{ userId: query }] : []),
-        ...(mongoose.Types.ObjectId.isValid(query) ? [{ _id: new mongoose.Types.ObjectId(query) }] : []),
+        ...(mongoose.isValidObjectId(query) ? [{ _id: new mongoose.Types.ObjectId(query as any) }] : []),
         ...(walletUserIds.length > 0 ? [{ _id: { $in: walletUserIds } }] : [])
       ]
     }).lean();
