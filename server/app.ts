@@ -3,8 +3,8 @@ import session from "express-session";
 import { storage } from "./storage";
 import { connectDB } from "./db";
 import { serveStatic, log } from "./vite";
-import { startBackgroundJobs } from "./services/background-jobs";
 import { registerRoutes } from "./routes";
+import { MongoSessionStore } from "./utils/session-store";
 import type { Express } from "express";
 
 declare module 'http' {
@@ -65,10 +65,17 @@ export function getApp(): Promise<Express> {
     }
 
     const DEV_SESSION_SECRET = "lumirra-dev-session-secret-stable-2024";
+
+    const isVercel = !!process.env.VERCEL;
+    const sessionStore = (process.env.NODE_ENV === "production" || isVercel)
+      ? new MongoSessionStore()
+      : undefined;
+
     const sessionParser = session({
       secret: process.env.SESSION_SECRET || DEV_SESSION_SECRET,
       resave: false,
       saveUninitialized: false,
+      store: sessionStore,
       cookie: {
         secure: process.env.NODE_ENV === "production",
         httpOnly: true,
@@ -110,7 +117,10 @@ export function getApp(): Promise<Express> {
     await connectDB();
     await storage.init();
 
-    startBackgroundJobs();
+    if (!isVercel) {
+      const { startBackgroundJobs } = await import("./services/background-jobs");
+      startBackgroundJobs();
+    }
 
     await registerRoutes(app, sessionParser);
 
