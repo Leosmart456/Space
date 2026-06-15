@@ -1,7 +1,7 @@
 import { useLocation } from "wouter";
 import { Button } from "@/components/ui/button";
 import { ArrowLeft } from "lucide-react";
-import logoImage from "@assets/Lumirra Logo Design (original)_1761875532047.png";
+const logoImage = "/lumirra-logo.png";
 
 const cookieCategories = [
   {
