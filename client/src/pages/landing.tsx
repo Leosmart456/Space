@@ -18,7 +18,7 @@ import {
 import { MobileMenu } from "@/components/mobile-menu";
 import { ThemeToggle } from "@/components/theme-toggle";
 import { useTheme } from "@/components/theme-provider";
-import logoImage from "@assets/Lumirra Logo Design (original)_1761875532047.png";
+const logoImage = "/lumirra-logo.png";
 import mockupLightImage from "@assets/LIGHT_THEME_1775364086941.png";
 import mockupDarkImage from "@assets/DARK_THEME_1775364086943.png";
 

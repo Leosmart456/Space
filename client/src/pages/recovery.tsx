@@ -7,7 +7,7 @@ import { Label } from "@/components/ui/label";
 import { ArrowLeft, Mail, Lock, Eye, EyeOff, CheckCircle2, Loader2 } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
 import { apiRequest } from "@/lib/queryClient";
-import logoImage from "@assets/Lumirra Logo Design_1761873279867.png";
+const logoImage = "/lumirra-logo.png";
 
 export default function Recovery() {
   const [, setLocation] = useLocation();

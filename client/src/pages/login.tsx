@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { useLocation } from "wouter";
-import logoImage from "@assets/Lumirra Logo Design (original)_1761875532047.png";
+const logoImage = "/lumirra-logo.png";
 import { motion, AnimatePresence } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
