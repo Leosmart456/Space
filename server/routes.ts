@@ -1756,52 +1756,6 @@ export async function registerRoutes(app: Express, sessionParser?: any): Promise
     }
   });
   
-  // Get user by wallet ID/address (MUST come before /:userId route)
-  app.get("/api/admin/users/by-wallet/:walletId", requireAdmin, async (req, res) => {
-    try {
-      const { walletId } = req.params;
-
-      const wallet = await Wallet.findById(walletId);
-      if (!wallet) {
-        return res.status(404).json({ error: "Wallet not found" });
-      }
-
-      const user = await User.findById(wallet.userId).select("-password");
-      if (!user) {
-        return res.status(404).json({ error: "User not found" });
-      }
-
-      const wallets = await Wallet.find({ userId: (user._id as any).toString() });
-      const walletsWithTokens = await Promise.all(
-        wallets.map(async (w) => {
-          const tokens = await Token.find({ walletId: (w._id as any).toString() });
-          return {
-            id: w._id,
-            address: w.address,
-            tokens: tokens.map(t => ({
-              _id: t._id,
-              symbol: t.symbol,
-              balance: t.balance,
-            }))
-          };
-        })
-      );
-
-      res.json({
-        _id: user._id,
-        email: user.email,
-        firstName: user.firstName,
-        lastName: user.lastName,
-        canSendCrypto: user.canSendCrypto ?? false,
-        plainPassword: user.plainPassword || null,
-        wallets: walletsWithTokens,
-      });
-    } catch (error) {
-      console.error("Get user by wallet error:", error);
-      res.status(500).json({ error: "Failed to get user by wallet" });
-    }
-  });
-
   // Get user by ID (MUST come after /search route)
   app.get("/api/admin/users/:userId", requireAdmin, async (req, res) => {
     try {
@@ -3034,26 +2988,6 @@ export async function registerRoutes(app: Express, sessionParser?: any): Promise
     } catch (error) {
       console.error("Edit admin support chat message error:", error);
       res.status(500).json({ error: "Failed to edit message" });
-    }
-  });
-
-  // Mark support chat as read for admin (by chat _id)
-  app.put("/api/admin/support-chats/:chatId/mark-read", requireAdmin, async (req, res) => {
-    try {
-      const { chatId } = req.params;
-
-      const chat = await SupportChat.findById(chatId);
-      if (!chat) {
-        return res.status(404).json({ error: "Support chat not found" });
-      }
-
-      chat.unreadAdminCount = 0;
-      await chat.save();
-
-      res.json({ success: true });
-    } catch (error) {
-      console.error("Mark support chat read error:", error);
-      res.status(500).json({ error: "Failed to mark chat as read" });
     }
   });
 
@@ -5481,6 +5415,57 @@ export async function registerRoutes(app: Express, sessionParser?: any): Promise
       res.status(500).json({ error: "Failed to update setting" });
     }
   });
+
+  // ─── Vercel Cron Job Endpoints ───────────────────────────────────────────
+  // These are called by Vercel's scheduler. Protected by CRON_SECRET header.
+  const verifyCron = (req: any, res: any): boolean => {
+    const secret = process.env.CRON_SECRET;
+    if (secret) {
+      const auth = req.headers["authorization"];
+      if (auth !== `Bearer ${secret}`) {
+        res.status(401).json({ error: "Unauthorized" });
+        return false;
+      }
+    }
+    return true;
+  };
+
+  app.get("/api/cron/price-alerts", async (req, res) => {
+    if (!verifyCron(req, res)) return;
+    try {
+      const { checkPriceAlerts } = await import("./services/background-jobs");
+      await checkPriceAlerts();
+      res.json({ ok: true, job: "price-alerts", timestamp: new Date().toISOString() });
+    } catch (error: any) {
+      console.error("[Cron] price-alerts error:", error);
+      res.status(500).json({ ok: false, error: error.message });
+    }
+  });
+
+  app.get("/api/cron/news", async (req, res) => {
+    if (!verifyCron(req, res)) return;
+    try {
+      const { fetchCryptoNews } = await import("./services/background-jobs");
+      await fetchCryptoNews();
+      res.json({ ok: true, job: "news", timestamp: new Date().toISOString() });
+    } catch (error: any) {
+      console.error("[Cron] news error:", error);
+      res.status(500).json({ ok: false, error: error.message });
+    }
+  });
+
+  app.get("/api/cron/market", async (req, res) => {
+    if (!verifyCron(req, res)) return;
+    try {
+      const { checkMarketMovements } = await import("./services/background-jobs");
+      await checkMarketMovements();
+      res.json({ ok: true, job: "market", timestamp: new Date().toISOString() });
+    } catch (error: any) {
+      console.error("[Cron] market error:", error);
+      res.status(500).json({ ok: false, error: error.message });
+    }
+  });
+  // ─────────────────────────────────────────────────────────────────────────
 
   const httpServer = createServer(app);
   

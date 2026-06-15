@@ -11,5 +11,19 @@
       "source": "/(.*)",
       "destination": "/index.html"
     }
+  ],
+  "crons": [
+    {
+      "path": "/api/cron/price-alerts",
+      "schedule": "*/5 * * * *"
+    },
+    {
+      "path": "/api/cron/news",
+      "schedule": "*/15 * * * *"
+    },
+    {
+      "path": "/api/cron/market",
+      "schedule": "*/30 * * * *"
+    }
   ]
 }
