@@ -3,17 +3,7 @@ import fs from "fs";
 import path from "path";
 import { type Server } from "http";
 import { nanoid } from "nanoid";
-
-export function log(message: string, source = "express") {
-  const formattedTime = new Date().toLocaleTimeString("en-US", {
-    hour: "numeric",
-    minute: "2-digit",
-    second: "2-digit",
-    hour12: true,
-  });
-
-  console.log(`${formattedTime} [${source}] ${message}`);
-}
+export { log } from "./logger";
 
 export async function setupVite(app: Express, server: Server) {
   // Dynamic imports so vite is never bundled into the production lambda
@@ -70,19 +60,15 @@ export async function setupVite(app: Express, server: Server) {
 }
 
 export function serveStatic(app: Express) {
-  // Use process.cwd() so this works both when running from dist/index.js locally
-  // and when bundled into a Vercel lambda (where import.meta.dirname changes)
   const distPath = path.resolve(process.cwd(), "dist/public");
 
   if (!fs.existsSync(distPath)) {
-    throw new Error(
-      `Could not find the build directory: ${distPath}, make sure to build the client first`,
-    );
+    console.log("[serveStatic] dist/public not found — static files are served by Vercel CDN, skipping static middleware.");
+    return;
   }
 
   app.use(express.static(distPath));
 
-  // fall through to index.html if the file doesn't exist
   app.use("*", (_req, res) => {
     res.sendFile(path.resolve(distPath, "index.html"));
   });
