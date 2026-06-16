@@ -1,0 +1,32 @@
+A **405 Method Not Allowed** error on Vercel typically occurs when a **POST** request (like submitting a login form) is sent to a route that Vercel is treating as a static page or file. 
+
+Because Vercel's Edge Network serves static files (HTML, JS, CSS) using only `GET` and `HEAD` requests, sending a `POST` request directly to a static route will result in a 405 error.
+
+To resolve this issue, you must ensure that your POST request is correctly routed to your backend API instead of your static frontend. Here is how you can fix this:
+
+
+- **If Your Backend is Hosted Separately:**
+If your database or backend API runs on a different server, ensure that your login form's `fetch` or `axios` call uses the **absolute URL** of your external API (e.g., `https://api.yourdomain.com/login`) rather than a relative path (e.g., `/api/login`). If you use a relative path, Vercel attempts to resolve the POST request on your static frontend, which causes the 405 error.
+
+- **If Your Express Backend is Inside the Same Project:**
+If you have an Express API inside your Vite project on Vercel, you need to tell Vercel to forward requests under `/api` to your Express serverless function rather than trying to serve them as static files. You can configure this routing by creating a `vercel.json` file in the root of your project:
+
+```json
+{
+  "rewrites": [
+    {
+      "source": "/api/:path*",
+      "destination": "/api/index.js"
+    }
+  ]
+}
+```
+
+- Ensure that your Express app file (e.g., `api/index.js`) exports your Express instance as the default export (e.g., `export default app;` or `module.exports = app;`) so Vercel can run it as a Serverless Function.
+
+- **Check Your Backend Code for Allowed Methods:**
+If your backend function is running but still returning a 405, double-check that your Express or framework routing explicitly allows and handles `POST` requests for your login path. For example, verify you have configured `app.post('/api/login', ...)` in your route handlers.
+
+For more detailed troubleshooting, you can also check your real-time serverless execution logs on the [Vercel Project Logs](https://vercel.com/lumirra-s-projects/space/logs) to see if the requests are reaching your backend or if they are being blocked at the Edge.
+
+If you have any other questions, please let me know!

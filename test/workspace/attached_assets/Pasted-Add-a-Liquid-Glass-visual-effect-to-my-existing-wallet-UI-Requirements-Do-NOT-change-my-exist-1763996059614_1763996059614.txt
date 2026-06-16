@@ -1,0 +1,75 @@
+Add a “Liquid Glass” visual effect to my existing wallet UI.
+
+Requirements:
+- Do NOT change my existing layout, structure, or wallet logic.
+- Only enhance the styling of the elements I specify by adding a reusable CSS class called .liquid-glass.
+- Add a second optional class .liquid-glass-shine for a subtle shine/flare effect.
+
+Create or update the following:
+
+1. Create a CSS file named liquid-glass.css with these effects:
+   • Translucent frosted-glass look
+   • Real blur using backdrop-filter
+   • Soft gradient reflection
+   • Optional animated highlight layer
+   • Fallback for browsers without backdrop-filter
+
+Use this exact CSS:
+
+.liquid-glass {
+  position: relative;
+  border-radius: 16px;
+  padding: 16px;
+  background: rgba(255,255,255,0.10);
+  border: 1px solid rgba(255,255,255,0.20);
+  overflow: hidden;
+  box-shadow: 0 6px 30px rgba(0,0,0,0.35);
+}
+
+@supports (backdrop-filter: blur(1px)) {
+  .liquid-glass {
+    backdrop-filter: blur(14px) saturate(1.1);
+    -webkit-backdrop-filter: blur(14px) saturate(1.1);
+    background: rgba(255,255,255,0.06);
+  }
+}
+
+.liquid-glass-shine {
+  position: absolute;
+  top: -40%;
+  left: -40%;
+  width: 180%;
+  height: 180%;
+  background: linear-gradient(
+    130deg,
+    rgba(255,255,255,0.14) 0%,
+    rgba(255,255,255,0.05) 40%,
+    rgba(255,255,255,0.09) 60%,
+    rgba(255,255,255,0.03) 100%
+  );
+  mix-blend-mode: screen;
+  pointer-events: none;
+  transition: transform 0.3s ease, opacity 0.4s ease;
+  opacity: 0.7;
+}
+
+2. Import liquid-glass.css into my main project.
+
+3. Add a small optional JavaScript function that lets the shine layer move slightly with pointer movement:
+   - Create a new file: liquid-glass.js
+   - Add a function that applies a subtle parallax effect to .liquid-glass-shine.
+
+4. DO NOT touch any other CSS or break my layout.
+
+5. Tell me exactly how to activate the effect:
+   - For any card or component in my wallet, I should only need to wrap it like this:
+
+     <div class="liquid-glass">
+        <div class="liquid-glass-shine"></div>
+        <!-- my existing wallet element here -->
+     </div>
+
+After making the changes:
+- Show me the full contents of liquid-glass.css and liquid-glass.js.
+- Confirm the import path.
+- Give me one example of how to apply it to one of my wallet components.

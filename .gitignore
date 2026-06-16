@@ -4,4 +4,6 @@ dist
 server/public
 vite.config.ts.*
 *.tar.gz
-.local
+api/index.js
+.local/share/
+.local/state/

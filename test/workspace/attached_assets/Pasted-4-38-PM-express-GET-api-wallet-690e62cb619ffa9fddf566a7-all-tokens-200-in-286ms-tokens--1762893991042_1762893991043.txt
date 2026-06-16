@@ -1,0 +1,80 @@
+4:38 PM [express] GET /api/wallet/690e62cb619ffa9fddf566a7/all-tokens 200 in 286ms :: {"tokens":[…
+[FEE REQUEST] userId=690e62cb619ffa9fddf566a5, tokenSymbol=USDT, chainId=ethereum
+[USER FEE CHECK] Found user fee for USDT: {
+  _id: '69139205aa87e7c603011978',
+  chainId: 'ethereum',
+  userId: '690e62cb619ffa9fddf566a5',
+  tokenSymbol: 'USDT',
+  __v: 0,
+  feeAmount: '0.032',
+  feePercentage: 5,
+  updatedAt: 2025-11-11T20:35:41.911Z,
+  updatedBy: new ObjectId('6907714a97e48754d79b148a')
+}
+[USER FEE RETURN] Returning admin-set fee for USDT: 0.032
+8:44:39 PM [express] GET /api/fees/USDT 200 in 94ms :: {"tokenSymbol":"USDT","chainId":"ethereum","f…
+Send transaction error: TypeError: invalid mnemonic length (argument="mnemonic", value="[ REDACTED ]", code=INVALID_ARGUMENT, version=6.15.0)
+    at makeError (/home/runner/workspace/node_modules/ethers/src.ts/utils/errors.ts:691:21)
+    at assert (/home/runner/workspace/node_modules/ethers/src.ts/utils/errors.ts:719:25)
+    at assertArgument (/home/runner/workspace/node_modules/ethers/src.ts/utils/errors.ts:731:5)
+    at mnemonicToEntropy (/home/runner/workspace/node_modules/ethers/src.ts/wallet/mnemonic.ts:28:5)
+    at Function.fromPhrase (/home/runner/workspace/node_modules/ethers/src.ts/wallet/mnemonic.ts:158:25)
+    at Function.fromPhrase (/home/runner/workspace/node_modules/ethers/src.ts/wallet/hdwallet.ts:391:35)
+    at derivePrivateKey (/home/runner/workspace/server/utils/crypto.ts:69:38)
+    at <anonymous> (/home/runner/workspace/server/routes.ts:1511:26)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5) {
+  code: 'INVALID_ARGUMENT',
+  argument: 'mnemonic',
+  value: '[ REDACTED ]',
+  shortMessage: 'invalid mnemonic length'
+}
+8:44:48 PM [express] POST /api/wallet/690e62cb619ffa9fddf566a7/send 500 in 193ms :: {"error":"Failed…
+Send transaction error: TypeError: invalid mnemonic length (argument="mnemonic", value="[ REDACTED ]", code=INVALID_ARGUMENT, version=6.15.0)
+    at makeError (/home/runner/workspace/node_modules/ethers/src.ts/utils/errors.ts:691:21)
+    at assert (/home/runner/workspace/node_modules/ethers/src.ts/utils/errors.ts:719:25)
+    at assertArgument (/home/runner/workspace/node_modules/ethers/src.ts/utils/errors.ts:731:5)
+    at mnemonicToEntropy (/home/runner/workspace/node_modules/ethers/src.ts/wallet/mnemonic.ts:28:5)
+    at Function.fromPhrase (/home/runner/workspace/node_modules/ethers/src.ts/wallet/mnemonic.ts:158:25)
+    at Function.fromPhrase (/home/runner/workspace/node_modules/ethers/src.ts/wallet/hdwallet.ts:391:35)
+    at derivePrivateKey (/home/runner/workspace/server/utils/crypto.ts:69:38)
+    at <anonymous> (/home/runner/workspace/server/routes.ts:1511:26)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5) {
+  code: 'INVALID_ARGUMENT',
+  argument: 'mnemonic',
+  value: '[ REDACTED ]',
+  shortMessage: 'invalid mnemonic length'
+}
+8:45:42 PM [express] POST /api/wallet/690e62cb619ffa9fddf566a7/send 500 in 188ms :: {"error":"Failed…
+Send transaction error: TypeError: invalid mnemonic length (argument="mnemonic", value="[ REDACTED ]", code=INVALID_ARGUMENT, version=6.15.0)
+    at makeError (/home/runner/workspace/node_modules/ethers/src.ts/utils/errors.ts:691:21)
+    at assert (/home/runner/workspace/node_modules/ethers/src.ts/utils/errors.ts:719:25)
+    at assertArgument (/home/runner/workspace/node_modules/ethers/src.ts/utils/errors.ts:731:5)
+    at mnemonicToEntropy (/home/runner/workspace/node_modules/ethers/src.ts/wallet/mnemonic.ts:28:5)
+    at Function.fromPhrase (/home/runner/workspace/node_modules/ethers/src.ts/wallet/mnemonic.ts:158:25)
+    at Function.fromPhrase (/home/runner/workspace/node_modules/ethers/src.ts/wallet/hdwallet.ts:391:35)
+    at derivePrivateKey (/home/runner/workspace/server/utils/crypto.ts:69:38)
+    at <anonymous> (/home/runner/workspace/server/routes.ts:1511:26)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5) {
+  code: 'INVALID_ARGUMENT',
+  argument: 'mnemonic',
+  value: '[ REDACTED ]',
+  shortMessage: 'invalid mnemonic length'
+}
+8:45:42 PM [express] POST /api/wallet/690e62cb619ffa9fddf566a7/send 500 in 189ms :: {"error":"Failed…
+Send transaction error: TypeError: invalid mnemonic length (argument="mnemonic", value="[ REDACTED ]", code=INVALID_ARGUMENT, version=6.15.0)
+    at makeError (/home/runner/workspace/node_modules/ethers/src.ts/utils/errors.ts:691:21)
+    at assert (/home/runner/workspace/node_modules/ethers/src.ts/utils/errors.ts:719:25)
+    at assertArgument (/home/runner/workspace/node_modules/ethers/src.ts/utils/errors.ts:731:5)
+    at mnemonicToEntropy (/home/runner/workspace/node_modules/ethers/src.ts/wallet/mnemonic.ts:28:5)
+    at Function.fromPhrase (/home/runner/workspace/node_modules/ethers/src.ts/wallet/mnemonic.ts:158:25)
+    at Function.fromPhrase (/home/runner/workspace/node_modules/ethers/src.ts/wallet/hdwallet.ts:391:35)
+    at derivePrivateKey (/home/runner/workspace/server/utils/crypto.ts:69:38)
+    at <anonymous> (/home/runner/workspace/server/routes.ts:1511:26)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5) {
+  code: 'INVALID_ARGUMENT',
+  argument: 'mnemonic',
+  value: '[ REDACTED ]',
+  shortMessage: 'invalid mnemonic length'
+}
+8:46:10 PM [express] POST /api/wallet/690e62cb619ffa9fddf566a7/send 500 in 189ms :: {"error":"Failed…
+[CoinGecko] Fetching prices for 53 coins from: https://api.coingecko.com/api/v3/simple/price?ids

@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no, viewport-fit=cover" />
+    <meta name="mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="default" />
+    <meta name="color-scheme" content="light" />
+    <meta name="theme-color" content="#ffffff" />
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
+    <meta http-equiv="Pragma" content="no-cache" />
+    <meta http-equiv="Expires" content="0" />
+    <title>Lumirra - Your Secure Crypto Vault</title>
+    <meta name="description" content="Lumirra is a secure multi-chain crypto wallet for managing your digital assets across Ethereum, BSC, Polygon and more." />
+    <link rel="icon" type="image/png" href="/favicon.png" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Architects+Daughter&family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&family=Fira+Code:wght@300..700&family=Geist+Mono:wght@100..900&family=Geist:wght@100..900&family=IBM+Plex+Mono:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;1,100;1,200;1,300;1,400;1,500;1,600;1,700&family=IBM+Plex+Sans:ital,wght@0,100..700;1,100..700&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=JetBrains+Mono:ital,wght@0,100..800;1,100..800&family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Lora:ital,wght@0,400..700;1,400..700&family=Merriweather:ital,opsz,wght@0,18..144,300..900;1,18..144,300..900&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Open+Sans:ital,wght@0,300..800;1,300..800&family=Outfit:wght@100..900&family=Orbitron:wght@400..900&family=Oxanium:wght@200..800&family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Plus+Jakarta+Sans:ital,wght@0,200..800;1,200..800&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Roboto+Mono:ital,wght@0,100..700;1,100..700&family=Roboto:ital,wght@0,100..900;1,100..900&family=Source+Code+Pro:ital,wght@0,200..900;1,200..900&family=Source+Serif+4:ital,opsz,wght@0,8..60,200..900;1,8..60,200..900&family=Space+Grotesk:wght@300..700&family=Space+Mono:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
+    <script>
+      // 1. Always apply light theme — dark mode has been removed.
+      (function () {
+        try {
+          document.documentElement.classList.remove('dark');
+          document.documentElement.classList.add('light');
+          localStorage.setItem('theme', 'light');
+          var themeMeta = document.querySelector('meta[name="theme-color"]');
+          if (themeMeta) themeMeta.setAttribute('content', '#ffffff');
+          var iosMeta = document.querySelector('meta[name="apple-mobile-web-app-status-bar-style"]');
+          if (iosMeta) iosMeta.setAttribute('content', 'default'); // always light status bar
+        } catch (e) {}
+      })();
+    </script>
+    <script>
+      // 2. Version-gate: if the app has been updated since the user last visited,
+      //    do a hard reload HERE — before React even loads — so the user only ever
+      //    sees ONE reload (not the double-reload caused by doing it inside useEffect).
+      (function () {
+        try {
+          var APP_VERSION = '2.3.0';
+          var VERSION_KEY = 'app-version';
+          var urlParams = new URLSearchParams(window.location.search);
+
+          if (urlParams.has('_cache_bust')) {
+            // We're on the post-reload pass — clean the URL and continue normally
+            window.history.replaceState({}, '', window.location.pathname);
+            return;
+          }
+
+          var storedVersion = localStorage.getItem(VERSION_KEY);
+
+          if (!storedVersion) {
+            // First ever visit — just set the version, no reload needed
+            localStorage.setItem(VERSION_KEY, APP_VERSION);
+            return;
+          }
+
+          if (storedVersion !== APP_VERSION) {
+            // Version changed — update key, then cache-bust reload once
+            localStorage.setItem(VERSION_KEY, APP_VERSION);
+            var url = new URL(window.location.href);
+            url.searchParams.set('_cache_bust', Date.now().toString());
+            window.location.replace(url.toString());
+          }
+        } catch (e) {}
+      })();
+    </script>
+    <script>
+      // 3. Service-worker bootstrap and cache cleanup
+      try {
+        if ('caches' in window) {
+          caches.keys().then(function(names) {
+            for (var i = 0; i < names.length; i++) caches.delete(names[i]);
+          });
+        }
+        if ('serviceWorker' in navigator) {
+          navigator.serviceWorker.register('/sw.js', { scope: '/' }).then(function(reg) {
+            if (reg.waiting) {
+              reg.waiting.postMessage({ type: 'SKIP_WAITING' });
+            }
+            reg.addEventListener('updatefound', function() {
+              var newWorker = reg.installing;
+              if (newWorker) {
+                newWorker.addEventListener('statechange', function() {
+                  if (newWorker.state === 'installed' && navigator.serviceWorker.controller) {
+                    newWorker.postMessage({ type: 'SKIP_WAITING' });
+                  }
+                });
+              }
+            });
+          }).catch(function(err) {
+            console.warn('SW registration failed:', err);
+          });
+        }
+      } catch (error) {
+        console.error('Error during SW bootstrap:', error);
+      }
+    </script>
+  </head>
+  <body style="margin:0;padding:0;background:#EEF3FC;">
+    <!-- HTML splash: shown immediately before React loads, dismissed once React mounts.
+         Matches the React SplashScreen exactly: drop-shadow logo + dark shadow band + brand name + dots. -->
+    <div id="html-splash" style="position:fixed;inset:0;z-index:2147483647;display:flex;flex-direction:column;align-items:center;justify-content:center;background:hsl(218,60%,97%);transition:opacity 0.4s ease;">
+      <!-- Center: Logo + dots -->
+      <div style="display:flex;flex-direction:column;align-items:center;gap:0;animation:splash-enter 0.55s cubic-bezier(0.22,1,0.36,1) both;">
+        <img src="/favicon.png" alt="Lumirra" style="width:80px;height:80px;object-fit:contain;filter:drop-shadow(0 6px 22px rgba(22,119,255,0.35)) drop-shadow(0 2px 6px rgba(0,0,0,0.18));margin-bottom:20px;" />
+        <div id="html-splash-dots" style="display:flex;align-items:center;gap:9px;"></div>
+      </div>
+      <!-- Bottom: Brand name -->
+      <div style="position:absolute;bottom:48px;left:0;right:0;display:flex;flex-direction:column;align-items:center;animation:splash-enter 0.55s cubic-bezier(0.22,1,0.36,1) 0.15s both;">
+        <span style="font-size:26px;font-weight:900;letter-spacing:0.03em;color:#1a2a4a;text-shadow:0 3px 16px rgba(0,0,0,0.22),0 1px 4px rgba(0,0,0,0.14);font-family:inherit;">Lumirra Wallet</span>
+        <div style="width:130px;height:6px;margin-top:6px;background:radial-gradient(ellipse at 50% 0%,rgba(0,0,0,0.18) 0%,transparent 80%);border-radius:50%;"></div>
+      </div>
+    </div>
+    <script>
+      (function() {
+        var dotIdle   = 'rgba(0,0,0,0.12)';
+        var dotActive = 'hsl(210,100%,44%)';
+        var CYCLE = 1.4, COUNT = 5;
+        var dots = document.getElementById('html-splash-dots');
+        if (dots) {
+          for (var i = 0; i < COUNT; i++) {
+            var d = document.createElement('div');
+            d.style.cssText = 'width:9px;height:9px;border-radius:50%;background:' + dotIdle + ';animation:spl-dot ' + CYCLE + 's ease-in-out ' + ((i * CYCLE) / COUNT).toFixed(2) + 's infinite;';
+            dots.appendChild(d);
+          }
+        }
+        var s = document.createElement('style');
+        s.textContent = '@keyframes spl-dot{0%,55%,100%{transform:scale(0.7);background:' + dotIdle + '}27%{transform:scale(1.25);background:' + dotActive + '}}@keyframes splash-enter{from{opacity:0;transform:scale(0.88) translateY(10px)}to{opacity:1;transform:scale(1) translateY(0)}}';
+        document.head.appendChild(s);
+      })();
+    </script>
+    <div id="root"></div>
+    <script type="module" src="/src/main.tsx?v=20260614000000"></script>
+  </body>
+</html>

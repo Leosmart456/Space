@@ -1,0 +1,239 @@
+Build a secure, audited, production-ready crypto wallet app for mobile (iOS + Android) and a companion web interface that supports multiple chains, token management, swaps, dApp connections, staking basics and hardware-wallet integration. The experience should be comparable to Trust Wallet (multichain, seed-based HD wallet, WalletConnect, token swaps), but start as a minimal, secure MVP and expand iteratively.
+
+Phase 0 — Required research (do this BEFORE coding)
+
+Produce a 2–3 page technical research brief covering:
+
+HD wallet standards and mnemonic best practices (BIP-39, BIP-32, BIP-44). — use as authoritative references. 
+Vault12
++1
+
+How Trust Wallet structures features (multichain, swaps, staking, dApp browser) and what core features to prioritize for an MVP. 
+Trust Wallet
++1
+
+WalletConnect (v2) spec and recommended integration approach for mobile + web dApp connections. 
+WalletConnect Docs
++1
+
+Recommended open-source building blocks and libraries (Trust Wallet Core, ethers.js / web3.js / web3 libraries, Wallet Core libs) and tradeoffs. Include links and a recommended stack. 
+GitHub
++1
+
+Deliverable: PDF/Markdown brief + bibliography (links).
+
+Phase 1 — Architecture & high-level design
+
+Provide an architecture document with diagrams showing:
+
+Client apps: React Native (recommended) OR Flutter, plus a lightweight web wallet (React). Explain tradeoffs.
+
+Crypto core: use Trust Wallet Core (C++ cross-platform) or build with well-tested libs (ethers.js for EVM chains; solana-web3.js for Solana; cosmos SDK clients for Cosmos chains). Cite pros/cons. 
+GitHub
++1
+
+Key storage design: mnemonic generation (BIP39), HD derivation (BIP32/44), local encryption, Keychain/Keystore integration and hardware-backed storage on mobile (Secure Enclave / Android Keystore). Explain fallback for devices without hardware-backed keys. 
+Vault12
++1
+
+Backend services (optional): node providers (Infura/Alchemy/QuickNode or run own light nodes), push notifications (for tx updates), token/metadata indexing (use existing token lists), analytics & crash reporting.
+
+Integrations: WalletConnect (dApp connection), on-ramp providers (e.g., MoonPay, Ramp), DEX aggregators (1inch/Paraswap) for in-app swaps, hardware wallets (Ledger/Trezor) support. 
+WalletConnect Docs
++1
+
+Deliverable: Architecture doc + sequence diagrams.
+
+Phase 2 — MVP feature list (must-include)
+
+Implement the following for MVP (minimum acceptance criteria in parentheses):
+
+Wallet basics
+
+Create/import wallet via BIP-39 mnemonic (12/24 words) and show recovery seed backup flow with warnings. (Acceptance: generate mnemonic; export & import; user must confirm seed with test restore.) 
+Vault12
+
+Hierarchical deterministic account derivation (BIP32/BIP44) for standard chains (Ethereum derivation m/44'/60'/0'/0/0). (Acceptance: derive addresses deterministically and restore.) 
+BIP32
+
+Secure local storage: encrypt sensitive material and store private keys only in Keychain/Keystore (use Secure Enclave when available). (Acceptance: keys never logged or stored in plaintext; biometric unlock implemented.) 
+Medium
+
+Multi-chain & tokens
+
+View balances for EVM chains (Ethereum, BSC, Polygon) and optionally Solana/Cosmos (choose prioritized list). (Acceptance: fetch balances via reliable RPC/provider.)
+
+Token management: add custom token (contract address), show token metadata (symbol, decimals). (Acceptance: display token balances & send token tx.)
+
+Transactions
+
+Create/send native and ERC-20/ERC-721 txns (estimate gas, let user edit gas fees). (Acceptance: tx built, signed locally with user’s key, and broadcasted.)
+
+dApp connections
+
+WalletConnect v2 support to connect to dApps (web/mobile) and sign messages/transactions. (Acceptance: connect to a dApp, sign a test tx via WalletConnect). 
+WalletConnect Docs
++1
+
+Swaps
+
+Integrate an on-chain swap via DEX aggregator (1inch / or use a simple built-in swap using Uniswap SDK or aggregator). (Acceptance: simulate quote + perform token swap with user confirmation.)
+
+Security & UX
+
+Biometric + PIN lock, seed backup reminders, and clear education screens for seed safety. (Acceptance: biometric unlock works; seed warnings present.)
+
+Transaction signing confirmation UX that clearly shows chain, amount, recipient, and gas.
+
+Extras (stretch)
+
+Staking UI (for chains that support it), NFT view, dApp browser.
+
+Phase 3 — Security, testing & auditing (required)
+
+Implement unit tests & integration tests for crypto flows (mnemonic, derivation, signing, broadcast). (Acceptance: 85%+ coverage for crypto-critical modules.)
+
+Threat model doc (attack vectors: key exfiltration, MITM RPC, supply chain), and mitigations. (Deliverable: threat model + mitigations.)
+
+Internal security review + external audit plan — prepare checklist and submit for third-party audit (e.g., reputable smart contract/audit firms for any on-chain contracts; mobile app security audit). (Acceptance: audit engagement plan.)
+
+Use code scanning tools, dependency checks and CI checks for secrets. (Acceptance: no secrets in repo; automated CI checks.)
+
+Citations / guidance references: Key standards and security approaches must reference BIP39/BIP32/BIP44 and platform secure storage guidance. 
+Vault12
++2
+BIP32
++2
+
+Phase 4 — Ops, deployment & maintenance
+
+CI/CD: set up GitHub Actions (or Replit build pipelines) for building signed binaries for iOS (TestFlight) and Android (Play Store internal test). (Acceptance: automated build pipeline produces test APK/IPA.)
+
+RPC Provider strategy: allow configurable RPC endpoints, provide defaults (Infura/Alchemy/QuickNode) and a fallback strategy. (Acceptance: user's node settings saved and used.)
+
+Monitoring: crash reporting, on-chain tx monitoring (webhooks), and user support flow.
+
+Legal/compliance checklist: privacy policy, terms of service, data minimization, KYC plan (if you plan to offer fiat on-ramp). (Acceptance: publish minimal privacy policy draft.)
+
+Non-functional requirements
+
+UX: professional, responsive, accessible, and localizable. Provide a simple design system (colors, fonts, spacing).
+
+Performance: cold start under 2s on modern phones; wallet operations must not block main thread.
+
+Offline safety: warn about network switching; verify transaction nonce to avoid double-spend UX issues.
+
+Deliverables & milestones (suggested sprints)
+
+Sprint 0 (1 week) — Research brief + architecture doc. (Must pass review.)
+
+Sprint 1 (2–3 weeks) — Core wallet: generate/import mnemonics, local secure storage, address derivation, send simple native txs.
+
+Sprint 2 (2–3 weeks) — Multi-token balances, token send, import custom tokens.
+
+Sprint 3 (2–3 weeks) — WalletConnect, swaps integration, UI polish.
+
+Sprint 4 (2–3 weeks) — Tests, threat model, CI/CD, test release builds.
+
+Sprint 5 (audit & polish) — External audit, fix critical findings, Beta release.
+
+Each sprint deliverable must include: code, tests, short demo video (screen recording), and user documentation.
+
+Acceptance criteria (for MVP launch)
+
+Seed creation & restore works (tested across devices).
+
+Keys never transmitted to backend; signing happens locally.
+
+WalletConnect integration works with at least 3 major dApps. 
+WalletConnect Docs
+
+On-chain token swap flow executes successfully on a testnet.
+
+Automated test suite covering core crypto flows; threat model document exists.
+
+App builds (signed) for iOS & Android and can be installed by beta testers.
+
+Implementation guidance / recommended stack (pick one)
+
+Option A — JavaScript/TypeScript (recommended for speed & cross-platform)
+
+Mobile: React Native + TypeScript. (Expo for rapid dev; eject for native modules.)
+
+Web: React + TypeScript.
+
+Crypto core: Trust Wallet Core (bindings) OR JS libs (ethers.js for EVM, @solana/web3.js for Solana). 
+GitHub
++1
+
+dApp connector: WalletConnect v2. 
+WalletConnect Docs
+
+RPC: Alchemy/Infura/QuickNode (configurable).
+
+UI: Tailwind-like or design system (MUI/shadcn for web; React Native Paper / custom for mobile).
+
+Option B — Native (stronger platform security)
+
+iOS: Swift + Trust Wallet Core bindings; use Secure Enclave Keychain.
+
+Android: Kotlin + Trust Wallet Core; use Android Keystore (hardware-backed). 
+GitHub
++1
+
+Security checklist (must be followed)
+
+Generate entropy from secure OS APIs. Never use Math.random or non-crypto RNG. 
+Level Up Coding
+
+Enforce hardware-backed key storage when available; biometric gating for sign actions. 
+Medium
+
+Do not upload plaintext mnemonics or private keys to any server.
+
+Protect update pipeline (signed updates), dependency scanning, and reproducible builds where possible.
+
+Prepare incident response plan for key compromise scenarios.
+
+Documentation & handoff
+
+Ship a developer README: architecture, how to run tests, how to build release.
+
+Ship an operations runbook: node provider keys, monitoring dashboard, how to rotate secrets.
+
+Ship end-user documentation: wallet onboarding, seed backup, FAQ, privacy policy.
+
+Extra — research and citations the agent must include inline (minimum)
+
+The agent MUST read and cite at least these sources in the Phase 0 research brief:
+
+Trust Wallet overview & features (multichain, swaps, staking). 
+Trust Wallet
++1
+
+BIP-39 / BIP-32 / BIP-44 explanation for seed & HD derivation. 
+Vault12
++1
+
+WalletConnect docs / spec (v2 recommended). 
+WalletConnect Docs
++1
+
+Trust Wallet Core (open-source library) and recommended SDKs. 
+GitHub
++1
+
+Mobile secure storage and Secure Enclave / Keystore best practices. 
+Medium
+
+Project admin instructions to the Agent
+
+Create a single Git repo with branches per sprint, and open PRs for each sprint demo.
+
+For each feature PR, include: change summary, testing steps, security checklist ticked, and demo recording.
+
+If anything requires legal/regulatory input (fiat on-ramp, KYC), report back immediately with recommendations.
+
+Final note to agent
+
+This is a security-critical product: prioritize safe cryptographic implementations and user education over feature breadth. Make small, verifiable releases; get the crypto parts thoroughly tested and audited before scaling features.

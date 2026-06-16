@@ -1,5 +1,5 @@
 import React, { useEffect, useState, useCallback } from "react";
-import { Switch, Route, useLocation } from "wouter";
+import { Switch, Route, useLocation, Router } from "wouter";
 import { queryClient } from "./lib/queryClient";
 import { QueryClientProvider } from "@tanstack/react-query";
 import { Toaster } from "@/components/ui/toaster";
@@ -268,19 +268,23 @@ function App() {
     }
   }, []);
 
+  const base = import.meta.env.BASE_URL.replace(/\/$/, "") || "";
+
   return (
     <QueryClientProvider client={queryClient}>
       <WebSocketProvider>
         <ThemeProvider>
           <TooltipProvider>
-            {splashType && <SplashScreen onDone={handleSplashDone} minimal={splashType === "minimal"} />}
-            <AdminAlertOverlay />
-            <OfflineScreen />
-            <CookieConsent />
-            <BackButtonHandler />
-            <InAppNotificationListener />
-            <Toaster />
-            <ConditionalProviders />
+            <Router base={base}>
+              {splashType && <SplashScreen onDone={handleSplashDone} minimal={splashType === "minimal"} />}
+              <AdminAlertOverlay />
+              <OfflineScreen />
+              <CookieConsent />
+              <BackButtonHandler />
+              <InAppNotificationListener />
+              <Toaster />
+              <ConditionalProviders />
+            </Router>
           </TooltipProvider>
         </ThemeProvider>
       </WebSocketProvider>
