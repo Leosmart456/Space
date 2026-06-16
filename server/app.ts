@@ -31,11 +31,20 @@ export function getApp(): Promise<Express> {
     const app = express();
 
     app.use((req: Request, res: Response, next: NextFunction) => {
-      const origin = req.headers.origin || "*";
-      res.setHeader("Access-Control-Allow-Origin", origin);
+      const allowedOrigins = [
+        "https://space-gyq0omr46-lumirra-s-projects.vercel.app",
+        "https://space-seven-xi.vercel.app",
+        process.env.FRONTEND_URL,
+      ].filter(Boolean);
+      const origin = req.headers.origin || "";
+      if (allowedOrigins.includes(origin) || allowedOrigins.some(o => o && origin.endsWith(".vercel.app"))) {
+        res.setHeader("Access-Control-Allow-Origin", origin);
+      } else if (!origin) {
+        res.setHeader("Access-Control-Allow-Origin", "*");
+      }
       res.setHeader("Access-Control-Allow-Credentials", "true");
       res.setHeader("Access-Control-Allow-Methods", "GET,POST,PUT,PATCH,DELETE,OPTIONS");
-      res.setHeader("Access-Control-Allow-Headers", "Content-Type, Authorization");
+      res.setHeader("Access-Control-Allow-Headers", "Content-Type, Authorization, Cookie");
       if (req.method === "OPTIONS") {
         res.sendStatus(204);
         return;
@@ -77,10 +86,10 @@ export function getApp(): Promise<Express> {
       saveUninitialized: false,
       store: sessionStore,
       cookie: {
-        secure: process.env.NODE_ENV === "production",
+        secure: true,
         httpOnly: true,
         maxAge: 1000 * 60 * 60 * 24 * 7,
-        sameSite: 'lax',
+        sameSite: 'none',
       }
     });
 

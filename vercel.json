@@ -5,7 +5,7 @@
   "rewrites": [
     {
       "source": "/api/:path*",
-      "destination": "https://lumirra-production.up.railway.app/api/:path*"
+      "destination": "https://space-production-a4d8.up.railway.app/api/:path*"
     },
     {
       "source": "/(.*)",
