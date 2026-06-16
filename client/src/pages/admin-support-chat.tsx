@@ -62,8 +62,9 @@ export default function AdminSupportChat() {
     let isIntentionalClose = false;
 
     const connect = () => {
-      const protocol = window.location.protocol === "https:" ? "wss:" : "ws:";
-      const wsUrl = `${protocol}//${window.location.host}/ws`;
+      const wsBase = (import.meta.env.VITE_API_URL ?? "https://space-production-a4d8.up.railway.app").replace(/^https?:\/\//, "");
+      const wsProtocol = (import.meta.env.VITE_API_URL ?? "https://space-production-a4d8.up.railway.app").startsWith("https") ? "wss:" : "ws:";
+      const wsUrl = `${wsProtocol}//${wsBase}/ws`;
       const ws = new WebSocket(wsUrl);
       wsRef.current = ws;
 

@@ -1,0 +1,124 @@
+AI
+
+SpaceX Share Hub
+
+Upgrade
+
+
+Invite
+
+Publish
+
+
+
+
+
+Library
+
+File tree
+Search
+
+New
+Apps
+SpaceX Pre-IPO Platform
+SpaceX Pre-IPO Platform
+Website
+
+
+
+Canvas
+
+SpaceX Pre-IPO Platform
+
+
+
+/
+
+
+Vercel WebSocket setup and client connection
+
+
+How is the WebSocket server set up? Show me the server-side WebSocket initialization code and which package is used (ws, socket.io, etc.)"
+
+"Show me the complete vercel.json file — including buildCommand, installCommand, outputDirectory, and rewrites"
+
+"How does the frontend connect to WebSockets? Does it use wss:// or ws://? Show me the WebSocket connection code on the client side"
+
+"Is the WebSocket connection going to the same Vercel domain, or to a separate external server/URL?"
+
+"Show me the server/vercel-handler.ts or api/index.js file — how is the Express app exported for Vercel?"
+
+"Does the app use HTTP long-polling as a fallback, or pure WebSockets only?"
+
+"Are background jobs (like price alerts or scheduled tasks) running inside the same Express server, or are they handled separately (Vercel Cron Jobs, external service)?"
+
+"Show me the package.json — specifically the dependencies related to real-time communication
+
+
+Show more
+Jun 15, 2026, 4:06 AM
+
+Show less
+
+3 actions
+Here's a complete breakdown of the architecture:
+
+🔌 WebSockets — Not Used
+There are no WebSockets in this project. No ws, socket.io, or native WebSocket references anywhere. Real-time feel is achieved differently (see below).
+
+📡 "Real-Time" — How It Actually Works
+HTTP Polling via React Query:
+
+Dashboard data (purchases, transfers, summary) → polls every 15 seconds (refetchInterval: 15_000)
+Price quotes → polls every 60 seconds (refetchInterval: 60 * 1000)
+Simulated Live Price UI:
+
+A setInterval runs client-side every 2 seconds, randomly fluctuating the displayed price for visual effect — it's cosmetic, not real server data.
+🌐 No vercel.json
+The project has no vercel.json. It runs as a standard Node.js server (Express), not a Vercel serverless deployment. The API server starts via node ./artifacts/api-server/dist/index.mjs.
+
+🖥️ Express App Structure
+Defined in artifacts/api-server/src/app.ts, exported as default app
+Entry point: artifacts/api-server/src/index.ts — listens on a standard HTTP port
+⚙️ Background Jobs
+None. No Bull, Agenda, cron jobs, or job queues. Instead:
+
+Prices — fetched on-demand from Yahoo Finance with in-memory caching inside the route handler
+Emails — fire-and-forget async calls within the request lifecycle (no queue)
+📦 Key Dependencies
+Side	Packages
+Server	express, mongoose, jsonwebtoken, nodemailer, pino
+Client	@tanstack/react-query (polling), recharts (charts), framer-motion (animations), wouter (routing)
+Bottom line: This is a traditional REST API + polling architecture. No WebSockets, no Vercel serverless, no background workers. The "live" feel on the dashboard is a combination of periodic HTTP polling and client-side animation tricks.
+
+
+Worked for 50 seconds
+but it all user to login via mogodb backend
+
+Jun 15, 2026, 4:08 AM
+
+Show less
+
+Analyzing authentication flow details
+
+Implemented authentication and authorization flows
+Task
+
+Establish MongoDB connection, implement user login, JWT tokens, user model, auth routes, and middleware for authentication.
+
+
+Show work done
+15 seconds
+Result
+Set up MongoDB connection, user model, JWT tokens, and authentication routes. Implemented password and OTP login, password management, and separate admin authentication with session cookies.
+
+
+Validating user login via MongoDB
+Here's the full auth picture — yes, all user authentication runs through MongoDB:
+
+🔐 Auth Flow (MongoDB-backed)
+Sign-Up
+User submits details → stored temporarily in PendingRegistration collection (with TTL expiry)
+OTP sent via email
+User verifies OTP → permanent User document created in MongoDB
+JWT returned to client

@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Reset App - Clear All Cache</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      padding: 20px;
+    }
+    .container {
+      background: white;
+      border-radius: 12px;
+      padding: 40px;
+      max-width: 500px;
+      width: 100%;
+      box-shadow: 0 10px 40px rgba(0,0,0,0.2);
+      text-align: center;
+    }
+    h1 { color: #333; margin-bottom: 16px; font-size: 28px; }
+    p { color: #666; margin-bottom: 24px; line-height: 1.6; }
+    .warning { background: #fff3cd; border: 1px solid #ffc107; padding: 16px; border-radius: 8px; margin-bottom: 24px; }
+    .warning p { color: #856404; margin: 0; font-size: 14px; }
+    button {
+      background: #667eea;
+      color: white;
+      border: none;
+      padding: 14px 32px;
+      font-size: 16px;
+      border-radius: 8px;
+      cursor: pointer;
+      font-weight: 600;
+      transition: all 0.3s ease;
+      width: 100%;
+    }
+    button:hover { background: #5568d3; transform: translateY(-2px); box-shadow: 0 4px 12px rgba(102, 126, 234, 0.4); }
+    button:active { transform: translateY(0); }
+    .status { margin-top: 20px; padding: 12px; border-radius: 6px; display: none; }
+    .status.show { display: block; }
+    .status.success { background: #d4edda; color: #155724; }
+    .status.info { background: #d1ecf1; color: #0c5460; }
+    .spinner {
+      border: 3px solid rgba(102, 126, 234, 0.3);
+      border-top: 3px solid #667eea;
+      border-radius: 50%;
+      width: 40px;
+      height: 40px;
+      animation: spin 1s linear infinite;
+      margin: 20px auto;
+      display: none;
+    }
+    .spinner.show { display: block; }
+    @keyframes spin {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>🔧 Reset App</h1>
+    <p>This will clear all cached data, stored settings, and reload the app with a fresh start.</p>
+    
+    <div class="warning">
+      <p><strong>⚠️ Warning:</strong> This will log you out and clear all local data. You'll need to log in again.</p>
+    </div>
+    
+    <button id="resetBtn" onclick="resetApp()">Clear Everything & Reset</button>
+    
+    <div class="spinner" id="spinner"></div>
+    <div class="status" id="status"></div>
+  </div>
+
+  <script>
+    function showStatus(message, type = 'info') {
+      const status = document.getElementById('status');
+      status.textContent = message;
+      status.className = `status ${type} show`;
+    }
+
+    function showSpinner() {
+      document.getElementById('spinner').classList.add('show');
+      document.getElementById('resetBtn').disabled = true;
+      document.getElementById('resetBtn').style.opacity = '0.6';
+    }
+
+    async function resetApp() {
+      showSpinner();
+      showStatus('Clearing all cache and storage...', 'info');
+
+      try {
+        // Step 1: Clear localStorage
+        showStatus('Clearing localStorage...', 'info');
+        localStorage.clear();
+        await new Promise(resolve => setTimeout(resolve, 300));
+
+        // Step 2: Clear sessionStorage
+        showStatus('Clearing sessionStorage...', 'info');
+        sessionStorage.clear();
+        await new Promise(resolve => setTimeout(resolve, 300));
+
+        // Step 3: Clear all cookies
+        showStatus('Clearing cookies...', 'info');
+        document.cookie.split(";").forEach((c) => {
+          document.cookie = c.replace(/^ +/, "").replace(/=.*/, "=;expires=" + new Date().toUTCString() + ";path=/");
+        });
+        await new Promise(resolve => setTimeout(resolve, 300));
+
+        // Step 4: Clear Cache API
+        if ('caches' in window) {
+          showStatus('Clearing cache API...', 'info');
+          const cacheNames = await caches.keys();
+          await Promise.all(cacheNames.map(name => caches.delete(name)));
+          await new Promise(resolve => setTimeout(resolve, 300));
+        }
+
+        // Step 5: Unregister service workers
+        if ('serviceWorker' in navigator) {
+          showStatus('Unregistering service workers...', 'info');
+          const registrations = await navigator.serviceWorker.getRegistrations();
+          await Promise.all(registrations.map(r => r.unregister()));
+          await new Promise(resolve => setTimeout(resolve, 300));
+        }
+
+        // Step 6: Clear IndexedDB
+        if (window.indexedDB && window.indexedDB.databases) {
+          showStatus('Clearing IndexedDB...', 'info');
+          const databases = await window.indexedDB.databases();
+          databases.forEach(db => {
+            if (db.name) {
+              window.indexedDB.deleteDatabase(db.name);
+            }
+          });
+          await new Promise(resolve => setTimeout(resolve, 300));
+        }
+
+        // Success!
+        showStatus('✅ All cache cleared successfully! Redirecting to app...', 'success');
+        
+        // Wait 2 seconds then redirect to home
+        setTimeout(() => {
+          window.location.href = '/';
+        }, 2000);
+
+      } catch (error) {
+        showStatus(`❌ Error: ${error.message}. Attempting simple reload...`, 'info');
+        setTimeout(() => {
+          window.location.href = '/';
+        }, 2000);
+      }
+    }
+  </script>
+</body>
+</html>

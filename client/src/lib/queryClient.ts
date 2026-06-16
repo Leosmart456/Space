@@ -1,6 +1,6 @@
 import { QueryClient, QueryFunction } from "@tanstack/react-query";
 
-const API_BASE = import.meta.env.VITE_API_URL ?? "";
+const API_BASE = import.meta.env.VITE_API_URL ?? "https://space-production-a4d8.up.railway.app";
 
 function resolveUrl(url: string): string {
   if (url.startsWith("http://") || url.startsWith("https://")) return url;

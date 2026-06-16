@@ -1,0 +1,27 @@
+The console errors you shared provide clear clues about why your application is failing after deployment. These errors are caused by architectural differences between running an Express server locally and running it in a serverless environment like Vercel.
+
+Here is a breakdown of why these errors are occurring and how to resolve them:
+
+- **The JSON Parsing Error (`Unexpected token <`)**
+
+This error occurs when your frontend makes a request to an API endpoint (such as your login route) expecting a JSON response, but receives an HTML document instead. 
+
+When your Express server is not running on Vercel (or when Vercel is treating your API routes as static pages), Vercel's router falls back to serving your main `index.html` file or a 405/404 HTML error page. When your frontend code attempts to parse this HTML response using `response.json()`, it crashes because `<!DOCTYPE html>` is not valid JSON.
+
+Structuring your Express app as a serverless function with a `vercel.json` routing configuration (as described in the previous step) will ensure Vercel routes these requests to your active backend instead of returning static HTML files.
+
+- **The WebSocket Connection Failure (`wss://...`)**
+
+Vercel Serverless Functions do not support persistent TCP/WebSocket connections. 
+
+Vercel's compute infrastructure is stateless and designed for short-lived requests. Because Serverless Functions spin down automatically after responding to a request, they cannot maintain the continuous, open connection that WebSockets require. 
+
+If your backend relies on WebSockets (such as `socket.io` or `ws` packages), you have two options for resolving this limitation:
+
+- **Use a Serverless Real-time Provider:**
+You can migrate your real-time features to a serverless-compatible service such as Pusher, Ably, or Supabase Realtime. This allows your Vercel frontend and serverless backend to trigger events while the provider manages the heavy lifting of persistent connections.
+
+- **Host the Backend Independently:**
+If your application depends heavily on raw Node.js/Express WebSockets, you will need to host your Express server on a traditional server environment (such as AWS, Railway, Render, or a VPS) that supports persistent container running. You can keep your Vite frontend hosted on Vercel for fast global delivery and point your API and WebSocket requests to your external backend's absolute URL.
+
+If you have any questions about separating your backend or setting up a serverless-friendly realtime service, let me know!

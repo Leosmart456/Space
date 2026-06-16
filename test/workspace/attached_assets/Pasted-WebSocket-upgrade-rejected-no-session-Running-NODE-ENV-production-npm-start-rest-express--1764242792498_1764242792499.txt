@@ -1,0 +1,50 @@
+WebSocket upgrade rejected: no session
+==> Running 'NODE_ENV=production npm start'
+> rest-express@1.0.0 start
+> NODE_ENV=production node dist/index.js
+WebSocket upgrade request received for /ws
+WebSocket upgrade rejected: no session
+Email service initialized successfully with nodemailer
+SMTP Host: smtp.hostinger.com
+SMTP Port: 465
+SMTP User: Support@lumirrawallet.com
+From address: Support@lumirrawallet.com
+Secure mode: SSL/TLS
+Warning: connect.session() MemoryStore is not
+designed for a production environment, as it will leak
+memory, and will not scale past a single process.
+(node:81) [MONGOOSE] Warning: Duplicate schema index on {"userId":1} found. This is often due to declaring an index using both "index: true" and "schema.index()". Please remove the duplicate index definition.
+(Use `node --trace-warnings ...` to show where the warning was created)
+Connected to MongoDB successfully
+Admin password updated successfully
+Cleared 0 swap history entries
+[Migration] Set default displayOrder for 13 token types (0 tokens updated)
+[Migration] Hidden 0 non-default tokens
+[Background Job] Starting background jobs...
+[Background Job] Background jobs started successfully
+WebSocket service initialized
+WebSocket service initialized for real-time support chat
+7:16:38 AM [express] serving on port 10000
+     ==> Your service is live 🎉
+     ==> 
+     ==> ///////////////////////////////////////////////////////////
+     ==> 
+     ==> Available at your primary URL https://www.lumirrawallet.com + 2 more domains
+     ==> 
+     ==> ///////////////////////////////////////////////////////////
+[Background Job] Fetching crypto news...
+[Background Job] CryptoPanic API error: Too Many Requests
+[Background Job] Checking price alerts...
+[Background Job] No active alerts to check
+WebSocket upgrade request received for /ws
+WebSocket upgrade rejected: no session
+WebSocket upgrade request received for /ws
+WebSocket upgrade rejected: no session
+WebSocket upgrade request received for /ws
+WebSocket upgrade rejected: no session
+WebSocket upgrade request received for /ws
+WebSocket upgrade rejected: no session
+WebSocket upgrade request received for /ws
+WebSocket upgrade rejected: no session
+WebSocket upgrade request received for /ws
+WebSocket upgrade rejected

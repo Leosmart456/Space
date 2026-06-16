@@ -1,0 +1,210 @@
+19:38:29.269 Running build in Washington, D.C., USA (East) – iad1
+19:38:29.269 Build machine configuration: 2 cores, 8 GB
+19:38:29.407 Cloning github.com/Leosmart456/Space (Branch: main, Commit: 95a7d6f)
+19:38:31.273 Cloning completed: 1.866s
+19:38:31.411 Restored build cache from previous deployment (3QqGstukwAqXh3qAeyHEyjzyTc6n)
+19:38:32.480 Running "vercel build"
+19:38:32.498 Vercel CLI 54.12.2
+19:38:33.142 Running "install" command: `npx pnpm@9 install --ignore-scripts --no-frozen-lockfile && npm audit fix --force`...
+19:38:35.257 npm warn exec The following package was not found and will be installed: pnpm@9.15.9
+19:38:37.006 Progress: resolved 1, reused 0, downloaded 0, added 0
+19:38:37.714  WARN  deprecated @types/dompurify@3.2.0: This is a stub types definition. dompurify provides its own type definitions, so you do not need this installed.
+19:38:38.007 Progress: resolved 61, reused 0, downloaded 60, added 0
+19:38:39.024 Progress: resolved 84, reused 0, downloaded 83, added 0
+19:38:39.247  WARN  deprecated recharts@2.15.4: 1.x and 2.x branches are no longer active. Bump to Recharts v3 to receive latest features and bugfixes. See https://github.com/recharts/recharts/wiki/3.0-migration-guide
+19:38:40.024 Progress: resolved 106, reused 0, downloaded 106, added 0
+19:38:41.026 Progress: resolved 213, reused 0, downloaded 197, added 0
+19:38:42.026 Progress: resolved 384, reused 0, downloaded 363, added 0
+19:38:43.027 Progress: resolved 547, reused 0, downloaded 409, added 0
+19:38:44.028 Progress: resolved 708, reused 0, downloaded 572, added 0
+19:38:44.347  WARN  2 deprecated subdependencies found: @esbuild-kit/core-utils@3.3.2, @esbuild-kit/esm-loader@2.6.5
+19:38:44.397 Already up to date
+19:38:44.470 Progress: resolved 715, reused 0, downloaded 579, added 0, done
+19:38:44.767 
+19:38:44.771 Done in 8.5s using pnpm v9.15.9
+19:38:44.925 npm warn using --force Recommended protections disabled.
+19:38:47.767 npm warn audit Updating esbuild to 0.28.1, which is a SemVer major change.
+19:38:47.775 npm warn audit Updating drizzle-orm to 0.45.2, which is a SemVer major change.
+19:38:47.779 npm warn audit Updating vite to 8.0.16, which is a SemVer major change.
+19:38:47.791 npm warn audit Updating drizzle-kit to 0.19.1, which is a SemVer major change.
+19:38:47.793 npm warn audit Updating ethers to 5.8.0, which is a SemVer major change.
+19:39:05.102 npm warn ERESOLVE overriding peer dependency
+19:39:05.103 npm warn While resolving: rest-express@1.0.0
+19:39:05.104 npm warn Found: vite@5.4.21
+19:39:05.104 npm warn node_modules/vite
+19:39:05.104 npm warn   peer vite@"^5.2.0 || ^6 || ^7" from @tailwindcss/vite@4.1.17
+19:39:05.104 npm warn   node_modules/@tailwindcss/vite
+19:39:05.104 npm warn     dev @tailwindcss/vite@"^4.1.3" from the root project
+19:39:05.105 npm warn   2 more (@vitejs/plugin-react, the root project)
+19:39:05.105 npm warn
+19:39:05.105 npm warn Could not resolve dependency:
+19:39:05.105 npm warn peer vite@"^5.2.0 || ^6 || ^7" from @tailwindcss/vite@4.1.17
+19:39:05.105 npm warn node_modules/@tailwindcss/vite
+19:39:05.105 npm warn   dev @tailwindcss/vite@"^4.1.3" from the root project
+19:39:05.106 npm warn ERESOLVE overriding peer dependency
+19:39:05.106 npm warn While resolving: rest-express@1.0.0
+19:39:05.106 npm warn Found: vite@5.4.21
+19:39:05.106 npm warn node_modules/vite
+19:39:05.106 npm warn   peer vite@"^5.2.0 || ^6 || ^7" from @tailwindcss/vite@4.1.17
+19:39:05.107 npm warn   node_modules/@tailwindcss/vite
+19:39:05.108 npm warn     dev @tailwindcss/vite@"^4.1.3" from the root project
+19:39:05.109 npm warn   2 more (@vitejs/plugin-react, the root project)
+19:39:05.109 npm warn
+19:39:05.109 npm warn Could not resolve dependency:
+19:39:05.109 npm warn peer vite@"^4.2.0 || ^5.0.0 || ^6.0.0 || ^7.0.0" from @vitejs/plugin-react@4.7.0
+19:39:05.110 npm warn node_modules/@vitejs/plugin-react
+19:39:05.114 npm warn   dev @vitejs/plugin-react@"^4.7.0" from the root project
+19:39:11.110 npm warn ERESOLVE overriding peer dependency
+19:39:11.111 npm warn While resolving: vite@8.0.16
+19:39:11.111 npm warn Found: @types/node@20.16.11
+19:39:11.111 npm warn node_modules/@types/node
+19:39:11.112 npm warn   @types/node@"*" from @types/body-parser@1.19.6
+19:39:11.112 npm warn   node_modules/@types/body-parser
+19:39:11.112 npm warn     @types/body-parser@"*" from @types/express@4.17.21
+19:39:11.112 npm warn     node_modules/@types/express
+19:39:11.113 npm warn   8 more (@types/connect, @types/express-serve-static-core, ...)
+19:39:11.113 npm warn
+19:39:11.113 npm warn Could not resolve dependency:
+19:39:11.113 npm warn peerOptional @types/node@"^20.19.0 || >=22.12.0" from vite@8.0.16
+19:39:11.114 npm warn node_modules/vite
+19:39:11.114 npm warn   dev vite@"8.0.16" from the root project
+19:39:11.114 npm warn
+19:39:11.114 npm warn Conflicting peer dependency: @types/node@25.9.3
+19:39:11.115 npm warn node_modules/@types/node
+19:39:11.115 npm warn   peerOptional @types/node@"^20.19.0 || >=22.12.0" from vite@8.0.16
+19:39:11.115 npm warn   node_modules/vite
+19:39:11.115 npm warn     dev vite@"8.0.16" from the root project
+19:39:14.370 npm warn deprecated inflight@1.0.6: This module is not supported, and leaks memory. Do not use it. Check out lru-cache if you want a good and tested way to coalesce async requests by a key value, which is much more comprehensive and powerful.
+19:39:14.584 npm warn deprecated glob@8.1.0: Old versions of glob are not supported, and contain widely publicized security vulnerabilities, which have been fixed in the current version. Please update. Support for old versions may be purchased (at exorbitant rates) by contacting i@izs.me
+19:39:16.029 npm warn deprecated @esbuild-kit/core-utils@3.3.2: Merged into tsx: https://tsx.is
+19:39:16.388 npm warn deprecated @esbuild-kit/esm-loader@2.6.5: Merged into tsx: https://tsx.is
+19:39:26.218 
+19:39:26.220 added 570 packages, changed 109 packages, and audited 680 packages in 41s
+19:39:26.220 
+19:39:26.222 111 packages are looking for funding
+19:39:26.222   run `npm fund` for details
+19:39:26.271 
+19:39:26.272 # npm audit report
+19:39:26.272 
+19:39:26.273 elliptic  *
+19:39:26.273 Elliptic Uses a Cryptographic Primitive with a Risky Implementation - https://github.com/advisories/GHSA-848j-6mx2-7j84
+19:39:26.273 fix available via `npm audit fix --force`
+19:39:26.274 Will install ethers@6.16.0, which is a breaking change
+19:39:26.274 node_modules/elliptic
+19:39:26.277   @ethersproject/signing-key  <=5.8.0
+19:39:26.278   Depends on vulnerable versions of elliptic
+19:39:26.278   node_modules/@ethersproject/signing-key
+19:39:26.278     @ethersproject/hdnode  *
+19:39:26.278     Depends on vulnerable versions of @ethersproject/abstract-signer
+19:39:26.278     Depends on vulnerable versions of @ethersproject/signing-key
+19:39:26.278     Depends on vulnerable versions of @ethersproject/transactions
+19:39:26.278     Depends on vulnerable versions of @ethersproject/wordlists
+19:39:26.278     node_modules/@ethersproject/hdnode
+19:39:26.278       @ethersproject/json-wallets  *
+19:39:26.278       Depends on vulnerable versions of @ethersproject/abstract-signer
+19:39:26.278       Depends on vulnerable versions of @ethersproject/hdnode
+19:39:26.278       Depends on vulnerable versions of @ethersproject/transactions
+19:39:26.278       node_modules/@ethersproject/json-wallets
+19:39:26.278     @ethersproject/transactions  <=5.8.0
+19:39:26.278     Depends on vulnerable versions of @ethersproject/signing-key
+19:39:26.278     node_modules/@ethersproject/transactions
+19:39:26.279       @ethersproject/abstract-provider  *
+19:39:26.279       Depends on vulnerable versions of @ethersproject/transactions
+19:39:26.279       node_modules/@ethersproject/abstract-provider
+19:39:26.279         @ethersproject/abstract-signer  *
+19:39:26.279         Depends on vulnerable versions of @ethersproject/abstract-provider
+19:39:26.279         node_modules/@ethersproject/abstract-signer
+19:39:26.279           @ethersproject/hash  5.0.6 - 5.8.0
+19:39:26.279           Depends on vulnerable versions of @ethersproject/abstract-signer
+19:39:26.279           node_modules/@ethersproject/hash
+19:39:26.279             @ethersproject/abi  5.0.10 - 5.8.0
+19:39:26.279             Depends on vulnerable versions of @ethersproject/hash
+19:39:26.279             node_modules/@ethersproject/abi
+19:39:26.279               @ethersproject/contracts  *
+19:39:26.279               Depends on vulnerable versions of @ethersproject/abi
+19:39:26.279               Depends on vulnerable versions of @ethersproject/abstract-provider
+19:39:26.279               Depends on vulnerable versions of @ethersproject/abstract-signer
+19:39:26.279               Depends on vulnerable versions of @ethersproject/transactions
+19:39:26.279               node_modules/@ethersproject/contracts
+19:39:26.279                 ethers  5.0.0-beta.119 - 6.0.0-beta.9
+19:39:26.279                 Depends on vulnerable versions of @ethersproject/abi
+19:39:26.279                 Depends on vulnerable versions of @ethersproject/abstract-provider
+19:39:26.280                 Depends on vulnerable versions of @ethersproject/abstract-signer
+19:39:26.280                 Depends on vulnerable versions of @ethersproject/contracts
+19:39:26.280                 Depends on vulnerable versions of @ethersproject/hash
+19:39:26.280                 Depends on vulnerable versions of @ethersproject/hdnode
+19:39:26.280                 Depends on vulnerable versions of @ethersproject/json-wallets
+19:39:26.280                 Depends on vulnerable versions of @ethersproject/providers
+19:39:26.280                 Depends on vulnerable versions of @ethersproject/signing-key
+19:39:26.280                 Depends on vulnerable versions of @ethersproject/transactions
+19:39:26.280                 Depends on vulnerable versions of @ethersproject/wallet
+19:39:26.280                 Depends on vulnerable versions of @ethersproject/wordlists
+19:39:26.280                 node_modules/ethers
+19:39:26.280             @ethersproject/providers  *
+19:39:26.280             Depends on vulnerable versions of @ethersproject/abstract-provider
+19:39:26.280             Depends on vulnerable versions of @ethersproject/abstract-signer
+19:39:26.280             Depends on vulnerable versions of @ethersproject/hash
+19:39:26.280             Depends on vulnerable versions of @ethersproject/transactions
+19:39:26.280             Depends on vulnerable versions of ws
+19:39:26.280             node_modules/@ethersproject/providers
+19:39:26.280             @ethersproject/wallet  <=5.8.0
+19:39:26.280             Depends on vulnerable versions of @ethersproject/abstract-provider
+19:39:26.280             Depends on vulnerable versions of @ethersproject/abstract-signer
+19:39:26.280             Depends on vulnerable versions of @ethersproject/hash
+19:39:26.280             Depends on vulnerable versions of @ethersproject/hdnode
+19:39:26.280             Depends on vulnerable versions of @ethersproject/json-wallets
+19:39:26.280             Depends on vulnerable versions of @ethersproject/signing-key
+19:39:26.280             Depends on vulnerable versions of @ethersproject/transactions
+19:39:26.280             Depends on vulnerable versions of @ethersproject/wordlists
+19:39:26.280             node_modules/@ethersproject/wallet
+19:39:26.280             @ethersproject/wordlists  5.0.8 - 5.8.0
+19:39:26.280             Depends on vulnerable versions of @ethersproject/hash
+19:39:26.281             node_modules/@ethersproject/wordlists
+19:39:26.281 
+19:39:26.281 esbuild  <=0.28.0
+19:39:26.281 Severity: high
+19:39:26.281 esbuild enables any website to send any requests to the development server and read the response - https://github.com/advisories/GHSA-67mh-4wv8-2f99
+19:39:26.281 esbuild: Missing binary integrity verification in Deno module enables remote code execution via NPM_CONFIG_REGISTRY - https://github.com/advisories/GHSA-gv7w-rqvm-qjhr
+19:39:26.281 fix available via `npm audit fix --force`
+19:39:26.281 Will install drizzle-kit@0.18.1, which is a breaking change
+19:39:26.281 node_modules/@esbuild-kit/core-utils/node_modules/esbuild
+19:39:26.281   @esbuild-kit/core-utils  *
+19:39:26.281   Depends on vulnerable versions of esbuild
+19:39:26.282   node_modules/@esbuild-kit/core-utils
+19:39:26.282     @esbuild-kit/esm-loader  *
+19:39:26.282     Depends on vulnerable versions of @esbuild-kit/core-utils
+19:39:26.282     node_modules/@esbuild-kit/esm-loader
+19:39:26.283       drizzle-kit  0.17.5-6b7793f - 0.17.5-e5944eb || 0.18.1-065de38 - 0.18.1-f3800bf || 0.19.0-07024c4 - 1.0.0-beta.1-fd8bfcc
+19:39:26.283       Depends on vulnerable versions of @esbuild-kit/esm-loader
+19:39:26.283       node_modules/drizzle-kit
+19:39:26.283 
+19:39:26.283 nodemailer  <=8.0.4
+19:39:26.283 Severity: moderate
+19:39:26.283 Nodemailer has SMTP command injection due to unsanitized `envelope.size` parameter - https://github.com/advisories/GHSA-c7w3-x93f-qmm8
+19:39:26.283 Nodemailer Vulnerable to SMTP Command Injection via CRLF in Transport name Option (EHLO/HELO)  - https://github.com/advisories/GHSA-vvjj-xcjg-gr5g
+19:39:26.283 fix available via `npm audit fix --force`
+19:39:26.283 Will install nodemailer@9.0.0, which is a breaking change
+19:39:26.283 node_modules/nodemailer
+19:39:26.283 
+19:39:26.283 picomatch  <=2.3.1
+19:39:26.283 Severity: high
+19:39:26.283 Picomatch: Method Injection in POSIX Character Classes causes incorrect Glob Matching - https://github.com/advisories/GHSA-3v7f-55p6-f55p
+19:39:26.283 Picomatch has a ReDoS vulnerability via extglob quantifiers - https://github.com/advisories/GHSA-c2c7-rcm5-vvqj
+19:39:26.283 fix available via `npm audit fix`
+19:39:26.283 node_modules/picomatch
+19:39:26.283 
+19:39:26.283 ws  8.0.0 - 8.20.0
+19:39:26.283 Severity: moderate
+19:39:26.283 ws: Uninitialized memory disclosure - https://github.com/advisories/GHSA-58qx-3vcg-4xpx
+19:39:26.283 fix available via `npm audit fix --force`
+19:39:26.283 Will install ethers@6.16.0, which is a breaking change
+19:39:26.283 node_modules/@ethersproject/providers/node_modules/ws
+19:39:26.283 
+19:39:26.283 21 vulnerabilities (12 low, 7 moderate, 2 high)
+19:39:26.283 
+19:39:26.283 To address issues that do not require attention, run:
+19:39:26.283   npm audit fix
+19:39:26.283 
+19:39:26.284 To address all issues (including breaking changes), run:
+19:39:26.284   npm audit fix --force
+19:39:26.320 Error: Command "npx pnpm@9 install --ignore-scripts --no-frozen-lockfile && npm audit fix --force" exited with 1

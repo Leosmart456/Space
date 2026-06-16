@@ -1,0 +1,485 @@
+2026-06-15T12:17:17.407230878Z [inf]  Starting Container
+2026-06-15T12:17:17.697100060Z [err]      at packageResolve (node:internal/modules/esm/resolve:768:81)
+2026-06-15T12:17:17.697107460Z [err]      at ModuleJob._link (node:internal/modules/esm/module_job:182:49) {
+2026-06-15T12:17:17.697115259Z [err]      at moduleResolve (node:internal/modules/esm/resolve:855:18)
+2026-06-15T12:17:17.697118019Z [err]    code: 'ERR_MODULE_NOT_FOUND'
+2026-06-15T12:17:17.697123419Z [err]  
+2026-06-15T12:17:17.697125859Z [err]      at defaultResolve (node:internal/modules/esm/resolve:985:11)
+2026-06-15T12:17:17.697129629Z [inf]  
+2026-06-15T12:17:17.697130139Z [err]  }
+2026-06-15T12:17:17.697136509Z [err]      at #cachedDefaultResolve (node:internal/modules/esm/loader:747:20)
+2026-06-15T12:17:17.697137179Z [inf]  > rest-express@1.0.0 start /app
+2026-06-15T12:17:17.697140219Z [err]  Node.js v22.22.3
+2026-06-15T12:17:17.697145509Z [inf]  > NODE_ENV=production node dist/index.js
+2026-06-15T12:17:17.697146319Z [err]      at ModuleLoader.resolve (node:internal/modules/esm/loader:724:38)
+2026-06-15T12:17:17.697153489Z [inf]  
+2026-06-15T12:17:17.697154399Z [err]      at ModuleLoader.getModuleJobForImport (node:internal/modules/esm/loader:320:38)
+2026-06-15T12:17:17.697158609Z [err]  node:internal/modules/package_json_reader:314
+2026-06-15T12:17:17.697161659Z [err]    throw new ERR_MODULE_NOT_FOUND(packageName, fileURLToPath(base), null);
+2026-06-15T12:17:17.697165349Z [err]          ^
+2026-06-15T12:17:17.697168869Z [err]  
+2026-06-15T12:17:17.697172579Z [err]  Error [ERR_MODULE_NOT_FOUND]: Cannot find package 'nanoid' imported from /app/dist/index.js
+2026-06-15T12:17:17.697175428Z [err]      at Object.getPackageJSONURL (node:internal/modules/package_json_reader:314:9)
+2026-06-15T12:17:17.697183198Z [inf]   ELIFECYCLE  Command failed with exit code 1.
+2026-06-15T12:17:18.110579784Z [inf]  
+2026-06-15T12:17:18.110582334Z [inf]  > rest-express@1.0.0 start /app
+2026-06-15T12:17:18.110584624Z [inf]  > NODE_ENV=production node dist/index.js
+2026-06-15T12:17:18.110587034Z [inf]  
+2026-06-15T12:17:18.187659384Z [err]  Node.js v22.22.3
+2026-06-15T12:17:18.187685254Z [err]      at packageResolve (node:internal/modules/esm/resolve:768:81)
+2026-06-15T12:17:18.187692744Z [err]  node:internal/modules/package_json_reader:314
+2026-06-15T12:17:18.187693114Z [err]  }
+2026-06-15T12:17:18.187698764Z [err]      at moduleResolve (node:internal/modules/esm/resolve:855:18)
+2026-06-15T12:17:18.187700664Z [err]    throw new ERR_MODULE_NOT_FOUND(packageName, fileURLToPath(base), null);
+2026-06-15T12:17:18.187702494Z [err]      at ModuleLoader.getModuleJobForImport (node:internal/modules/esm/loader:320:38)
+2026-06-15T12:17:18.187708444Z [err]          ^
+2026-06-15T12:17:18.187710344Z [err]      at defaultResolve (node:internal/modules/esm/resolve:985:11)
+2026-06-15T12:17:18.187710464Z [err]  
+2026-06-15T12:17:18.187715314Z [err]      at ModuleJob._link (node:internal/modules/esm/module_job:182:49) {
+2026-06-15T12:17:18.187718394Z [err]  
+2026-06-15T12:17:18.187721863Z [err]      at #cachedDefaultResolve (node:internal/modules/esm/loader:747:20)
+2026-06-15T12:17:18.187724843Z [err]  Error [ERR_MODULE_NOT_FOUND]: Cannot find package 'nanoid' imported from /app/dist/index.js
+2026-06-15T12:17:18.187725793Z [err]    code: 'ERR_MODULE_NOT_FOUND'
+2026-06-15T12:17:18.187731153Z [err]      at ModuleLoader.resolve (node:internal/modules/esm/loader:724:38)
+2026-06-15T12:17:18.187733173Z [err]      at Object.getPackageJSONURL (node:internal/modules/package_json_reader:314:9)
+2026-06-15T12:17:18.187734843Z [inf]   ELIFECYCLE  Command failed with exit code 1.
+2026-06-15T12:17:18.899171984Z [inf]  
+2026-06-15T12:17:18.899176404Z [inf]  > rest-express@1.0.0 start /app
+2026-06-15T12:17:18.899181184Z [inf]  > NODE_ENV=production node dist/index.js
+2026-06-15T12:17:18.899186494Z [inf]  
+2026-06-15T12:17:19.017732608Z [err]  node:internal/modules/package_json_reader:314
+2026-06-15T12:17:19.017737588Z [err]    throw new ERR_MODULE_NOT_FOUND(packageName, fileURLToPath(base), null);
+2026-06-15T12:17:19.017742897Z [err]          ^
+2026-06-15T12:17:19.017747917Z [err]  
+2026-06-15T12:17:19.017752507Z [err]  Error [ERR_MODULE_NOT_FOUND]: Cannot find package 'nanoid' imported from /app/dist/index.js
+2026-06-15T12:17:19.017757187Z [err]      at Object.getPackageJSONURL (node:internal/modules/package_json_reader:314:9)
+2026-06-15T12:17:19.017762067Z [err]      at packageResolve (node:internal/modules/esm/resolve:768:81)
+2026-06-15T12:17:19.017766587Z [err]      at moduleResolve (node:internal/modules/esm/resolve:855:18)
+2026-06-15T12:17:19.017772647Z [err]      at defaultResolve (node:internal/modules/esm/resolve:985:11)
+2026-06-15T12:17:19.017779337Z [err]      at #cachedDefaultResolve (node:internal/modules/esm/loader:747:20)
+2026-06-15T12:17:19.017783847Z [err]      at ModuleLoader.resolve (node:internal/modules/esm/loader:724:38)
+2026-06-15T12:17:19.017788627Z [err]      at ModuleLoader.getModuleJobForImport (node:internal/modules/esm/loader:320:38)
+2026-06-15T12:17:19.017793567Z [err]      at ModuleJob._link (node:internal/modules/esm/module_job:182:49) {
+2026-06-15T12:17:19.017797647Z [err]    code: 'ERR_MODULE_NOT_FOUND'
+2026-06-15T12:17:19.017801937Z [err]  }
+2026-06-15T12:17:19.017805946Z [err]  
+2026-06-15T12:17:19.017811446Z [err]  Node.js v22.22.3
+2026-06-15T12:17:19.021888752Z [inf]   ELIFECYCLE  Command failed with exit code 1.
+2026-06-15T12:17:19.915895035Z [inf]  
+2026-06-15T12:17:19.915898845Z [inf]  > rest-express@1.0.0 start /app
+2026-06-15T12:17:19.915901485Z [inf]  > NODE_ENV=production node dist/index.js
+2026-06-15T12:17:19.915903935Z [inf]  
+2026-06-15T12:17:20.035601551Z [err]  Node.js v22.22.3
+2026-06-15T12:17:20.035607861Z [err]  node:internal/modules/package_json_reader:314
+2026-06-15T12:17:20.035612221Z [err]    throw new ERR_MODULE_NOT_FOUND(packageName, fileURLToPath(base), null);
+2026-06-15T12:17:20.035615371Z [err]          ^
+2026-06-15T12:17:20.035618971Z [err]  
+2026-06-15T12:17:20.035622161Z [err]  Error [ERR_MODULE_NOT_FOUND]: Cannot find package 'nanoid' imported from /app/dist/index.js
+2026-06-15T12:17:20.035625351Z [err]      at Object.getPackageJSONURL (node:internal/modules/package_json_reader:314:9)
+2026-06-15T12:17:20.035629571Z [err]      at packageResolve (node:internal/modules/esm/resolve:768:81)
+2026-06-15T12:17:20.035632910Z [err]      at moduleResolve (node:internal/modules/esm/resolve:855:18)
+2026-06-15T12:17:20.035636210Z [err]      at defaultResolve (node:internal/modules/esm/resolve:985:11)
+2026-06-15T12:17:20.035639350Z [err]      at #cachedDefaultResolve (node:internal/modules/esm/loader:747:20)
+2026-06-15T12:17:20.035642720Z [err]      at ModuleLoader.resolve (node:internal/modules/esm/loader:724:38)
+2026-06-15T12:17:20.035645990Z [err]      at ModuleLoader.getModuleJobForImport (node:internal/modules/esm/loader:320:38)
+2026-06-15T12:17:20.035649070Z [err]      at ModuleJob._link (node:internal/modules/esm/module_job:182:49) {
+2026-06-15T12:17:20.035652130Z [err]    code: 'ERR_MODULE_NOT_FOUND'
+2026-06-15T12:17:20.035654980Z [err]  }
+2026-06-15T12:17:20.035658150Z [err]  
+2026-06-15T12:17:20.041147443Z [inf]   ELIFECYCLE  Command failed with exit code 1.
+2026-06-15T12:17:20.710342795Z [inf]  
+2026-06-15T12:17:20.710346215Z [inf]  > rest-express@1.0.0 start /app
+2026-06-15T12:17:20.710349805Z [inf]  > NODE_ENV=production node dist/index.js
+2026-06-15T12:17:20.710353355Z [inf]  
+2026-06-15T12:17:20.828270879Z [err]      at ModuleLoader.getModuleJobForImport (node:internal/modules/esm/loader:320:38)
+2026-06-15T12:17:20.828275169Z [err]  node:internal/modules/package_json_reader:314
+2026-06-15T12:17:20.828275769Z [err]      at ModuleJob._link (node:internal/modules/esm/module_job:182:49) {
+2026-06-15T12:17:20.828278139Z [err]    throw new ERR_MODULE_NOT_FOUND(packageName, fileURLToPath(base), null);
+2026-06-15T12:17:20.828278979Z [err]    code: 'ERR_MODULE_NOT_FOUND'
+2026-06-15T12:17:20.828280979Z [err]          ^
+2026-06-15T12:17:20.828284229Z [err]  }
+2026-06-15T12:17:20.828284579Z [err]  
+2026-06-15T12:17:20.828287329Z [err]  Error [ERR_MODULE_NOT_FOUND]: Cannot find package 'nanoid' imported from /app/dist/index.js
+2026-06-15T12:17:20.828287429Z [err]  
+2026-06-15T12:17:20.828290089Z [err]      at Object.getPackageJSONURL (node:internal/modules/package_json_reader:314:9)
+2026-06-15T12:17:20.828291209Z [err]  Node.js v22.22.3
+2026-06-15T12:17:20.828292829Z [err]      at packageResolve (node:internal/modules/esm/resolve:768:81)
+2026-06-15T12:17:20.828295269Z [err]      at moduleResolve (node:internal/modules/esm/resolve:855:18)
+2026-06-15T12:17:20.828298389Z [err]      at defaultResolve (node:internal/modules/esm/resolve:985:11)
+2026-06-15T12:17:20.828300609Z [err]      at #cachedDefaultResolve (node:internal/modules/esm/loader:747:20)
+2026-06-15T12:17:20.828302879Z [err]      at ModuleLoader.resolve (node:internal/modules/esm/loader:724:38)
+2026-06-15T12:17:20.836053606Z [inf]   ELIFECYCLE  Command failed with exit code 1.
+2026-06-15T12:17:21.546857200Z [inf]  
+2026-06-15T12:17:21.546860270Z [inf]  > rest-express@1.0.0 start /app
+2026-06-15T12:17:21.546862740Z [inf]  > NODE_ENV=production node dist/index.js
+2026-06-15T12:17:21.546866190Z [inf]  
+2026-06-15T12:17:21.705780855Z [err]  node:internal/modules/package_json_reader:314
+2026-06-15T12:17:21.705784275Z [err]    throw new ERR_MODULE_NOT_FOUND(packageName, fileURLToPath(base), null);
+2026-06-15T12:17:21.705787475Z [err]          ^
+2026-06-15T12:17:21.705790895Z [err]  
+2026-06-15T12:17:21.705793665Z [err]  Error [ERR_MODULE_NOT_FOUND]: Cannot find package 'nanoid' imported from /app/dist/index.js
+2026-06-15T12:17:21.705796475Z [err]      at Object.getPackageJSONURL (node:internal/modules/package_json_reader:314:9)
+2026-06-15T12:17:21.705799755Z [err]      at packageResolve (node:internal/modules/esm/resolve:768:81)
+2026-06-15T12:17:21.705803075Z [err]      at moduleResolve (node:internal/modules/esm/resolve:855:18)
+2026-06-15T12:17:21.705805695Z [err]      at defaultResolve (node:internal/modules/esm/resolve:985:11)
+2026-06-15T12:17:21.705808805Z [err]      at #cachedDefaultResolve (node:internal/modules/esm/loader:747:20)
+2026-06-15T12:17:21.705811915Z [err]      at ModuleLoader.resolve (node:internal/modules/esm/loader:724:38)
+2026-06-15T12:17:21.705815655Z [err]      at ModuleLoader.getModuleJobForImport (node:internal/modules/esm/loader:320:38)
+2026-06-15T12:17:21.705818495Z [err]      at ModuleJob._link (node:internal/modules/esm/module_job:182:49) {
+2026-06-15T12:17:21.705821315Z [err]    code: 'ERR_MODULE_NOT_FOUND'
+2026-06-15T12:17:21.705824244Z [err]  }
+2026-06-15T12:17:21.705826864Z [err]  
+2026-06-15T12:17:21.705830214Z [err]  Node.js v22.22.3
+2026-06-15T12:17:21.705834184Z [inf]   ELIFECYCLE  Command failed with exit code 1.
+2026-06-15T12:17:22.321608333Z [inf]  
+2026-06-15T12:17:22.321611783Z [inf]  > rest-express@1.0.0 start /app
+2026-06-15T12:17:22.321614343Z [inf]  > NODE_ENV=production node dist/index.js
+2026-06-15T12:17:22.321616723Z [inf]  
+2026-06-15T12:17:22.444364811Z [err]  node:internal/modules/package_json_reader:314
+2026-06-15T12:17:22.444383911Z [err]    throw new ERR_MODULE_NOT_FOUND(packageName, fileURLToPath(base), null);
+2026-06-15T12:17:22.444388131Z [err]          ^
+2026-06-15T12:17:22.444391631Z [err]  
+2026-06-15T12:17:22.444395021Z [err]  Error [ERR_MODULE_NOT_FOUND]: Cannot find package 'nanoid' imported from /app/dist/index.js
+2026-06-15T12:17:22.444398441Z [err]      at Object.getPackageJSONURL (node:internal/modules/package_json_reader:314:9)
+2026-06-15T12:17:22.444401570Z [err]      at packageResolve (node:internal/modules/esm/resolve:768:81)
+2026-06-15T12:17:22.444404750Z [err]      at moduleResolve (node:internal/modules/esm/resolve:855:18)
+2026-06-15T12:17:22.444408130Z [err]      at defaultResolve (node:internal/modules/esm/resolve:985:11)
+2026-06-15T12:17:22.444411850Z [err]      at #cachedDefaultResolve (node:internal/modules/esm/loader:747:20)
+2026-06-15T12:17:22.444415110Z [err]      at ModuleLoader.resolve (node:internal/modules/esm/loader:724:38)
+2026-06-15T12:17:22.444418720Z [err]      at ModuleLoader.getModuleJobForImport (node:internal/modules/esm/loader:320:38)
+2026-06-15T12:17:22.444422100Z [err]      at ModuleJob._link (node:internal/modules/esm/module_job:182:49) {
+2026-06-15T12:17:22.444425610Z [err]    code: 'ERR_MODULE_NOT_FOUND'
+2026-06-15T12:17:22.444428940Z [err]  }
+2026-06-15T12:17:22.444433000Z [err]  
+2026-06-15T12:17:22.444436970Z [err]  Node.js v22.22.3
+2026-06-15T12:17:22.447971514Z [inf]   ELIFECYCLE  Command failed with exit code 1.
+2026-06-15T12:17:23.074011081Z [inf]  
+2026-06-15T12:17:23.074015331Z [inf]  > rest-express@1.0.0 start /app
+2026-06-15T12:17:23.074018391Z [inf]  > NODE_ENV=production node dist/index.js
+2026-06-15T12:17:23.074021081Z [inf]  
+2026-06-15T12:17:23.197340791Z [err]  
+2026-06-15T12:17:23.197345931Z [err]  Node.js v22.22.3
+2026-06-15T12:17:23.197348801Z [err]  node:internal/modules/package_json_reader:314
+2026-06-15T12:17:23.197352241Z [err]    throw new ERR_MODULE_NOT_FOUND(packageName, fileURLToPath(base), null);
+2026-06-15T12:17:23.197355230Z [err]          ^
+2026-06-15T12:17:23.197358080Z [err]  
+2026-06-15T12:17:23.197361860Z [err]  Error [ERR_MODULE_NOT_FOUND]: Cannot find package 'nanoid' imported from /app/dist/index.js
+2026-06-15T12:17:23.197365400Z [err]      at Object.getPackageJSONURL (node:internal/modules/package_json_reader:314:9)
+2026-06-15T12:17:23.197369360Z [err]      at packageResolve (node:internal/modules/esm/resolve:768:81)
+2026-06-15T12:17:23.197373590Z [err]      at moduleResolve (node:internal/modules/esm/resolve:855:18)
+2026-06-15T12:17:23.197376100Z [err]      at ModuleJob._link (node:internal/modules/esm/module_job:182:49) {
+2026-06-15T12:17:23.197380120Z [err]      at defaultResolve (node:internal/modules/esm/resolve:985:11)
+2026-06-15T12:17:23.197386450Z [err]      at #cachedDefaultResolve (node:internal/modules/esm/loader:747:20)
+2026-06-15T12:17:23.197387890Z [err]    code: 'ERR_MODULE_NOT_FOUND'
+2026-06-15T12:17:23.197391120Z [err]      at ModuleLoader.resolve (node:internal/modules/esm/loader:724:38)
+2026-06-15T12:17:23.197397400Z [err]  }
+2026-06-15T12:17:23.197397530Z [err]      at ModuleLoader.getModuleJobForImport (node:internal/modules/esm/loader:320:38)
+2026-06-15T12:17:23.201059352Z [inf]   ELIFECYCLE  Command failed with exit code 1.
+2026-06-15T12:17:23.825138811Z [inf]  
+2026-06-15T12:17:23.825141461Z [inf]  > rest-express@1.0.0 start /app
+2026-06-15T12:17:23.825143861Z [inf]  > NODE_ENV=production node dist/index.js
+2026-06-15T12:17:23.825146881Z [inf]  
+2026-06-15T12:17:23.946454582Z [err]      at ModuleJob._link (node:internal/modules/esm/module_job:182:49) {
+2026-06-15T12:17:23.946458752Z [err]    code: 'ERR_MODULE_NOT_FOUND'
+2026-06-15T12:17:23.946461962Z [err]  }
+2026-06-15T12:17:23.946466342Z [err]  
+2026-06-15T12:17:23.946470952Z [err]  Node.js v22.22.3
+2026-06-15T12:17:23.946475162Z [err]  node:internal/modules/package_json_reader:314
+2026-06-15T12:17:23.946482682Z [err]    throw new ERR_MODULE_NOT_FOUND(packageName, fileURLToPath(base), null);
+2026-06-15T12:17:23.946485882Z [err]          ^
+2026-06-15T12:17:23.946488752Z [err]  
+2026-06-15T12:17:23.946491731Z [err]  Error [ERR_MODULE_NOT_FOUND]: Cannot find package 'nanoid' imported from /app/dist/index.js
+2026-06-15T12:17:23.946494421Z [err]      at Object.getPackageJSONURL (node:internal/modules/package_json_reader:314:9)
+2026-06-15T12:17:23.946497411Z [err]      at packageResolve (node:internal/modules/esm/resolve:768:81)
+2026-06-15T12:17:23.946500231Z [err]      at moduleResolve (node:internal/modules/esm/resolve:855:18)
+2026-06-15T12:17:23.946503061Z [err]      at defaultResolve (node:internal/modules/esm/resolve:985:11)
+2026-06-15T12:17:23.946506121Z [err]      at #cachedDefaultResolve (node:internal/modules/esm/loader:747:20)
+2026-06-15T12:17:23.946508751Z [err]      at ModuleLoader.resolve (node:internal/modules/esm/loader:724:38)
+2026-06-15T12:17:23.946511981Z [err]      at ModuleLoader.getModuleJobForImport (node:internal/modules/esm/loader:320:38)
+2026-06-15T12:17:23.955452490Z [inf]   ELIFECYCLE  Command failed with exit code 1.
+2026-06-15T12:17:24.587204778Z [inf]  
+2026-06-15T12:17:24.587208738Z [inf]  > rest-express@1.0.0 start /app
+2026-06-15T12:17:24.587212018Z [inf]  > NODE_ENV=production node dist/index.js
+2026-06-15T12:17:24.587216128Z [inf]  
+2026-06-15T12:17:24.707833771Z [err]  node:internal/modules/package_json_reader:314
+2026-06-15T12:17:24.707837931Z [err]    throw new ERR_MODULE_NOT_FOUND(packageName, fileURLToPath(base), null);
+2026-06-15T12:17:24.707840781Z [err]          ^
+2026-06-15T12:17:24.707843290Z [err]  
+2026-06-15T12:17:24.707845590Z [err]  Error [ERR_MODULE_NOT_FOUND]: Cannot find package 'nanoid' imported from /app/dist/index.js
+2026-06-15T12:17:24.707848090Z [err]      at Object.getPackageJSONURL (node:internal/modules/package_json_reader:314:9)
+2026-06-15T12:17:24.707850640Z [err]      at packageResolve (node:internal/modules/esm/resolve:768:81)
+2026-06-15T12:17:24.707852820Z [err]      at moduleResolve (node:internal/modules/esm/resolve:855:18)
+2026-06-15T12:17:24.707855340Z [err]      at defaultResolve (node:internal/modules/esm/resolve:985:11)
+2026-06-15T12:17:24.707859150Z [err]      at #cachedDefaultResolve (node:internal/modules/esm/loader:747:20)
+2026-06-15T12:17:24.707861540Z [err]      at ModuleLoader.resolve (node:internal/modules/esm/loader:724:38)
+2026-06-15T12:17:24.707864190Z [err]      at ModuleLoader.getModuleJobForImport (node:internal/modules/esm/loader:320:38)
+2026-06-15T12:17:24.707866340Z [err]      at ModuleJob._link (node:internal/modules/esm/module_job:182:49) {
+2026-06-15T12:17:24.707869460Z [err]    code: 'ERR_MODULE_NOT_FOUND'
+2026-06-15T12:17:24.707872030Z [err]  }
+2026-06-15T12:17:24.707874790Z [err]  
+2026-06-15T12:17:24.707877010Z [err]  Node.js v22.22.3
+2026-06-15T12:17:24.717514417Z [inf]   ELIFECYCLE  Command failed with exit code 1.
+2026-06-15T12:17:25.366268647Z [inf]  
+2026-06-15T12:17:25.366272727Z [inf]  > rest-express@1.0.0 start /app
+2026-06-15T12:17:25.366275817Z [inf]  > NODE_ENV=production node dist/index.js
+2026-06-15T12:17:25.366279657Z [inf]  
+2026-06-15T12:17:25.477807673Z [err]  node:internal/modules/package_json_reader:314
+2026-06-15T12:17:25.477816373Z [err]    throw new ERR_MODULE_NOT_FOUND(packageName, fileURLToPath(base), null);
+2026-06-15T12:17:25.477820763Z [err]          ^
+2026-06-15T12:17:25.477824693Z [err]  
+2026-06-15T12:17:25.477828573Z [err]  Error [ERR_MODULE_NOT_FOUND]: Cannot find package 'nanoid' imported from /app/dist/index.js
+2026-06-15T12:17:25.477832123Z [err]      at Object.getPackageJSONURL (node:internal/modules/package_json_reader:314:9)
+2026-06-15T12:17:25.477836623Z [err]      at packageResolve (node:internal/modules/esm/resolve:768:81)
+2026-06-15T12:17:25.477840163Z [err]      at moduleResolve (node:internal/modules/esm/resolve:855:18)
+2026-06-15T12:17:25.477843773Z [err]      at defaultResolve (node:internal/modules/esm/resolve:985:11)
+2026-06-15T12:17:25.477847523Z [err]      at #cachedDefaultResolve (node:internal/modules/esm/loader:747:20)
+2026-06-15T12:17:25.477851433Z [err]      at ModuleLoader.resolve (node:internal/modules/esm/loader:724:38)
+2026-06-15T12:17:25.477855243Z [err]      at ModuleLoader.getModuleJobForImport (node:internal/modules/esm/loader:320:38)
+2026-06-15T12:17:25.477858722Z [err]      at ModuleJob._link (node:internal/modules/esm/module_job:182:49) {
+2026-06-15T12:17:25.477861882Z [err]    code: 'ERR_MODULE_NOT_FOUND'
+2026-06-15T12:17:25.477865882Z [err]  }
+2026-06-15T12:17:25.477869322Z [err]  
+2026-06-15T12:17:25.477872512Z [err]  Node.js v22.22.3
+2026-06-15T12:17:25.487011178Z [inf]   ELIFECYCLE  Command failed with exit code 1.
+2026-06-15T12:20:55.553073932Z [inf]  
+2026-06-15T12:20:55.553078981Z [inf]  > rest-express@1.0.0 start /app
+2026-06-15T12:20:55.553083671Z [inf]  > NODE_ENV=production node dist/index.js
+2026-06-15T12:20:55.553088641Z [inf]  
+2026-06-15T12:20:55.553093541Z [err]  node:internal/modules/package_json_reader:314
+2026-06-15T12:20:55.553098241Z [err]    throw new ERR_MODULE_NOT_FOUND(packageName, fileURLToPath(base), null);
+2026-06-15T12:20:55.553103091Z [err]          ^
+2026-06-15T12:20:55.553107611Z [err]  
+2026-06-15T12:20:55.553112161Z [err]  Error [ERR_MODULE_NOT_FOUND]: Cannot find package 'nanoid' imported from /app/dist/index.js
+2026-06-15T12:20:55.553117311Z [err]      at Object.getPackageJSONURL (node:internal/modules/package_json_reader:314:9)
+2026-06-15T12:20:55.553122281Z [err]      at packageResolve (node:internal/modules/esm/resolve:768:81)
+2026-06-15T12:20:55.553126711Z [err]      at moduleResolve (node:internal/modules/esm/resolve:855:18)
+2026-06-15T12:20:55.553130751Z [err]      at defaultResolve (node:internal/modules/esm/resolve:985:11)
+2026-06-15T12:20:55.553135561Z [err]      at #cachedDefaultResolve (node:internal/modules/esm/loader:747:20)
+2026-06-15T12:20:55.553144240Z [err]      at ModuleLoader.resolve (node:internal/modules/esm/loader:724:38)
+2026-06-15T12:20:55.553147950Z [err]      at ModuleLoader.getModuleJobForImport (node:internal/modules/esm/loader:320:38)
+2026-06-15T12:20:55.553151320Z [err]      at ModuleJob._link (node:internal/modules/esm/module_job:182:49) {
+2026-06-15T12:20:55.553155380Z [err]    code: 'ERR_MODULE_NOT_FOUND'
+2026-06-15T12:20:55.553159060Z [err]  }
+2026-06-15T12:20:55.553162610Z [err]  
+2026-06-15T12:20:55.553165850Z [err]  Node.js v22.22.3
+2026-06-15T12:20:55.553170590Z [inf]   ELIFECYCLE  Command failed with exit code 1.
+2026-06-15T12:20:55.553173620Z [inf]  
+2026-06-15T12:20:55.553176710Z [inf]  > rest-express@1.0.0 start /app
+2026-06-15T12:20:55.553291928Z [inf]  
+2026-06-15T12:20:55.553292798Z [inf]  > NODE_ENV=production node dist/index.js
+2026-06-15T12:20:55.553295538Z [inf]  > rest-express@1.0.0 start /app
+2026-06-15T12:20:55.553297138Z [inf]  
+2026-06-15T12:20:55.553298888Z [inf]  > NODE_ENV=production node dist/index.js
+2026-06-15T12:20:55.553301638Z [inf]  
+2026-06-15T12:20:55.553305678Z [err]      at defaultResolve (node:internal/modules/esm/resolve:985:11)
+2026-06-15T12:20:55.553311848Z [err]      at #cachedDefaultResolve (node:internal/modules/esm/loader:747:20)
+2026-06-15T12:20:55.553315958Z [err]      at ModuleLoader.resolve (node:internal/modules/esm/loader:724:38)
+2026-06-15T12:20:55.553318268Z [err]      at ModuleLoader.getModuleJobForImport (node:internal/modules/esm/loader:320:38)
+2026-06-15T12:20:55.553320468Z [err]      at ModuleJob._link (node:internal/modules/esm/module_job:182:49) {
+2026-06-15T12:20:55.553326458Z [err]    code: 'ERR_MODULE_NOT_FOUND'
+2026-06-15T12:20:55.553329378Z [err]  }
+2026-06-15T12:20:55.553332038Z [err]  
+2026-06-15T12:20:55.553334628Z [err]  Node.js v22.22.3
+2026-06-15T12:20:55.553337127Z [inf]   ELIFECYCLE  Command failed with exit code 1.
+2026-06-15T12:20:55.553350807Z [err]  node:internal/modules/package_json_reader:314
+2026-06-15T12:20:55.553354137Z [err]    throw new ERR_MODULE_NOT_FOUND(packageName, fileURLToPath(base), null);
+2026-06-15T12:20:55.553357217Z [err]          ^
+2026-06-15T12:20:55.553360747Z [err]  
+2026-06-15T12:20:55.553363257Z [err]  Error [ERR_MODULE_NOT_FOUND]: Cannot find package 'nanoid' imported from /app/dist/index.js
+2026-06-15T12:20:55.553366227Z [err]      at Object.getPackageJSONURL (node:internal/modules/package_json_reader:314:9)
+2026-06-15T12:20:55.553368717Z [err]      at packageResolve (node:internal/modules/esm/resolve:768:81)
+2026-06-15T12:20:55.553371067Z [err]      at moduleResolve (node:internal/modules/esm/resolve:855:18)
+2026-06-15T12:20:55.553820680Z [err]  node:internal/modules/package_json_reader:314
+2026-06-15T12:20:55.553830850Z [err]    throw new ERR_MODULE_NOT_FOUND(packageName, fileURLToPath(base), null);
+2026-06-15T12:20:55.553835880Z [err]          ^
+2026-06-15T12:20:55.553840560Z [err]  
+2026-06-15T12:20:55.553843950Z [err]  Error [ERR_MODULE_NOT_FOUND]: Cannot find package 'nanoid' imported from /app/dist/index.js
+2026-06-15T12:20:55.553848330Z [err]      at Object.getPackageJSONURL (node:internal/modules/package_json_reader:314:9)
+2026-06-15T12:20:55.553852319Z [err]      at packageResolve (node:internal/modules/esm/resolve:768:81)
+2026-06-15T12:20:55.553856259Z [err]      at moduleResolve (node:internal/modules/esm/resolve:855:18)
+2026-06-15T12:20:55.553859689Z [err]      at defaultResolve (node:internal/modules/esm/resolve:985:11)
+2026-06-15T12:20:55.553863069Z [err]      at #cachedDefaultResolve (node:internal/modules/esm/loader:747:20)
+2026-06-15T12:20:55.553867869Z [err]      at ModuleLoader.resolve (node:internal/modules/esm/loader:724:38)
+2026-06-15T12:20:55.553871569Z [err]      at ModuleLoader.getModuleJobForImport (node:internal/modules/esm/loader:320:38)
+2026-06-15T12:20:55.553874919Z [err]      at ModuleJob._link (node:internal/modules/esm/module_job:182:49) {
+2026-06-15T12:20:55.553878709Z [err]    code: 'ERR_MODULE_NOT_FOUND'
+2026-06-15T12:20:55.553881909Z [err]  }
+2026-06-15T12:20:55.553886079Z [err]  
+2026-06-15T12:20:55.553890409Z [err]  Node.js v22.22.3
+2026-06-15T12:20:55.553893789Z [inf]   ELIFECYCLE  Command failed with exit code 1.
+2026-06-15T12:20:55.553897229Z [inf]  
+2026-06-15T12:20:55.553900829Z [inf]  > rest-express@1.0.0 start /app
+2026-06-15T12:20:55.553904389Z [inf]  > NODE_ENV=production node dist/index.js
+2026-06-15T12:20:55.553907669Z [inf]  
+2026-06-15T12:20:55.553911549Z [err]  node:internal/modules/package_json_reader:314
+2026-06-15T12:20:55.553915249Z [err]    throw new ERR_MODULE_NOT_FOUND(packageName, fileURLToPath(base), null);
+2026-06-15T12:20:55.554498579Z [inf]  > NODE_ENV=production node dist/index.js
+2026-06-15T12:20:55.554503159Z [inf]  
+2026-06-15T12:20:55.554507659Z [err]          ^
+2026-06-15T12:20:55.554509619Z [err]  node:internal/modules/package_json_reader:314
+2026-06-15T12:20:55.554515489Z [err]  
+2026-06-15T12:20:55.554516749Z [err]    throw new ERR_MODULE_NOT_FOUND(packageName, fileURLToPath(base), null);
+2026-06-15T12:20:55.554521689Z [err]  Error [ERR_MODULE_NOT_FOUND]: Cannot find package 'nanoid' imported from /app/dist/index.js
+2026-06-15T12:20:55.554524179Z [err]          ^
+2026-06-15T12:20:55.554527649Z [err]      at Object.getPackageJSONURL (node:internal/modules/package_json_reader:314:9)
+2026-06-15T12:20:55.554530519Z [err]  
+2026-06-15T12:20:55.554534819Z [err]      at packageResolve (node:internal/modules/esm/resolve:768:81)
+2026-06-15T12:20:55.554537749Z [err]  Error [ERR_MODULE_NOT_FOUND]: Cannot find package 'nanoid' imported from /app/dist/index.js
+2026-06-15T12:20:55.554540709Z [err]      at moduleResolve (node:internal/modules/esm/resolve:855:18)
+2026-06-15T12:20:55.554544679Z [err]      at defaultResolve (node:internal/modules/esm/resolve:985:11)
+2026-06-15T12:20:55.554550189Z [err]      at #cachedDefaultResolve (node:internal/modules/esm/loader:747:20)
+2026-06-15T12:20:55.554553239Z [err]      at ModuleLoader.resolve (node:internal/modules/esm/loader:724:38)
+2026-06-15T12:20:55.554556309Z [err]      at ModuleLoader.getModuleJobForImport (node:internal/modules/esm/loader:320:38)
+2026-06-15T12:20:55.554559049Z [err]      at ModuleJob._link (node:internal/modules/esm/module_job:182:49) {
+2026-06-15T12:20:55.554561408Z [err]    code: 'ERR_MODULE_NOT_FOUND'
+2026-06-15T12:20:55.554564398Z [err]  }
+2026-06-15T12:20:55.554567548Z [err]  
+2026-06-15T12:20:55.554570638Z [err]  Node.js v22.22.3
+2026-06-15T12:20:55.554572988Z [inf]   ELIFECYCLE  Command failed with exit code 1.
+2026-06-15T12:20:55.554575628Z [inf]  
+2026-06-15T12:20:55.554578038Z [inf]  > rest-express@1.0.0 start /app
+2026-06-15T12:20:55.555021741Z [err]  
+2026-06-15T12:20:55.555024301Z [err]  Error [ERR_MODULE_NOT_FOUND]: Cannot find package 'nanoid' imported from /app/dist/index.js
+2026-06-15T12:20:55.555025311Z [err]  Node.js v22.22.3
+2026-06-15T12:20:55.555028621Z [err]      at Object.getPackageJSONURL (node:internal/modules/package_json_reader:314:9)
+2026-06-15T12:20:55.555028641Z [inf]   ELIFECYCLE  Command failed with exit code 1.
+2026-06-15T12:20:55.555032771Z [inf]  > NODE_ENV=production node dist/index.js
+2026-06-15T12:20:55.555034351Z [err]      at Object.getPackageJSONURL (node:internal/modules/package_json_reader:314:9)
+2026-06-15T12:20:55.555035051Z [inf]  
+2026-06-15T12:20:55.555038361Z [inf]  
+2026-06-15T12:20:55.555041461Z [inf]  > rest-express@1.0.0 start /app
+2026-06-15T12:20:55.555042301Z [err]      at packageResolve (node:internal/modules/esm/resolve:768:81)
+2026-06-15T12:20:55.555044481Z [err]  node:internal/modules/package_json_reader:314
+2026-06-15T12:20:55.555050201Z [err]      at moduleResolve (node:internal/modules/esm/resolve:855:18)
+2026-06-15T12:20:55.555050371Z [err]    throw new ERR_MODULE_NOT_FOUND(packageName, fileURLToPath(base), null);
+2026-06-15T12:20:55.555056501Z [err]          ^
+2026-06-15T12:20:55.555059771Z [err]      at defaultResolve (node:internal/modules/esm/resolve:985:11)
+2026-06-15T12:20:55.555063681Z [err]  
+2026-06-15T12:20:55.555066501Z [err]      at #cachedDefaultResolve (node:internal/modules/esm/loader:747:20)
+2026-06-15T12:20:55.555070071Z [err]      at ModuleLoader.resolve (node:internal/modules/esm/loader:724:38)
+2026-06-15T12:20:55.555074061Z [err]      at ModuleLoader.getModuleJobForImport (node:internal/modules/esm/loader:320:38)
+2026-06-15T12:20:55.555077990Z [err]      at ModuleJob._link (node:internal/modules/esm/module_job:182:49) {
+2026-06-15T12:20:55.555081780Z [err]    code: 'ERR_MODULE_NOT_FOUND'
+2026-06-15T12:20:55.555085560Z [err]  }
+2026-06-15T12:20:55.555344106Z [err]      at Object.getPackageJSONURL (node:internal/modules/package_json_reader:314:9)
+2026-06-15T12:20:55.555349646Z [err]      at packageResolve (node:internal/modules/esm/resolve:768:81)
+2026-06-15T12:20:55.555351616Z [err]      at packageResolve (node:internal/modules/esm/resolve:768:81)
+2026-06-15T12:20:55.555358396Z [err]      at moduleResolve (node:internal/modules/esm/resolve:855:18)
+2026-06-15T12:20:55.555358556Z [err]      at moduleResolve (node:internal/modules/esm/resolve:855:18)
+2026-06-15T12:20:55.555362936Z [inf]  > rest-express@1.0.0 start /app
+2026-06-15T12:20:55.555367316Z [err]      at defaultResolve (node:internal/modules/esm/resolve:985:11)
+2026-06-15T12:20:55.555373276Z [inf]  > NODE_ENV=production node dist/index.js
+2026-06-15T12:20:55.555373506Z [err]      at #cachedDefaultResolve (node:internal/modules/esm/loader:747:20)
+2026-06-15T12:20:55.555379446Z [err]      at ModuleLoader.resolve (node:internal/modules/esm/loader:724:38)
+2026-06-15T12:20:55.555382036Z [inf]  
+2026-06-15T12:20:55.555386926Z [err]      at ModuleLoader.getModuleJobForImport (node:internal/modules/esm/loader:320:38)
+2026-06-15T12:20:55.555389146Z [err]  node:internal/modules/package_json_reader:314
+2026-06-15T12:20:55.555391756Z [err]      at ModuleJob._link (node:internal/modules/esm/module_job:182:49) {
+2026-06-15T12:20:55.555394906Z [err]    throw new ERR_MODULE_NOT_FOUND(packageName, fileURLToPath(base), null);
+2026-06-15T12:20:55.555398056Z [err]    code: 'ERR_MODULE_NOT_FOUND'
+2026-06-15T12:20:55.555402395Z [err]          ^
+2026-06-15T12:20:55.555404915Z [err]  }
+2026-06-15T12:20:55.555410965Z [err]  
+2026-06-15T12:20:55.555411245Z [err]  
+2026-06-15T12:20:55.555418895Z [err]  Node.js v22.22.3
+2026-06-15T12:20:55.555419745Z [err]  Error [ERR_MODULE_NOT_FOUND]: Cannot find package 'nanoid' imported from /app/dist/index.js
+2026-06-15T12:20:55.555423485Z [inf]   ELIFECYCLE  Command failed with exit code 1.
+2026-06-15T12:20:55.555426985Z [inf]  
+2026-06-15T12:20:55.555760310Z [err]      at defaultResolve (node:internal/modules/esm/resolve:985:11)
+2026-06-15T12:20:55.555761100Z [err]      at defaultResolve (node:internal/modules/esm/resolve:985:11)
+2026-06-15T12:20:55.555765410Z [err]  
+2026-06-15T12:20:55.555768430Z [inf]  > NODE_ENV=production node dist/index.js
+2026-06-15T12:20:55.555771850Z [err]      at #cachedDefaultResolve (node:internal/modules/esm/loader:747:20)
+2026-06-15T12:20:55.555774370Z [err]      at #cachedDefaultResolve (node:internal/modules/esm/loader:747:20)
+2026-06-15T12:20:55.555776890Z [err]  Error [ERR_MODULE_NOT_FOUND]: Cannot find package 'nanoid' imported from /app/dist/index.js
+2026-06-15T12:20:55.555778610Z [inf]  
+2026-06-15T12:20:55.555785470Z [err]      at ModuleLoader.resolve (node:internal/modules/esm/loader:724:38)
+2026-06-15T12:20:55.555786030Z [err]  node:internal/modules/package_json_reader:314
+2026-06-15T12:20:55.555788309Z [err]      at Object.getPackageJSONURL (node:internal/modules/package_json_reader:314:9)
+2026-06-15T12:20:55.555793879Z [err]      at ModuleLoader.getModuleJobForImport (node:internal/modules/esm/loader:320:38)
+2026-06-15T12:20:55.555797449Z [err]    throw new ERR_MODULE_NOT_FOUND(packageName, fileURLToPath(base), null);
+2026-06-15T12:20:55.555797779Z [err]      at packageResolve (node:internal/modules/esm/resolve:768:81)
+2026-06-15T12:20:55.555804469Z [err]      at ModuleJob._link (node:internal/modules/esm/module_job:182:49) {
+2026-06-15T12:20:55.555807059Z [err]      at moduleResolve (node:internal/modules/esm/resolve:855:18)
+2026-06-15T12:20:55.555807609Z [err]          ^
+2026-06-15T12:20:55.555811529Z [err]    code: 'ERR_MODULE_NOT_FOUND'
+2026-06-15T12:20:55.555814989Z [err]  }
+2026-06-15T12:20:55.555818109Z [err]  
+2026-06-15T12:20:55.555821959Z [err]  Node.js v22.22.3
+2026-06-15T12:20:55.555825059Z [inf]   ELIFECYCLE  Command failed with exit code 1.
+2026-06-15T12:20:55.555828549Z [inf]  
+2026-06-15T12:20:55.555831939Z [inf]  > rest-express@1.0.0 start /app
+2026-06-15T12:20:55.556122174Z [err]      at ModuleLoader.resolve (node:internal/modules/esm/loader:724:38)
+2026-06-15T12:20:55.556122764Z [err]      at packageResolve (node:internal/modules/esm/resolve:768:81)
+2026-06-15T12:20:55.556126834Z [err]    throw new ERR_MODULE_NOT_FOUND(packageName, fileURLToPath(base), null);
+2026-06-15T12:20:55.556132474Z [err]      at ModuleLoader.getModuleJobForImport (node:internal/modules/esm/loader:320:38)
+2026-06-15T12:20:55.556133404Z [err]      at moduleResolve (node:internal/modules/esm/resolve:855:18)
+2026-06-15T12:20:55.556137454Z [err]          ^
+2026-06-15T12:20:55.556141624Z [err]      at ModuleJob._link (node:internal/modules/esm/module_job:182:49) {
+2026-06-15T12:20:55.556143394Z [err]      at defaultResolve (node:internal/modules/esm/resolve:985:11)
+2026-06-15T12:20:55.556147384Z [err]  
+2026-06-15T12:20:55.556150084Z [err]    code: 'ERR_MODULE_NOT_FOUND'
+2026-06-15T12:20:55.556152314Z [err]      at #cachedDefaultResolve (node:internal/modules/esm/loader:747:20)
+2026-06-15T12:20:55.556157194Z [err]  }
+2026-06-15T12:20:55.556159034Z [err]      at ModuleLoader.resolve (node:internal/modules/esm/loader:724:38)
+2026-06-15T12:20:55.556160354Z [err]  Error [ERR_MODULE_NOT_FOUND]: Cannot find package 'nanoid' imported from /app/dist/index.js
+2026-06-15T12:20:55.556163864Z [err]  
+2026-06-15T12:20:55.556167924Z [err]      at Object.getPackageJSONURL (node:internal/modules/package_json_reader:314:9)
+2026-06-15T12:20:55.556170644Z [err]  Node.js v22.22.3
+2026-06-15T12:20:55.556174024Z [inf]   ELIFECYCLE  Command failed with exit code 1.
+2026-06-15T12:20:55.556176753Z [inf]  
+2026-06-15T12:20:55.556212143Z [inf]  > rest-express@1.0.0 start /app
+2026-06-15T12:20:55.556215023Z [inf]  > NODE_ENV=production node dist/index.js
+2026-06-15T12:20:55.556218023Z [inf]  
+2026-06-15T12:20:55.556221013Z [err]  node:internal/modules/package_json_reader:314
+2026-06-15T12:20:55.556509898Z [err]          ^
+2026-06-15T12:20:55.556510378Z [err]      at packageResolve (node:internal/modules/esm/resolve:768:81)
+2026-06-15T12:20:55.556513868Z [err]  
+2026-06-15T12:20:55.556514468Z [err]      at moduleResolve (node:internal/modules/esm/resolve:855:18)
+2026-06-15T12:20:55.556518938Z [err]      at ModuleLoader.getModuleJobForImport (node:internal/modules/esm/loader:320:38)
+2026-06-15T12:20:55.556519338Z [err]  Error [ERR_MODULE_NOT_FOUND]: Cannot find package 'nanoid' imported from /app/dist/index.js
+2026-06-15T12:20:55.556520888Z [err]      at defaultResolve (node:internal/modules/esm/resolve:985:11)
+2026-06-15T12:20:55.556523668Z [err]      at Object.getPackageJSONURL (node:internal/modules/package_json_reader:314:9)
+2026-06-15T12:20:55.556528608Z [err]      at #cachedDefaultResolve (node:internal/modules/esm/loader:747:20)
+2026-06-15T12:20:55.556529358Z [err]      at ModuleJob._link (node:internal/modules/esm/module_job:182:49) {
+2026-06-15T12:20:55.556534098Z [err]      at ModuleLoader.resolve (node:internal/modules/esm/loader:724:38)
+2026-06-15T12:20:55.556537798Z [err]    code: 'ERR_MODULE_NOT_FOUND'
+2026-06-15T12:20:55.556540578Z [err]      at ModuleLoader.getModuleJobForImport (node:internal/modules/esm/loader:320:38)
+2026-06-15T12:20:55.556544038Z [err]  }
+2026-06-15T12:20:55.556547858Z [err]  
+2026-06-15T12:20:55.556551278Z [err]  Node.js v22.22.3
+2026-06-15T12:20:55.556555198Z [inf]   ELIFECYCLE  Command failed with exit code 1.
+2026-06-15T12:20:55.556558918Z [inf]  
+2026-06-15T12:20:55.556562097Z [inf]  > rest-express@1.0.0 start /app
+2026-06-15T12:20:55.556565397Z [inf]  > NODE_ENV=production node dist/index.js
+2026-06-15T12:20:55.556569057Z [inf]  
+2026-06-15T12:20:55.556573267Z [err]  node:internal/modules/package_json_reader:314
+2026-06-15T12:20:55.556577117Z [err]    throw new ERR_MODULE_NOT_FOUND(packageName, fileURLToPath(base), null);
+2026-06-15T12:20:55.556851583Z [err]      at ModuleJob._link (node:internal/modules/esm/module_job:182:49) {
+2026-06-15T12:20:55.556854163Z [err]    code: 'ERR_MODULE_NOT_FOUND'
+2026-06-15T12:20:55.556856553Z [err]  }
+2026-06-15T12:20:55.556859103Z [err]  
+2026-06-15T12:20:55.556861833Z [err]  Node.js v22.22.3
+2026-06-15T12:20:55.556864633Z [inf]   ELIFECYCLE  Command failed with exit code 1.
+2026-06-15T12:20:55.900407997Z [inf]  
+2026-06-15T12:20:55.900411207Z [inf]  > rest-express@1.0.0 start /app
+2026-06-15T12:20:55.900413787Z [inf]  > NODE_ENV=production node dist/index.js
+2026-06-15T12:20:55.900416237Z [inf]  
+2026-06-15T12:20:56.006095659Z [err]  node:internal/modules/package_json_reader:314
+2026-06-15T12:20:56.006105039Z [err]    throw new ERR_MODULE_NOT_FOUND(packageName, fileURLToPath(base), null);
+2026-06-15T12:20:56.006108959Z [err]          ^
+2026-06-15T12:20:56.006113059Z [err]  
+2026-06-15T12:20:56.006117099Z [err]  Error [ERR_MODULE_NOT_FOUND]: Cannot find package 'nanoid' imported from /app/dist/index.js
+2026-06-15T12:20:56.006120689Z [err]      at Object.getPackageJSONURL (node:internal/modules/package_json_reader:314:9)
+2026-06-15T12:20:56.006124059Z [err]      at packageResolve (node:internal/modules/esm/resolve:768:81)
+2026-06-15T12:20:56.006127739Z [err]      at moduleResolve (node:internal/modules/esm/resolve:855:18)
+2026-06-15T12:20:56.006130949Z [err]      at defaultResolve (node:internal/modules/esm/resolve:985:11)
+2026-06-15T12:20:56.006134449Z [err]      at #cachedDefaultResolve (node:internal/modules/esm/loader:747:20)
+2026-06-15T12:20:56.006137839Z [err]      at ModuleLoader.resolve (node:internal/modules/esm/loader:724:38)
+2026-06-15T12:20:56.006142689Z [err]      at ModuleLoader.getModuleJobForImport (node:internal/modules/esm/loader:320:38)
+2026-06-15T12:20:56.006146149Z [err]      at ModuleJob._link (node:internal/modules/esm/module_job:182:49) {
+2026-06-15T12:20:56.006149209Z [err]    code: 'ERR_MODULE_NOT_FOUND'
+2026-06-15T12:20:56.006153299Z [err]  }
+2026-06-15T12:20:56.006157068Z [err]  
+2026-06-15T12:20:56.006161998Z [err]  Node.js v22.22.3
+2026-06-15T12:20:56.015544343Z [inf]   ELIFECYCLE  Command failed with exit code 1.

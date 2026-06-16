@@ -1,0 +1,81 @@
+client:536  WebSocket connection to 'wss://3b765815-ee38-4aff-b80e-f8eaa399796e-00-juroro8b6zee.janeway.replit.dev/?token=e2xs5rIeD5H0' failed: HTTP Authentication failed; no valid credentials available
+setupWebSocket @ client:536
+client:536  Uncaught (in promise) SyntaxError: Failed to construct 'WebSocket': The URL 'wss://localhost:undefined/?token=e2xs5rIeD5H0' is invalid.
+    at setupWebSocket (client:536:19)
+    at fallback (client:509:16)
+    at WebSocket.<anonymous> (client:555:7)
+chunk-WERSD76P.js?v=e9d27c09:21551 Download the React DevTools for a better development experience: https://reactjs.org/link/react-devtools
+chunk-WERSD76P.js?v=2dc441da:21551 Download the React DevTools for a better development experience: https://reactjs.org/link/react-devtools
+react.development.js:209  Warning: Invalid hook call. Hooks can only be called inside of the body of a function component. This could happen for one of the following reasons:
+1. You might have mismatching versions of React and the renderer (such as React DOM)
+2. You might be breaking the Rules of Hooks
+3. You might have more than one copy of React in the same app
+See https://reactjs.org/link/invalid-hook-call for tips about how to debug and fix this problem.
+printWarning @ react.development.js:209
+react.development.js:209  Warning: Invalid hook call. Hooks can only be called inside of the body of a function component. This could happen for one of the following reasons:
+1. You might have mismatching versions of React and the renderer (such as React DOM)
+2. You might be breaking the Rules of Hooks
+3. You might have more than one copy of React in the same app
+See https://reactjs.org/link/invalid-hook-call for tips about how to debug and fix this problem.
+printWarning @ react.development.js:209
+react.development.js:1622  Uncaught TypeError: Cannot read properties of null (reading 'useState')
+    at useState (react.development.js:1622:21)
+    at ThemeProvider (theme-provider.tsx:25:29)
+    at renderWithHooks (chunk-WERSD76P.js?v=e9d27c09:11548:26)
+    at mountIndeterminateComponent (chunk-WERSD76P.js?v=e9d27c09:14926:21)
+    at beginWork (chunk-WERSD76P.js?v=e9d27c09:15914:22)
+    at HTMLUnknownElement.callCallback2 (chunk-WERSD76P.js?v=e9d27c09:3674:22)
+    at Object.invokeGuardedCallbackDev (chunk-WERSD76P.js?v=e9d27c09:3699:24)
+    at invokeGuardedCallback (chunk-WERSD76P.js?v=e9d27c09:3733:39)
+    at beginWork$1 (chunk-WERSD76P.js?v=e9d27c09:19765:15)
+    at performUnitOfWork (chunk-WERSD76P.js?v=e9d27c09:19198:20)
+react.development.js:209  Warning: Invalid hook call. Hooks can only be called inside of the body of a function component. This could happen for one of the following reasons:
+1. You might have mismatching versions of React and the renderer (such as React DOM)
+2. You might be breaking the Rules of Hooks
+3. You might have more than one copy of React in the same app
+See https://reactjs.org/link/invalid-hook-call for tips about how to debug and fix this problem.
+printWarning @ react.development.js:209
+react.development.js:209  Warning: Invalid hook call. Hooks can only be called inside of the body of a function component. This could happen for one of the following reasons:
+1. You might have mismatching versions of React and the renderer (such as React DOM)
+2. You might be breaking the Rules of Hooks
+3. You might have more than one copy of React in the same app
+See https://reactjs.org/link/invalid-hook-call for tips about how to debug and fix this problem.
+printWarning @ react.development.js:209
+react.development.js:1622  Uncaught TypeError: Cannot read properties of null (reading 'useState')
+    at useState (react.development.js:1622:21)
+    at ThemeProvider (theme-provider.tsx:25:29)
+    at renderWithHooks (chunk-WERSD76P.js?v=e9d27c09:11548:26)
+    at mountIndeterminateComponent (chunk-WERSD76P.js?v=e9d27c09:14926:21)
+    at beginWork (chunk-WERSD76P.js?v=e9d27c09:15914:22)
+    at HTMLUnknownElement.callCallback2 (chunk-WERSD76P.js?v=e9d27c09:3674:22)
+    at Object.invokeGuardedCallbackDev (chunk-WERSD76P.js?v=e9d27c09:3699:24)
+    at invokeGuardedCallback (chunk-WERSD76P.js?v=e9d27c09:3733:39)
+    at beginWork$1 (chunk-WERSD76P.js?v=e9d27c09:19765:15)
+    at performUnitOfWork (chunk-WERSD76P.js?v=e9d27c09:19198:20)
+chunk-WERSD76P.js?v=e9d27c09:14032  The above error occurred in the <ThemeProvider> component:
+
+    at ThemeProvider (https://3b765815-ee38-4aff-b80e-f8eaa399796e-00-juroro8b6zee.janeway.replit.dev/src/components/theme-provider.tsx:24:3)
+    at QueryClientProvider (https://3b765815-ee38-4aff-b80e-f8eaa399796e-00-juroro8b6zee.janeway.replit.dev/@fs/home/runner/workspace/node_modules/.vite/deps/@tanstack_react-query.js?v=e9d27c09:2805:3)
+    at App
+    at ErrorBoundary (https://3b765815-ee38-4aff-b80e-f8eaa399796e-00-juroro8b6zee.janeway.replit.dev/src/components/error-boundary.tsx?v=20251108191400:8:5)
+
+React will try to recreate this component tree from scratch using the error boundary you provided, ErrorBoundary.
+logCapturedError @ chunk-WERSD76P.js?v=e9d27c09:14032
+error-boundary.tsx:24  ErrorBoundary caught error: TypeError: Cannot read properties of null (reading 'useState')
+    at useState (react.development.js:1622:21)
+    at ThemeProvider (theme-provider.tsx:25:29)
+    at renderWithHooks (chunk-WERSD76P.js?v=e9d27c09:11548:26)
+    at mountIndeterminateComponent (chunk-WERSD76P.js?v=e9d27c09:14926:21)
+    at beginWork (chunk-WERSD76P.js?v=e9d27c09:15914:22)
+    at beginWork$1 (chunk-WERSD76P.js?v=e9d27c09:19753:22)
+    at performUnitOfWork (chunk-WERSD76P.js?v=e9d27c09:19198:20)
+    at workLoopSync (chunk-WERSD76P.js?v=e9d27c09:19137:13)
+    at renderRootSync (chunk-WERSD76P.js?v=e9d27c09:19116:15)
+    at recoverFromConcurrentError (chunk-WERSD76P.js?v=e9d27c09:18736:28) Object
+componentDidCatch @ error-boundary.tsx:24
+css2?family=Architects+Daughter&family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&f…:1   Failed to load resource: net::ERR_CONNECTION_CLOSED
+[NEW] Explain Console errors by using Copilot in Edge: click
+         
+         to explain an error. 
+        Learn more
+        Don't show again

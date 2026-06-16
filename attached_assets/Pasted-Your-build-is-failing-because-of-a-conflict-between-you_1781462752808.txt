@@ -1,0 +1,22 @@
+Your build is failing because of a conflict between your project's package manager (`pnpm`) and your custom install command (`npm audit fix`). 
+
+In your logs, Vercel is attempting to run the following command:
+```bash
+npx pnpm@9 install --ignore-scripts --no-frozen-lockfile && npm audit fix --force
+```
+
+Here is why this is causing the build to fail:
+
+- **Mixed Package Managers:** Your project is configured to use `pnpm`, but your custom install command uses `npm` (`npm audit fix`). Running npm-based commands in a pnpm project bypasses your `pnpm-lock.yaml` file, leading to severe dependency and version mismatches.
+- **Breaking Upgrades:** The `npm audit fix --force` command automatically forces upgrades to critical dependencies (such as upgrading `vite` and `ethers` to major new versions). This is resulting in peer dependency conflicts and causing the installation command to exit with a failure code (`exited with 1`).
+
+To resolve this issue, you should remove the custom install command from your project settings and let Vercel handle the installation automatically. Here is how you can do that:
+
+
+- **Navigate to Project Settings:** Go to your [Vercel Project Dashboard](https://vercel.com/lumirra-s-projects/space) and select the **Settings** tab at the top.
+- **Locate Install Command:** Under the **Build & Development Settings** section, find the **Install Command** setting.
+- **Reset to Default:** Turn off the override toggle for the **Install Command** (so that it defaults to your standard package manager install command) and click **Save**.
+
+Once you have saved these settings, trigger a new deployment. Vercel will install your dependencies safely using your package manager's native lockfile without trying to force-upgrade packages. If you want to perform security audits, it is recommended to run `pnpm audit` on your local development machine first, resolve any vulnerabilities, commit the updated lockfile, and redeploy.
+
+If you need any further assistance with resolving this problem, let me know!

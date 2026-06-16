@@ -1,0 +1,68 @@
+[1G[0K⠙[1G[0K[Email Service] SMTP initialized
+[Email Service] SMTP Host: smtp.hostinger.com
+[Email Service] SMTP Port: 465
+[Email Service] From address: Support@lumirrawallet.com
+[Email Service] Resend initialized (primary or fallback)
+(node:940) [MONGOOSE] Warning: Duplicate schema index on {"userId":1} found. This is often due to declaring an index using both "index: true" and "schema.index()". Please remove the duplicate index definition.
+(Use `node --trace-warnings ...` to show where the warning was created)
+Connected to MongoDB successfully
+Admin password updated successfully
+Cleared 0 swap history entries
+[Migration] Set default displayOrder for 13 token types (0 tokens updated)
+[Migration] Hidden 0 non-default tokens
+[Background Job] Starting background jobs...
+[Background Job] Background jobs started successfully
+WebSocket service initialized
+WebSocket service initialized for real-time support chat
+1:21:52 PM [express] serving on port 5000
+[baseline-browser-mapping] The data in this module is over two months old.  To ensure accurate Baseline data, please update: `npm i baseline-browser-mapping@latest -D`
+[Background Job] Fetching crypto news...
+[Background Job] CryptoPanic API error: Not Found
+Browserslist: browsers data (caniuse-lite) is 7 months old. Please run:
+  npx update-browserslist-db@latest
+  Why you should do it regularly: https://github.com/browserslist/update-db#readme
+
+A PostCSS plugin did not pass the `from` option to `postcss.parse`. This may cause imported assets to be incorrectly transformed. If you've recently added a PostCSS plugin that raised this warning, please contact the package author to fix the issue.
+[Background Job] Checking price alerts...
+[Background Job] No active alerts to check
+1:22:01 PM [express] GET /api/user 200 in 14ms
+WebSocket upgrade request received for /ws
+WebSocket upgrade rejected: no session
+WebSocket upgrade request received for /ws
+WebSocket upgrade rejected: no session
+[Background Job] Checking market movements...
+[CoinGecko] Fetching prices for 8 coins from: https://api.coingecko.com/api/v3/simple/price?ids=bitcoin,ethereum,binancecoin,solana,tron,dogecoin,cardano,ripple&vs_currencies=usd,jpy,cad,gbp,aed,aud,krw,chf,czk,dkk,nok,nzd&include_24hr_change=true&include_market_cap=true
+[CoinGecko] Response status: 200 OK
+[CoinGecko] Successfully fetched prices for 8 coins
+[Background Job] Market movement check complete — 0 coin(s) notified
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+[1;1H[0J[2m1:23:02 PM[22m [36m[1m[vite][22m[39m [32mpage reload [39m[2mindex.html[22m
+1:23:08 PM [express] GET /api/user 200 in 9ms
+WebSocket upgrade request received for /ws
+WebSocket upgrade rejected: no session
+1:23:08 PM [express] GET /api/auth/user 401 in 3ms :: {"error":"Authentication required"}
+1:23:08 PM [express] GET /api/auth/user 401 in 2ms :: {"error":"Authentication required"}
+WebSocket upgrade request received for /ws
+WebSocket upgrade rejected: no session

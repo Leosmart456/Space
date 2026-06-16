@@ -1,0 +1,36 @@
+This screenshot perfectly captures the exact sequence of events we just diagnosed. The root cause for all of these errors is a misconfigured routing order in your `vercel.json` file. 
+
+Here is exactly what is happening under the hood to cause each of these errors:
+
+
+- **Why you see "Unexpected token '<', '<!DOCTYPE '...":**
+- When your app boots, the frontend makes a `GET` request (such as to `/api/auth/me` or another API route) to verify if you are already logged in. 
+- Because there is no specific route telling Vercel to send `/api/*` to your backend code, Vercel falls back to your Single Page Application (SPA) rule and returns your static `index.html` file.
+- When your frontend's JavaScript tries to parse this HTML document (which starts with `<!DOCTYPE html>`) as if it were JSON, it fails and throws this syntax error.
+
+- **Why you see the "405 Method Not Allowed" error:**
+- Right after, your user attempts to log in by submitting a `POST` request to `/api/auth/login-pin`.
+- Vercel again tries to serve your static `index.html` file for this route. 
+- However, Vercel's Edge CDN is designed to reject any `POST` request directed at static assets, returning a `405 Method Not Allowed` block.
+
+- **Why you see "WebSocket connection... failed":**
+- Your application is trying to establish a real-time WebSocket connection to `wss://www.lumirrawallet.com/ws`.
+- Because Vercel Serverless Functions are ephemeral (they spin up to handle a request and then spin down), they do not support persistent state or WebSockets out of the box.
+
+
+### The Solution
+
+Updating your `vercel.json` file in your repository is the key to solving both the `405` and the `<!DOCTYPE` errors. 
+
+Make sure your `vercel.json` contains the following routing rules, with the `/api` route defined **above** your catch-all static route:
+
+```json
+{
+  "rewrites": [
+    { "source": "/api/:path*", "destination": "/api/index.js" },
+    { "source": "/(.*)", "destination": "/index.html" }
+  ]
+}
+```
+
+Once you commit and push this change to your repository, Vercel will route your API calls to your newly fixed backend bundle, resolving these errors!

@@ -1,0 +1,27 @@
+[1G[0K⠙[1G[0K[Email Service] SMTP initialized
+[Email Service] SMTP Host: smtp.hostinger.com
+[Email Service] SMTP Port: 465
+[Email Service] From address: Support@lumirrawallet.com
+[Email Service] Resend initialized (primary or fallback)
+(node:267) [MONGOOSE] Warning: Duplicate schema index on {"userId":1} found. This is often due to declaring an index using both "index: true" and "schema.index()". Please remove the duplicate index definition.
+(Use `node --trace-warnings ...` to show where the warning was created)
+Connected to MongoDB successfully
+Admin password updated successfully
+Cleared 0 swap history entries
+[Migration] Set default displayOrder for 13 token types (0 tokens updated)
+[Migration] Hidden 0 non-default tokens
+[Background Job] Starting background jobs...
+[Background Job] Background jobs started successfully
+WebSocket service initialized
+WebSocket service initialized for real-time support chat
+8:01:13 AM [express] serving on port 5000
+[baseline-browser-mapping] The data in this module is over two months old.  To ensure accurate Baseline data, please update: `npm i baseline-browser-mapping@latest -D`
+[Background Job] Fetching crypto news...
+[Background Job] CryptoPanic API error: Not Found
+[Background Job] Checking price alerts...
+[Background Job] No active alerts to check
+[Background Job] Checking market movements...
+[CoinGecko] Fetching prices for 8 coins from: https://api.coingecko.com/api/v3/simple/price?ids=bitcoin,ethereum,binancecoin,solana,tron,dogecoin,cardano,ripple&vs_currencies=usd,jpy,cad,gbp,aed,aud,krw,chf,czk,dkk,nok,nzd&include_24hr_change=true&include_market_cap=true
+[CoinGecko] Response status: 200 OK
+[CoinGecko] Successfully fetched prices for 8 coins
+[Background Job] Market movement check complete — 0 coin(s) notified

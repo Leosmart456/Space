@@ -1,0 +1,42 @@
+2
+react.development.js:209 
+ Warning: Invalid hook call. Hooks can only be called inside of the body of a function component. This could happen for one of the following reasons:
+1. You might have mismatching versions of React and the renderer (such as React DOM)
+2. You might be breaking the Rules of Hooks
+3. You might have more than one copy of React in the same app
+See https://reactjs.org/link/invalid-hook-call for tips about how to debug and fix this problem.
+react.development.js:1622 
+ Uncaught TypeError: Cannot read properties of null (reading 'useState')
+    at ThemeProvider (theme-provider.tsx:25:29)
+2
+react.development.js:209 
+ Warning: Invalid hook call. Hooks can only be called inside of the body of a function component. This could happen for one of the following reasons:
+1. You might have mismatching versions of React and the renderer (such as React DOM)
+2. You might be breaking the Rules of Hooks
+3. You might have more than one copy of React in the same app
+See https://reactjs.org/link/invalid-hook-call for tips about how to debug and fix this problem.
+react.development.js:1622 
+ Uncaught TypeError: Cannot read properties of null (reading 'useState')
+    at ThemeProvider (theme-provider.tsx:25:29)
+react-dom.development.js:18704 
+ The above error occurred in the <ThemeProvider> component:
+
+    at ThemeProvider (https://3b765815-ee38-4aff-b80e-f8eaa399796e-00-juroro8b6zee.janeway.replit.dev/src/components/theme-provider.tsx:24:3)
+    at QueryClientProvider (https://3b765815-ee38-4aff-b80e-f8eaa399796e-00-juroro8b6zee.janeway.replit…rkspace/node_modules/.vite/deps/@tanstack_react-query.js?v=e9d27c09:2805:3)
+    at App
+    at ErrorBoundary (https://3b765815-ee38-4aff-b80e-f8eaa399796e-00-juroro8b6zee.janeway.replit.dev/src/components/error-boundary.tsx?v=20251108191400:8:5)
+
+React will try to recreate this component tree from scratch using the error boundary you provided, ErrorBoundary.
+error-boundary.tsx:24 
+ ErrorBoundary caught error: TypeError: Cannot read properties of null (reading 'useState')
+    at ThemeProvider (theme-provider.tsx:25:29)
+ 
+Object
+css2?family=Architec…..40,100..1000&f…:1 
+ 
+ Failed to load resource: net::ERR_CONNECTION_CLOSED
+[NEW] Explain Console errors by using Copilot in Edge: click 
+ to explain an error. Learn more
+Don't show again
+﻿
+
