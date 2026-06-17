@@ -1,4 +1,4 @@
-{
+ {
   "installCommand": "npx pnpm@9 install --ignore-scripts --no-frozen-lockfile",
   "buildCommand": "vite build",
   "outputDirectory": "dist/public",
