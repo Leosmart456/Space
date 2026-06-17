@@ -76,9 +76,8 @@ export function getApp(): Promise<Express> {
     const DEV_SESSION_SECRET = "lumirra-dev-session-secret-stable-2024";
 
     const isVercel = !!process.env.VERCEL;
-    const sessionStore = (process.env.NODE_ENV === "production" || isVercel)
-      ? new MongoSessionStore()
-      : undefined;
+    const isProduction = process.env.NODE_ENV === "production" || !!process.env.RAILWAY_ENVIRONMENT || !!process.env.RAILWAY_SERVICE_NAME || isVercel;
+    const sessionStore = isProduction ? new MongoSessionStore() : undefined;
 
     const sessionParser = session({
       secret: process.env.SESSION_SECRET || DEV_SESSION_SECRET,
@@ -86,14 +85,20 @@ export function getApp(): Promise<Express> {
       saveUninitialized: false,
       store: sessionStore,
       cookie: {
-        secure: true,
+        secure: isProduction,
         httpOnly: true,
         maxAge: 1000 * 60 * 60 * 24 * 7,
-        sameSite: 'none',
+        sameSite: 'lax',
       }
     });
 
     app.use(sessionParser);
+
+    app.use("/api/auth", (_req, res, next) => {
+      res.setHeader("Cache-Control", "no-store, no-cache, must-revalidate, proxy-revalidate");
+      res.setHeader("Pragma", "no-cache");
+      next();
+    });
 
     app.use((req, res, next) => {
       const start = Date.now();
