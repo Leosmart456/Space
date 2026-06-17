@@ -137,7 +137,7 @@ export default function Settings() {
       description: "You have been logged out. Reload the app to start fresh.",
     });
     setTimeout(() => {
-      window.location.href = "/";
+      window.location.href = import.meta.env.BASE_URL;
     }, 1500);
   };
 

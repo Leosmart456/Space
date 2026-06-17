@@ -8,6 +8,10 @@
       "destination": "https://space-production-a4d8.up.railway.app/api/:path*"
     },
     {
+      "source": "/ws",
+      "destination": "https://space-production-a4d8.up.railway.app/ws"
+    },
+    {
       "source": "/(.*)",
       "destination": "/index.html"
     }

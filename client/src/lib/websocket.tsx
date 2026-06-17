@@ -1,9 +1,9 @@
 import { createContext, useContext, ReactNode } from "react";
 import { queryClient } from "./queryClient";
 
-const WS_API_BASE = import.meta.env.VITE_API_URL ?? "https://space-production-a4d8.up.railway.app";
-const WS_HOST = WS_API_BASE.replace(/^https?:\/\//, "");
-const WS_PROTOCOL = WS_API_BASE.startsWith("https") ? "wss:" : "ws:";
+const WS_API_BASE = import.meta.env.VITE_API_URL ?? "";
+const WS_HOST = WS_API_BASE ? WS_API_BASE.replace(/^https?:\/\//, "") : window.location.host;
+const WS_PROTOCOL = WS_API_BASE ? (WS_API_BASE.startsWith("https") ? "wss:" : "ws:") : (window.location.protocol === "https:" ? "wss:" : "ws:");
 
 interface WebSocketMessage {
   type: string;
