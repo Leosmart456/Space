@@ -108,9 +108,9 @@ export default function Login() {
               });
 
               if (data.user.isAdmin) {
-                window.location.href = "/admin";
+                window.location.href = import.meta.env.BASE_URL + "admin";
               } else {
-                window.location.href = "/dashboard";
+                window.location.href = import.meta.env.BASE_URL + "dashboard";
               }
             } else {
               const errorData = await response.json();

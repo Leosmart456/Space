@@ -324,7 +324,7 @@ export default function CreateAccount() {
                 
                 setStep("success");
                 setTimeout(() => {
-                  window.location.href = "/dashboard";
+                  window.location.href = import.meta.env.BASE_URL + "dashboard";
                 }, 2000);
               } else {
                 const error = await response.json();

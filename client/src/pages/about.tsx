@@ -201,7 +201,7 @@ export default function About() {
             Join thousands of users who manage their crypto with confidence
           </p>
           <Button
-            onClick={() => window.location.href = "/create-account"}
+            onClick={() => window.location.href = import.meta.env.BASE_URL + "create-account"}
             size="lg"
             className="bg-white text-[#1677FF] hover:bg-white/90"
             data-testid="button-create-account"

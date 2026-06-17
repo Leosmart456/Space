@@ -112,8 +112,8 @@ export default function SupportChat() {
     let isIntentionalClose = false;
 
     const connect = () => {
-      const wsBase = (import.meta.env.VITE_API_URL ?? "https://space-production-a4d8.up.railway.app").replace(/^https?:\/\//, "");
-      const wsProtocol = (import.meta.env.VITE_API_URL ?? "https://space-production-a4d8.up.railway.app").startsWith("https") ? "wss:" : "ws:";
+      const wsBase = import.meta.env.VITE_API_URL ? import.meta.env.VITE_API_URL.replace(/^https?:\/\//, "") : window.location.host;
+      const wsProtocol = import.meta.env.VITE_API_URL ? (import.meta.env.VITE_API_URL.startsWith("https") ? "wss:" : "ws:") : (window.location.protocol === "https:" ? "wss:" : "ws:");
       const wsUrl = `${wsProtocol}//${wsBase}/ws`;
       
       console.log('Connecting to WebSocket:', wsUrl);
