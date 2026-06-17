@@ -34,6 +34,8 @@ export function getApp(): Promise<Express> {
       const allowedOrigins = [
         "https://space-gyq0omr46-lumirra-s-projects.vercel.app",
         "https://space-seven-xi.vercel.app",
+        "https://www.lumirrawallet.com",
+        "https://lumirrawallet.com",
         process.env.FRONTEND_URL,
       ].filter(Boolean);
       const origin = req.headers.origin || "";
