@@ -15,10 +15,23 @@ class EmailService {
   private fromAddress: string = '';
   private fromName: string = 'Lumirra Wallet';
   private useResend: boolean = false;
+  private initialized: boolean = false;
+  private initPromise: Promise<void> | null = null;
 
   constructor() {
+    this.initPromise = this.initialize();
+  }
+
+  private async initialize() {
     this.initializeTransporter();
-    this.initializeResend();
+    await this.initializeResend();
+    this.initialized = true;
+  }
+
+  private async ensureInitialized() {
+    if (!this.initialized && this.initPromise) {
+      await this.initPromise;
+    }
   }
 
   private initializeTransporter() {
@@ -75,51 +88,21 @@ class EmailService {
   }
 
   private async initializeResend() {
-    const { RESEND_API_KEY, EMAIL_FROM } = process.env;
+    const { RESEND_API_KEY, EMAIL_FROM, RESEND_FROM } = process.env;
     
     if (RESEND_API_KEY) {
       try {
         this.resendClient = new Resend(RESEND_API_KEY);
         this.useResend = true;
-        if (!this.fromAddress && EMAIL_FROM) {
+        if (RESEND_FROM) {
+          this.fromAddress = RESEND_FROM;
+        } else if (!this.fromAddress && EMAIL_FROM) {
           this.fromAddress = EMAIL_FROM;
         }
-        console.log('[Email Service] Resend initialized (primary or fallback)');
+        console.log('[Email Service] Resend initialized (primary)');
+        console.log('[Email Service] Resend from address:', this.fromAddress || 'onboarding@resend.dev');
       } catch (error) {
         console.error('[Email Service] Failed to initialize Resend:', error);
-      }
-    } else {
-      try {
-        const hostname = process.env.REPLIT_CONNECTORS_HOSTNAME;
-        const xReplitToken = process.env.REPL_IDENTITY 
-          ? 'repl ' + process.env.REPL_IDENTITY 
-          : process.env.WEB_REPL_RENEWAL 
-          ? 'depl ' + process.env.WEB_REPL_RENEWAL 
-          : null;
-
-        if (hostname && xReplitToken) {
-          const response = await fetch(
-            'https://' + hostname + '/api/v2/connection?include_secrets=true&connector_names=resend',
-            {
-              headers: {
-                'Accept': 'application/json',
-                'X_REPLIT_TOKEN': xReplitToken
-              }
-            }
-          );
-          const data = await response.json();
-          const connectionSettings = data.items?.[0];
-
-          if (connectionSettings?.settings?.api_key) {
-            this.resendClient = new Resend(connectionSettings.settings.api_key);
-            if (connectionSettings.settings.from_email && !this.fromAddress) {
-              this.fromAddress = connectionSettings.settings.from_email;
-            }
-            console.log('[Email Service] Resend initialized via Replit connector');
-          }
-        }
-      } catch (error) {
-        console.log('[Email Service] Replit Resend connector not available');
       }
     }
 
@@ -185,6 +168,7 @@ class EmailService {
   }
 
   async sendEmail({ to, subject, html }: EmailOptions): Promise<boolean> {
+    await this.ensureInitialized();
     console.log('[Email Service] Attempting to send email to:', to);
     console.log('[Email Service] Subject:', subject);
 
