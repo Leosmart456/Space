@@ -1,4 +1,4 @@
-import type { Express } from "express";
+import type { Express, Request, Response, NextFunction } from "express";
 import { createServer, type Server } from "http";
 import { ethers } from "ethers";
 import mongoose from "mongoose";
@@ -246,9 +246,17 @@ export async function registerRoutes(app: Express, sessionParser?: any): Promise
   });
 
   // ==================== AUTHENTICATION ROUTES ====================
-  
+
+  // Middleware to prevent edge caching of auth endpoints
+  const noCacheAuth = (req: Request, res: Response, next: NextFunction) => {
+    res.setHeader('Cache-Control', 'no-store, no-cache, must-revalidate, proxy-revalidate');
+    res.setHeader('Pragma', 'no-cache');
+    res.setHeader('Expires', '0');
+    next();
+  };
+
   // Sign up
-  app.post("/api/auth/signup", async (req, res) => {
+  app.post("/api/auth/signup", noCacheAuth, async (req, res) => {
     try {
       const { email, password, firstName, lastName, dateOfBirth } = req.body;
 
@@ -337,7 +345,7 @@ export async function registerRoutes(app: Express, sessionParser?: any): Promise
   });
 
   // Login (for regular wallet users only - admins must use /api/admin/auth/login)
-  app.post("/api/auth/login", async (req, res) => {
+  app.post("/api/auth/login", noCacheAuth, async (req, res) => {
     try {
       const { email, password } = req.body;
 
@@ -410,7 +418,7 @@ export async function registerRoutes(app: Express, sessionParser?: any): Promise
   });
 
   // Logout
-  app.post("/api/auth/logout", (req, res) => {
+  app.post("/api/auth/logout", noCacheAuth, (req, res) => {
     req.session.destroy((err) => {
       if (err) {
         return res.status(500).json({ error: "Logout failed" });
@@ -422,7 +430,7 @@ export async function registerRoutes(app: Express, sessionParser?: any): Promise
   // ==================== EMAIL VERIFICATION ROUTES ====================
   
   // Send verification code to email (for signup or login)
-  app.post("/api/auth/send-code", async (req, res) => {
+  app.post("/api/auth/send-code", noCacheAuth, async (req, res) => {
     try {
       const { email, purpose } = req.body;
 
@@ -498,7 +506,7 @@ export async function registerRoutes(app: Express, sessionParser?: any): Promise
   });
 
   // Verify code only (without completing signup or reset)
-  app.post("/api/auth/verify-code", async (req, res) => {
+  app.post("/api/auth/verify-code", noCacheAuth, async (req, res) => {
     try {
       const { email, code, purpose } = req.body;
 
@@ -530,7 +538,7 @@ export async function registerRoutes(app: Express, sessionParser?: any): Promise
   });
 
   // Verify code and complete signup
-  app.post("/api/auth/verify-signup", async (req, res) => {
+  app.post("/api/auth/verify-signup", noCacheAuth, async (req, res) => {
     try {
       const { email, code, firstName, lastName, dateOfBirth, password, pin } = req.body;
 
@@ -640,7 +648,7 @@ export async function registerRoutes(app: Express, sessionParser?: any): Promise
   });
 
   // Verify code and complete login
-  app.post("/api/auth/verify-login", async (req, res) => {
+  app.post("/api/auth/verify-login", noCacheAuth, async (req, res) => {
     try {
       const { email, code } = req.body;
 
@@ -1109,7 +1117,7 @@ export async function registerRoutes(app: Express, sessionParser?: any): Promise
   });
 
   // Get current user
-  app.get("/api/auth/user", requireAuth, async (req, res) => {
+  app.get("/api/auth/user", noCacheAuth, requireAuth, async (req, res) => {
     try {
       const user = await storage.getUser(req.session.userId!);
       if (!user) {

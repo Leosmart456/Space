@@ -54,7 +54,12 @@ export function getApp(): Promise<Express> {
       next();
     });
 
-    if (process.env.NODE_ENV === "production") {
+    const isProduction = 
+      process.env.NODE_ENV === "production" || 
+      !!process.env.RAILWAY_ENVIRONMENT ||  // Railway sets this automatically
+      !!process.env.RAILWAY_SERVICE_NAME;   // Railway sets this automatically
+
+    if (isProduction) {
       app.set('trust proxy', 1);
       app.use((req: Request, res: Response, next: NextFunction) => {
         if (req.headers['x-forwarded-proto'] === 'http') {
@@ -71,15 +76,14 @@ export function getApp(): Promise<Express> {
     }));
     app.use(express.urlencoded({ extended: false }));
 
-    if (!process.env.SESSION_SECRET && process.env.NODE_ENV === "production") {
+    if (!process.env.SESSION_SECRET && isProduction) {
       throw new Error("SESSION_SECRET environment variable must be set in production");
     }
 
     const DEV_SESSION_SECRET = "lumirra-dev-session-secret-stable-2024";
 
     const isVercel = !!process.env.VERCEL;
-    const isProduction = process.env.NODE_ENV === "production" || !!process.env.RAILWAY_ENVIRONMENT || !!process.env.RAILWAY_SERVICE_NAME || isVercel;
-    const sessionStore = isProduction ? new MongoSessionStore() : undefined;
+    const sessionStore = (isProduction || isVercel) ? new MongoSessionStore() : undefined;
 
     const sessionParser = session({
       secret: process.env.SESSION_SECRET || DEV_SESSION_SECRET,
