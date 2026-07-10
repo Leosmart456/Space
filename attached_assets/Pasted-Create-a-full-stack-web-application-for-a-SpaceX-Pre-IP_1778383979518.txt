@@ -1,0 +1,43 @@
+Create a full‑stack web application for a SpaceX Pre‑IPO private share investment platform. The application should have two main parts: a public-facing user site and an admin panel.
+
+**TECH STACK:** Node.js/Express backend, SQLite database, EJS or similar templating for server‑side rendering (for simplicity), Tailwind CSS for styling. Use Passport.js for user authentication.
+
+**PUBLIC USER FLOW:**
+1.  Landing Page: A sleek, space‑themed page explaining the SpaceX IPO opportunity, with a prominent "Get Started" button.
+2.  User Registration/Login: Users must create an account (email, secure password, full name, phone). Upon registration, send a welcome email via SMTP.
+3.  Accredited Investor Verification: After login, first‑time users are guided to a form to confirm accredited investor status (dropdown: "I confirm I am an accredited investor (income >$200k/year or net worth >$1M excluding primary residence)" with "Yes" or "No"). This status is saved to their profile.
+4.  Investment Reservation Form (Only accessible if accredited status is "Yes"): A form where users specify their desired investment amount in USD (minimum $5,000, validated). The form should fetch the current "share price" from the database (set by admin) and automatically calculate the number of shares they will receive (Shares = Investment Amount / Share Price). Include a checkbox for agreeing to terms. On submission:
+    a) Save the reservation request to the database with status "Pending."
+    b) Send an automatic confirmation email to the user via SMTP (Hostinger), summarizing their request.
+    c) Send a notification email to the admin email with all user and request details.
+
+**USER DASHBOARD (After Login):** A premium, dashboard‑style interface with:
+- A sidebar navigation.
+- Overview Panel: Shows total invested, number of shares, current share value (pre‑IPO: uses admin‑set price; post‑IPO: will pull from live API), and total paper gain/loss.
+- My Shares Panel: A table detailing their share reservation(s): Date, Shares, Price/Share, Total Amount, Status ("Pending," "Confirmed," "Converted to Public").
+- Transfer Center (Initially hidden/disabled): To be activated post‑IPO. Contains a form for users to initiate a transfer to their personal brokerage. Fields: Brokerage Name (dropdown with Robinhood, Fidelity, Charles Schwab, E*TRADE, "Other"), Brokerage Account Number, Account Holder Name. Upon submission, status becomes "Transfer Requested." This is for tracking; actual ACATS transfer would be manual by you, but this organizes the data.
+- Documents Section: Placeholder for later upload of PDFs (Agreement, Certificate). For now, static text.
+- Profile Section: Where they can update contact info and see their accredited status.
+
+**ADMIN PANEL (Secure route, e.g., /admin):**
+- Admin Login (separate from user auth).
+- Dashboard: Summary stats (total users, total capital reserved, etc.).
+- User Management: Table of all users, ability to view details, and update their reservation status (e.g., change from "Pending" to "Confirmed" after payment is received).
+- Share Price Management: A simple form to update the global "Pre‑IPO Share Price." This price is used in the user's reservation form calculator.
+- System Mode Toggle: A switch to change the entire platform between "PRE‑IPO" and "POST‑IPO." This should:
+    * Change banners on the user dashboard.
+    * In POST‑IPO mode, replace the static share price with a live price fetched from a financial API (use a free tier, like Finnhub or Alpha Vantage, for SpaceX's ticker).
+    * Unlock/highlight the "Transfer Center" for users.
+- Email Broadcast: A form to send an email to all registered users (subject and body).
+
+**EMAIL SYSTEM:**
+Configure Nodemailer with Hostinger SMTP settings. Set up templates for: User Registration Welcome, Investment Request Confirmation, Admin Notification for New Request, and Admin Broadcast.
+
+**DESIGN & UI:**
+Use a dark theme inspired by SpaceX (dark blue/black gradients, clean white/cyan accents, modern font). Use Tailwind CSS components for a polished look. The dashboard should feel like a fintech/cyber‑security panel—professional, data‑rich, but not cluttered.
+
+**IMPLEMENTATION NOTES:**
+- Use environment variables for SMTP credentials, admin login, and API keys.
+- Hash passwords properly.
+- The share transfer functionality is a "simulation"/management tool for you, not a real broker integration.
+- Provide clear setup instructions for installing dependencies, setting up the `.env` file, and initializing the database.

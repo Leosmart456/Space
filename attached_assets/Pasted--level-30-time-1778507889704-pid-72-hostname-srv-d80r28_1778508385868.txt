@@ -1,0 +1,28 @@
+{"level":30,"time":1778507889704,"pid":72,"hostname":"srv-d80r281o3t8c73e19ln0-hibernate-68d8946c9f-xxfpb","host":"ac-px2ahso-shard-00-01.pv9sd3h.mongodb.net","msg":"MongoDB connected"}
+{"level":30,"time":1778507890850,"pid":72,"hostname":"srv-d80r281o3t8c73e19ln0-hibernate-68d8946c9f-xxfpb","msg":"Resend API key detected — using HTTPS email transport."}
+{"level":30,"time":1778507890851,"pid":72,"hostname":"srv-d80r281o3t8c73e19ln0-hibernate-68d8946c9f-xxfpb","port":3001,"msg":"Server listening"}
+{"level":30,"time":1778507891654,"pid":72,"hostname":"srv-d80r281o3t8c73e19ln0-hibernate-68d8946c9f-xxfpb","req":{"id":1,"method":"HEAD","url":"/"},"res":{"statusCode":200},"responseTime":4,"msg":"request completed"}
+==> Your service is live 🎉
+{"level":30,"time":1778507898171,"pid":72,"hostname":"srv-d80r281o3t8c73e19ln0-hibernate-68d8946c9f-xxfpb","req":{"id":2,"method":"GET","url":"/"},"res":{"statusCode":200},"responseTime":3,"msg":"request completed"}
+==> 
+==> ///////////////////////////////////////////////////////////
+==> 
+==> Available at your primary URL https://www.spacexrocket.space + 1 more domain
+==> 
+==> ///////////////////////////////////////////////////////////
+==> Deploying...
+==> Setting WEB_CONCURRENCY=1 by default, based on available CPUs in the instance
+==> No open ports detected, continuing to scan...
+==> Docs on specifying a port: https://render.com/docs/web-services#port-binding
+==> Running 'PORT=3001 node --enable-source-maps ./artifacts/api-server/dist/index.mjs'
+{"level":30,"time":1778508244871,"pid":72,"hostname":"srv-d80r281o3t8c73e19ln0-hibernate-785cc9559b-n29xx","host":"ac-px2ahso-shard-00-01.pv9sd3h.mongodb.net","msg":"MongoDB connected"}
+{"level":30,"time":1778508246018,"pid":72,"hostname":"srv-d80r281o3t8c73e19ln0-hibernate-785cc9559b-n29xx","msg":"Resend API key detected — using HTTPS email transport."}
+{"level":30,"time":1778508246020,"pid":72,"hostname":"srv-d80r281o3t8c73e19ln0-hibernate-785cc9559b-n29xx","port":3001,"msg":"Server listening"}
+{"level":30,"time":1778508247013,"pid":72,"hostname":"srv-d80r281o3t8c73e19ln0-hibernate-785cc9559b-n29xx","req":{"id":1,"method":"HEAD","url":"/"},"res":{"statusCode":200},"responseTime":5,"msg":"request completed"}
+==> Your service is live 🎉
+{"level":30,"time":1778508253249,"pid":72,"hostname":"srv-d80r281o3t8c73e19ln0-hibernate-785cc9559b-n29xx","req":{"id":2,"method":"GET","url":"/"},"res":{"statusCode":200},"responseTime":4,"msg":"request completed"}
+==> 
+==> ///////////////////////////////////////////////////////////
+==> 
+==> Available at your primary URL https://www.spacexrocket.space + 1 more domain
+==> 

@@ -1,6 +1,0 @@
-.local/share/
-.local/state/
-node_modules/
-dist/
-docs/
-attached_assets/

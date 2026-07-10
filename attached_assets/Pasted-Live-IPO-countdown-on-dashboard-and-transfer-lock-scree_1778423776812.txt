@@ -1,0 +1,20 @@
+Live IPO countdown on dashboard and transfer lock screen (this was already Task #24 proposed)
+Mobile layout fix - things cut off, make everything fit, disable pull-to-refresh/drag-to-refresh
+Real-time updates on all pages
+Transfer Shares page from Portfolio page - separate page for transfers with broker options, pre-IPO lock message
+YouTube background video on landing page (autoplay, with sound)
+Looking at the existing proposed tasks:
+
+Task #22: PIN/biometric lock
+
+Task #23: Push notifications
+
+Task #24: IPO countdown (matches request #1)
+
+The user's request covers quite a bit. Let me think about how to organize this into tasks. The key principle is "default to one task per request unless the request contains clearly independent, unrelated goals." Looking at the requests, items 1-4 are all dashboard and platform related, so they could be grouped together as a dashboard overhaul task, while the YouTube video on the landing page is clearly independent.
+
+I should consolidate Task #24 to be more comprehensive—covering the IPO countdown, mobile layout fixes, real-time updates, and the portfolio transfer page overhaul as one cohesive platform update, then create a separate task for the landing page YouTube background video.
+
+For the transfer functionality, the user wants a dedicated page that the Portfolio tab's Transfer button navigates to, separate from the existing /transfer route. Task A covers the dashboard mobile fixes, IPO countdown integration, and enhancing the transfer page with better broker options and real-time data. Task B is about embedding that YouTube video as an autoplay background on the landing page hero section, using the YouTube embed API with autoplay enabled.
+
+There's a browser limitation though — YouTube's autoplay policy requires the video to be muted initially, but the user wants sound to play. I can work around this by adding an unmute button so users can enable audio after the page loads. Let me document this constraint in the plan and start writing out the implementation details.

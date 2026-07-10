@@ -1,0 +1,20 @@
+1. SpaceX IPO Launch Day & Beyond – The Realistic Process
+When the IPO finally launches (let's assume June 2026), here’s what happens for your investors:
+
+The Conversion: The SPV (Special Purpose Vehicle) that holds the private shares will convert them to public SpaceX stock at the IPO price. This is automatic. Your platform should reflect this change – one day they see "Pre‑IPO Shares (Private)," the next it updates to "SPCEX" (or whatever ticker) with the public market price.
+The Lock‑Up: Typically, pre‑IPO shares (especially from employees/early investors) are subject to a lock‑up period (often 90‑180 days post‑IPO) where they cannot be sold. However, shares purchased through a syndicate/SPV structured as a "forward contract" for IPO shares might not be subject to the same lock‑up if the SPV itself is the seller post‑IPO. This is a complex legal area. For your platform's simplicity, you'd likely state: "Shares will be tradable shortly after IPO commencement, subject to SPV administrator release."
+Selling the Shares: Once tradable, users don't sell "through" your platform directly. Your platform's key feature is the Brokerage Transfer. They would initiate a transfer of their shares from the SPV's custodian broker (e.g., Charles Schwab Institutional) to their personal brokerage account (Robinhood, Fidelity, etc.). This is a standard ACATS transfer. Your dashboard would guide them to: 1) Input their brokerage account details. 2) Generate and sign an electronic transfer authorization. 3) Track the transfer status (Pending, Completed).
+The "Pop" & Volatility: Day 1 will be chaotic. The price could soar 50‑100% above IPO price. Your dashboard should have a live price ticker, profit/loss calculators, and maybe even simple "Limit Order" placement instructions (not execution, as you're not a broker) for when the shares arrive in their account.
+2. The Full‑Featured User Dashboard – "SpaceX Investor Portal" Vision
+Think of it like a crypto exchange dashboard meets a premium brokerage. Features:
+
+Dashboard Home: Summary of total investment value, current paper gain/loss, allocation timeline (Pre‑IPO → Locked → Transferable).
+My Shares: A clean table showing Number of Shares, Average Cost (your fixed price), Current Value (live price feed from an API like Yahoo Finance post‑IPO), Total Gain/Loss.
+Transfer Center: The core. Steps to transfer to brokerage. Form to input: Brokerage Name, Account Number, Account Type (Individual, Joint, IRA). Status tracker for initiated transfers.
+Documents: Secure access to their SPV Agreement, Share Certificate, Tax Forms (1099‑B post‑sale), and all transaction receipts.
+Profile & Verification: KYC/Accredited status, contact info, payment method (BTC address history).
+Admin Panel (For You):
+User Management: View all investors, their status, investment amounts.
+Share Price Management: A simple input to update the "Fixed Pre‑IPO Share Price." Changing this updates the calculator on the main form for new users.
+IPO Date & Status Toggle: Switch the platform from "Pre‑IPO Mode" to "Post‑IPO Mode." This changes banners, unlocks the Transfer Center, and switches price data from static to live feed.
+Email Broadcast: Send updates to all users (e.g., "S‑1 filed!", "IPO priced at $XX!").

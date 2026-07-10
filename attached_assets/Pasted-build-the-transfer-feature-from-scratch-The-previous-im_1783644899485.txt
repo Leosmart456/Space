@@ -1,0 +1,151 @@
+build the transfer feature from scratch. The previous implementation misunderstood the requirement. Remove all Plaid integration and brokerage account linking.
+
+Dashboard
+
+* Replace the Portfolio tab with Transfer on both the Web and Mobile applications.
+* The new Transfer page must exist on both platforms and use the same backend.
+
+Transfer Options
+
+When the user taps Transfer, show two options:
+
+1. Transfer to another SpaceX user
+2. Transfer to another brokerage
+
+⸻
+
+Transfer to another SpaceX user
+
+Keep the existing internal transfer flow:
+
+* Recipient email
+* Amount/Shares
+* Review
+* Submit
+
+⸻
+
+Transfer to another brokerage
+
+This is NOT linking another brokerage.
+
+The assets are already held inside the SpaceX IPO platform.
+
+The user is requesting to transfer part or all of their holdings from SpaceX IPO to another brokerage.
+
+Remove every Plaid component, WebView, Link Token, Public Token, Client ID, Secret, Exchange endpoint and brokerage linking workflow.
+
+⸻
+
+Transfer Form
+
+Display:
+
+* Destination Brokerage
+* Brokerage Account Number
+* Account Holder Name
+* Email Address
+* Amount to Transfer
+* Asset
+* Transfer Type
+    * Full Transfer
+    * Partial Transfer
+* Notes (optional)
+
+The current broker is always SpaceX IPO, so do not ask for it.
+
+⸻
+
+Brokerage Selection
+
+Use a searchable dropdown.
+
+Populate it with the same broker list already used on the landing page.
+
+Each broker should display:
+
+* Logo
+* Broker Name
+
+Include as many supported brokerages as possible.
+
+⸻
+
+Verification
+
+Before submission:
+
+Verify the user’s identity using the existing SpaceX email verification (OTP) system.
+
+Flow:
+
+1. User completes the form.
+2. Clicks Continue.
+3. Send a 6-digit verification code to the user’s registered email.
+4. User enters the code.
+5. Verify the code.
+6. Only after successful verification can the request be submitted.
+
+Reuse the existing OTP/email verification infrastructure.
+
+Do not build a new authentication system.
+
+⸻
+
+Review Screen
+
+Show:
+
+* Destination Broker
+* Logo
+* Account Number
+* Account Holder
+* Asset
+* Amount
+* Transfer Type
+
+Then allow submission.
+
+⸻
+
+Submission
+
+When submitted:
+
+* Save to database.
+* Status = Pending Review.
+* Generate Request ID.
+* Notify company admin.
+* Email user confirming:
+
+“Your transfer request has been received and is pending review. Once verified, our transfer team will begin processing your request.”
+
+⸻
+
+Admin
+
+Admins can update:
+
+* Pending Review
+* Under Review
+* Awaiting Documents
+* Approved
+* Processing
+* Completed
+* Rejected
+
+⸻
+
+Important
+
+This feature is a manual transfer request system.
+
+It must never:
+
+* Link brokerage accounts.
+* Use Plaid.
+* Connect to external broker APIs.
+* Execute transfers automatically.
+* Claim assets have already been transferred.
+
+The transfer begins inside the SpaceX IPO platform and ends with a manually reviewed request to move assets to another brokerage.
