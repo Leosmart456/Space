@@ -1,0 +1,60 @@
+esponseTime: 107
+[05:01:50.823] INFO (3637): request completed
+    req: {
+      "id": 6,
+      "method": "POST",
+      "url": "/api/auth/create-account/resend"
+    }
+    res: {
+      "statusCode": 400
+    }
+    responseTime: 103
+(node:3637) [MONGOOSE] Warning: mongoose: the `new` option for `findOneAndUpdate()` and `findOneAndReplace()` is deprecated. Use `returnDocument: 'after'` instead.
+(Use `node --trace-warnings ...` to show where the warning was created)
+[05:02:52.490] INFO (3637): Email sent
+    to: "runaddsforbusiness@gmail.com"
+    subject: "Your SpaceX Investment Verification Code — 243686"
+[05:02:52.491] INFO (3637): request completed
+    req: {
+      "id": 7,
+      "method": "POST",
+      "url": "/api/auth/create-account"
+    }
+    res: {
+      "statusCode": 200
+    }
+    responseTime: 1361
+[05:03:05.203] INFO (3637): request errored
+    req: {
+      "id": 8,
+      "method": "POST",
+      "url": "/api/auth/create-account/verify"
+    }
+    res: {
+      "statusCode": 500
+    }
+    responseTime: 418
+    err: {
+      "type": "Error",
+      "message": "failed with status code 500",
+      "stack":
+          Error: failed with status code 500
+              at onResFinished (/home/runner/workspace/node_modules/.pnpm/pino-http@10.5.0/node_modules/pino-http/logger.js:115:39)
+              at ServerResponse.onResponseComplete (/home/runner/workspace/node_modules/.pnpm/pino-http@10.5.0/node_modules/pino-http/logger.js:178:14)
+              at ServerResponse.emit (node:events:520:35)
+              at onFinish (node:_http_outgoing:1026:10)
+              at callback (node:internal/streams/writable:764:21)
+              at afterWrite (node:internal/streams/writable:708:5)
+              at afterWriteTick (node:internal/streams/writable:694:10)
+              at process.processTicksAndRejections (node:internal/process/task_queues:88:21)
+    }
+[05:03:17.124] INFO (3637): request completed
+    req: {
+      "id": 9,
+      "method": "POST",
+      "url": "/api/auth/create-account/verify"
+    }
+    res: {
+      "statusCode": 400
+    }
+    responseTime: 104

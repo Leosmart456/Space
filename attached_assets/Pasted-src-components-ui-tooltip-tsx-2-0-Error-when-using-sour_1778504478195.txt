@@ -1,0 +1,44 @@
+src/components/ui/tooltip.tsx (2:0): Error when using sourcemap for reporting an error: Can't resolve original location of error.
+✓ 3103 modules transformed.
+rendering chunks...
+computing gzip size...
+dist/public/index.html                                                2.03 kB │ gzip:   0.74 kB
+dist/public/assets/xpsca_1778445100452-zlVTqysS.png                  31.12 kB
+dist/public/assets/videoplayback_(1)_1778429580494-D2U5L7Dt.mp4  57,697.74 kB
+dist/public/assets/index-CA0jLImM.css                               162.98 kB │ gzip:  22.08 kB
+dist/public/assets/index-BtjWlg5c.js                              1,082.65 kB │ gzip: 305.49 kB
+(!) Some chunks are larger than 500 kB after minification. Consider:
+- Using dynamic import() to code-split the application
+- Use build.rollupOptions.output.manualChunks to improve chunking: https://rollupjs.org/configuration-options/#output-manualchunks
+- Adjust chunk size limit for this warning via build.chunkSizeWarningLimit.
+✓ built in 5.30s
+$ node ./build.mjs
+  dist/index.mjs                       5.4mb ⚠️
+  dist/pino-worker.mjs               153.4kb
+  dist/pino-file.mjs                 142.1kb
+  dist/pino-pretty.mjs               114.6kb
+  dist/thread-stream-worker.mjs        7.3kb
+  dist/index.mjs.map                   9.4mb
+  dist/pino-worker.mjs.map           256.9kb
+  dist/pino-file.mjs.map             229.1kb
+  dist/pino-pretty.mjs.map           203.9kb
+  dist/thread-stream-worker.mjs.map   12.0kb
+⚡ Done in 871ms
+==> Uploading build...
+==> Uploaded in 7.2s. Compression took 6.0s
+==> Build successful 🎉
+==> Deploying...
+==> Setting WEB_CONCURRENCY=1 by default, based on available CPUs in the instance
+==> No open ports detected, continuing to scan...
+==> Docs on specifying a port: https://render.com/docs/web-services#port-binding
+==> Running 'PORT=3001 node --enable-source-maps ./artifacts/api-server/dist/index.mjs'
+{"level":30,"time":1778504364791,"pid":72,"hostname":"srv-d80r281o3t8c73e19ln0-hibernate-6f8974b9f7-48fp5","host":"ac-px2ahso-shard-00-00.pv9sd3h.mongodb.net","msg":"MongoDB connected"}
+{"level":30,"time":1778504365935,"pid":72,"hostname":"srv-d80r281o3t8c73e19ln0-hibernate-6f8974b9f7-48fp5","port":3001,"msg":"Server listening"}
+{"level":30,"time":1778504366570,"pid":72,"hostname":"srv-d80r281o3t8c73e19ln0-hibernate-6f8974b9f7-48fp5","req":{"id":1,"method":"HEAD","url":"/"},"res":{"statusCode":200},"responseTime":154,"msg":"request completed"}
+==> Your service is live 🎉
+==> 
+==> ///////////////////////////////////////////////////////////
+==> 
+==> Available at your primary URL https://www.spacexrocket.space + 1 more domain
+==> 
+==> ///////////////////////////////////////////////////////////

@@ -1,0 +1,34 @@
+**LANDING PAGE (Index):**
+The landing page must be a high‑conversion, sales‑focused page with the core message: "Buy & Own SpaceX Shares Before the IPO." It should NOT use language like "future opportunity," "not yet released," "upcoming," or "pre‑launch." Instead, use present‑tense, ownership‑focused copy.
+
+**Key Sections & Messaging:**
+
+1. **Hero Section:**
+   - Headline: `Own SpaceX Shares Now — Before the Public IPO.`
+   - Subheadline: `We are facilitating direct private purchases of SpaceX equity. Secure your shares today at a fixed pre‑IPO price.`
+   - Primary CTA Button: `Buy SpaceX Shares →` (links to registration).
+
+2. **Value Proposition:**
+   - Bullet points:
+     * `Buy at a Fixed Pre‑IPO Price – Lock in your cost before the June public listing.`
+     * `Direct Ownership – Your shares are held in a dedicated SPV; you own actual SpaceX equity.`
+     * `Seamless Future Transfer – Post‑IPO, move your shares to any brokerage (Robinhood, Fidelity, etc.) in one click.`
+   - Use icons, short bold statements.
+
+3. **How It Works (Simple Steps):**
+   1. `Create Your Account` – Verify your accredited investor status.
+   2. `Select Your Investment` – Choose how many shares to buy (minimum $5,000).
+   3. `Complete Purchase with Bitcoin` – Secure, instant settlement.
+   4. `Access Your Dashboard` – Monitor your shares, prepare for IPO transfer.
+
+4. **Trust Indicators:**
+   - "Over $[X]M in shares allocated to investors."
+   - "Secure, compliant SPV structure."
+   - "Direct partnership with authorized share providers."
+
+5. **FAQ (Anticipate Objections):**
+   - `Can I really buy SpaceX shares now?` → Yes, we are facilitating private market transactions for accredited investors. You purchase today, shares convert to public stock upon IPO.
+   - `When will I actually own the shares?` → Upon successful payment, you receive a share certificate and legal ownership in the SPV. Your ownership is immediate; the conversion to publicly tradable stock happens automatically at the IPO.
+   - `How do I sell later?` → Post‑IPO, you can transfer your shares to any brokerage account and sell on the open market.
+
+**Overall Tone:** Confident, exclusive, urgent, and straightforward. The page should make the visitor feel like they are *already* late if they don't act.

@@ -1,0 +1,114 @@
+/* "Compatible Brokers" showcase — a jigsaw puzzle of broker logos that
+   solves itself: pieces drift in scattered and slot into their correct
+   grid position one at a time, like an invisible hand assembling a puzzle.
+   After a pause it gently scrambles and solves again. */
+
+.puzzle-board-scene {
+  --tile: clamp(52px, 10vw, 84px);
+  --gap: clamp(6px, 1.4vw, 12px);
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 40px 0 32px;
+}
+
+.puzzle-board {
+  position: relative;
+  display: grid;
+  gap: var(--gap);
+}
+
+.puzzle-piece {
+  position: relative;
+  width: var(--tile);
+  height: var(--tile);
+}
+
+.puzzle-piece-inner {
+  position: absolute;
+  inset: 0;
+  border-radius: 14px;
+  background: #0a0a0a;
+  border: 1px solid rgba(255, 255, 255, 0.09);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.05),
+    0 6px 18px rgba(0, 0, 0, 0.55);
+  overflow: visible;
+}
+
+/* Jigsaw "knobs" — small circular tabs on alternating edges give the
+   silhouette of a real puzzle piece without needing SVG clip-paths. */
+.puzzle-knob {
+  position: absolute;
+  width: 34%;
+  height: 34%;
+  background: inherit;
+  border-radius: 50%;
+}
+
+.puzzle-piece[data-knob-top="1"] .puzzle-knob--top {
+  display: block;
+  top: -15%;
+  left: 33%;
+  background: #0a0a0a;
+  border: 1px solid rgba(255, 255, 255, 0.09);
+  border-bottom: none;
+}
+
+.puzzle-piece[data-knob-right="1"] .puzzle-knob--right {
+  display: block;
+  right: -15%;
+  top: 33%;
+  background: #0a0a0a;
+  border: 1px solid rgba(255, 255, 255, 0.09);
+  border-left: none;
+}
+
+.puzzle-knob { display: none; }
+
+.puzzle-piece-badge {
+  width: 68%;
+  height: 68%;
+  border-radius: 10px;
+  background: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  box-shadow: 0 1px 6px rgba(0, 0, 0, 0.45);
+}
+
+.puzzle-piece-badge img {
+  width: 68%;
+  height: 68%;
+  object-fit: contain;
+}
+
+.puzzle-piece.is-solved .puzzle-piece-inner {
+  border-color: rgba(34, 197, 94, 0.55);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.08),
+    0 0 0 1px rgba(34, 197, 94, 0.25),
+    0 0 22px rgba(34, 197, 94, 0.25),
+    0 6px 18px rgba(0, 0, 0, 0.55);
+}
+
+.puzzle-cursor {
+  position: absolute;
+  width: 22px;
+  height: 22px;
+  pointer-events: none;
+  z-index: 30;
+  filter: drop-shadow(0 2px 6px rgba(0, 0, 0, 0.6));
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .puzzle-board * {
+    transition: none !important;
+    animation: none !important;
+  }
+}
