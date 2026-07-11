@@ -1,0 +1,32 @@
+feat: per-token market movement notifications with tap-to-navigate
+
+Task #11 - Per-token market movement notifications
+
+## What changed
+
+### server/services/background-jobs.ts
+- Replaced `sendTopRatesNotification` (6-hour bulk summary, one notification for all coins)
+  with `checkMarketMovements` (30-minute check, individual per-coin notifications)
+- Updated full coin names: BNB → "Binance Coin", XRP → "Ripple" for proper description copy
+- Added `lastNotifiedAt` map for per-coin 2-hour cooldown to prevent spam
+- Added `MOVEMENT_THRESHOLD_PCT = 1.5` (min ±1.5% change required to trigger notification)
+- Added `COIN_COOLDOWN_MS = 2h` constant
+- First run (15s after boot) seeds `previousTopRatePrices` — no notifications emitted
+- Subsequent runs every 30 min compare current vs previous price and fire per-coin
+- Notification title: "BTC is up 3.24%" or "ETH dropped 2.10%"
+- Notification description: "Bitcoin reached $95,240.00 — up 3.24% in the last 30 min"
+- Metadata includes: `marketMovement:true, tokenSymbol, coinId, direction, changePercent, currentPrice`
+- Scheduler updated: was 6h interval, now 30m interval
+
+### client/src/pages/notifications.tsx
+- Added `metadata?.tokenSymbol` check in `handleNotificationClick` — navigates to `/token/:symbol`
+  (before orderId/transaction fallbacks, after supportChat check)
+- Added `TrendingUp` and `TrendingDown` icons from lucide-react
+- Notification icon circle is green (bg-green-500) with TrendingUp for "up" movements
+  and red (bg-red-500) with TrendingDown for "down" movements
+- All other notification types unchanged
+
+## No deviations from plan
+All three tasks in the plan were implemented exactly as specified.
+Push notification changes were left out of scope as specified.
+Browser push for market movements is intentionally removed (was emitting generic bulk push).

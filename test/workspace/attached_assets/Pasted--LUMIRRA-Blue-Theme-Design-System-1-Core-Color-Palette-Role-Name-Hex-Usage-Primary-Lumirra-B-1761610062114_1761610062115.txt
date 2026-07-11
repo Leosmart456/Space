@@ -1,0 +1,149 @@
+💠 LUMIRRA — Blue Theme Design System
+🎨 1. Core Color Palette
+Role	Name	Hex	Usage
+Primary	Lumirra Blue	#1677FF	Main brand color, buttons, highlights
+Primary Light	Sky Lumirra	#4DA3FF	Hovers, gradients, active states
+Primary Dark	Deep Lumirra	#004ECC	Pressed states, dark mode accent
+Accent	Diamond Cyan	#2ED8FF	Gradients, highlights, secondary CTA
+Background Light	Glacier White	#F7FAFF	App background (light mode)
+Background Dark	Midnight Navy	#0B1320	App background (dark mode)
+Text Primary	Sapphire Black	#0B1320	Main text (on light backgrounds)
+Text Secondary	Cloud Gray	#5B6670	Subtext, secondary UI
+Success	Mint Green	#2ECC71	Tx success, confirmations
+Error	Alert Red	#E74C3C	Tx failures, alerts
+Warning	Amber Glow	#F1C40F	Fee/gas warnings
+💎 2. Brand Gradient (for hero, logo glows, CTA backgrounds)
+background: linear-gradient(135deg, #1677FF 0%, #2ED8FF 100%);
+
+
+This gradient evokes a shimmering diamond effect — perfect for backgrounds behind the logo or buttons.
+
+🧩 3. Component Styles
+Buttons
+
+Primary Button
+
+Background: #1677FF
+
+Hover: #4DA3FF
+
+Text: white
+
+Radius: 12px
+
+Shadow: 0 4px 10px rgba(22, 119, 255, 0.25)
+
+Secondary Button
+
+Border: 2px solid #1677FF
+
+Text: #1677FF
+
+Background: transparent
+
+Danger Button
+
+Background: #E74C3C
+
+Text: white
+
+Cards
+
+Background: white (light) or #101828 (dark)
+
+Border radius: 16px
+
+Shadow: 0 4px 12px rgba(11, 19, 32, 0.05)
+
+Inputs
+
+Border: 1px solid #D0D7E2
+
+Focus ring: 2px solid #1677FF
+
+Placeholder: #A0AEC0
+
+🔠 4. Typography
+Role	Font	Weight	Size
+Headline	Poppins	600	28–36px
+Subtitle	Poppins	500	20px
+Body	Inter	400	16px
+Label	Inter	500	14px
+Button	Inter	600	16px
+
+Tip: Use font-display: swap and load from Google Fonts:
+
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Poppins:wght@500;600&display=swap" rel="stylesheet">
+
+🌙 5. Dark Mode Adjustments
+Role	Dark Mode
+Background	#0B1320
+Card	#101828
+Text	#E2E8F0
+Accent glow	cyan gradient (#1677FF → #2ED8FF)
+Buttons	primary stays bright (#1677FF), shadows reduced
+💫 6. Blue-based Illustration / Icon Style
+
+Use thin line icons (2px stroke) with accent fills in Lumirra Blue.
+
+Apply soft outer glow (rgba(22,119,255,0.4)) to main icons in hero sections.
+
+Token icons and chain badges use vibrant gradients (e.g., Ethereum gray-blue, Solana neon mix).
+
+🪞 7. Sample UI Concepts
+
+Splash screen: diamond outline glowing in gradient blue → fade into login/onboarding.
+
+Onboarding: glass-card layout over blue gradient background.
+
+Wallet home: white cards, blue header bar with gradient; totals in large bold text.
+
+Transaction confirmations: modal with glowing blue confirm button + subtle particle shimmer.
+
+Swap page: deep-blue panel background with gradient CTA.
+
+🧱 8. Tailwind Config Snippet (for Replit or React Native Web)
+// tailwind.config.js
+module.exports = {
+  theme: {
+    extend: {
+      colors: {
+        lumirra: {
+          blue: '#1677FF',
+          light: '#4DA3FF',
+          dark: '#004ECC',
+          cyan: '#2ED8FF',
+          bg: '#F7FAFF',
+          navy: '#0B1320',
+        },
+        success: '#2ECC71',
+        error: '#E74C3C',
+        warning: '#F1C40F',
+      },
+      fontFamily: {
+        sans: ['Inter', 'sans-serif'],
+        display: ['Poppins', 'sans-serif'],
+      },
+      boxShadow: {
+        card: '0 4px 12px rgba(11, 19, 32, 0.05)',
+        glow: '0 0 20px rgba(22, 119, 255, 0.35)',
+      },
+    },
+  },
+};
+
+🧭 9. Motion & Feedback
+
+Button tap: slight glow → fade.
+
+Loading state: rotating diamond spinner using Lumirra gradient.
+
+Send confirmation: pulse animation on success badge.
+
+🧩 10. Brand Emotion Board
+Trait	Visual Cue
+Trust	Deep blue base, white contrast
+Value	Diamond gradient shine
+Innovation	Cyan glows & minimal motion
+Security	Rounded edges + clean geometry
+Transparency	Glass-like UI cards (blur + gradient edges)
