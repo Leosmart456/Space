@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { useLocation } from "wouter";
 import { motion } from "framer-motion";
-import logoSrc from "@assets/xpsca_1778445100452.png";
+import logoSrc from "@/assets/logo.png";
 import SiteNav from "@/components/site-nav";
 
 function SpaceXLogo({ className }: { className?: string }) {

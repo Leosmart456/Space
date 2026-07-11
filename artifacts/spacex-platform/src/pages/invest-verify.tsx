@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { useLocation } from "wouter";
-import appLogo from "@assets/xpsca_1778445100452.png";
+import appLogo from "@/assets/logo.png";
 import { api } from "@/lib/api";
 import { setToken } from "@/lib/auth";
 import { useAuth } from "@/contexts/AuthContext";

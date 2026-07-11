@@ -1,4 +1,5 @@
 import { Router, type IRouter, type Request, type Response } from "express";
+import { mongoose } from "../lib/mongodb";
 import { User, Purchase, Transfer, TransferOtp, type IUser } from "../lib/models";
 import { requireAuth, requireEnabledUser } from "../middlewares/requireAuth";
 import { getSetting } from "./settings";

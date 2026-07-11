@@ -1,1 +1,2 @@
 attached_assets/videoplayback_(1)_1778429580494.mp4 filter=lfs diff=lfs merge=lfs -text
+artifacts/spacex-platform/src/assets/mission-video.mp4 filter=lfs diff=lfs merge=lfs -text
