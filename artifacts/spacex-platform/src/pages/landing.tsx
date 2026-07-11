@@ -3,8 +3,8 @@ import { useLocation } from "wouter";
 import { useAuth } from "@/contexts/AuthContext";
 import { setToken } from "@/lib/auth";
 import { motion, useReducedMotion, useScroll, useTransform } from "framer-motion";
-import appLogo from "@assets/xpsca_1778445100452.png";
-import missionVideo from "@assets/videoplayback_(1)_1778429580494.mp4";
+import appLogo from "@/assets/logo.png";
+import missionVideo from "@/assets/mission-video.mp4";
 import { MarsPlanet } from "@/components/MarsPlanet";
 import "./broker-puzzle.css";
 

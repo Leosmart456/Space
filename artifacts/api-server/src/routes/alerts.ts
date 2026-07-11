@@ -36,7 +36,7 @@ router.post("/alerts", requireEnabledUser, async (req: Request, res: Response): 
 
 router.delete("/alerts/:id", requireEnabledUser, async (req: Request, res: Response): Promise<void> => {
   const userId = (req as Request & { userId: string }).userId;
-  const alertId = req.params.id;
+  const alertId = String(req.params.id);
 
   if (!mongoose.Types.ObjectId.isValid(alertId)) {
     res.status(400).json({ error: "Invalid alert ID" });

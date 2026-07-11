@@ -2,7 +2,7 @@ import { useState } from "react";
 import { useLocation } from "wouter";
 import { useAuth } from "@/contexts/AuthContext";
 import { motion } from "framer-motion";
-import logoSrc from "@assets/xpsca_1778445100452.png";
+import logoSrc from "@/assets/logo.png";
 
 interface SiteNavProps {
   active?: "about" | "contact" | "sign-in" | "invest";

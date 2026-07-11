@@ -3,7 +3,7 @@ import { useLocation } from "wouter";
 import { useUser, useSettings } from "@/hooks/useUser";
 import { useToast } from "@/hooks/use-toast";
 import { useAuth } from "@/contexts/AuthContext";
-import appLogo from "@assets/xpsca_1778445100452.png";
+import appLogo from "@/assets/logo.png";
 
 function SpaceXLogo({ className = "" }: { className?: string }) {
   return <img src={appLogo} alt="SpaceX" className={className} />;

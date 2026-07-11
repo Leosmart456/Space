@@ -6,7 +6,7 @@ import { useUser, useSettings } from "@/hooks/useUser";
 import { api, type Purchase, type PriceAlert, type OHLCPoint } from "@/lib/api";
 import { motion } from "framer-motion";
 import { format } from "date-fns";
-import appLogo from "@assets/xpsca_1778445100452.png";
+import appLogo from "@/assets/logo.png";
 import { ComposedChart, Area, XAxis, YAxis, Tooltip, ResponsiveContainer, Bar, CartesianGrid, ReferenceLine, AreaChart } from "recharts";
 import { TrendingUp, TrendingDown, Bell, PlusCircle, Briefcase, FileText, Clock, CheckCircle2, Users, Check, X, ChevronRight } from "lucide-react";
 import { useIsMobile } from "@/hooks/use-mobile";

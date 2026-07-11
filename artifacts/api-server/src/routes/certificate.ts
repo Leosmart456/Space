@@ -70,7 +70,6 @@ router.get("/certificate", requireEnabledUser, async (req: Request, res: Respons
     size: 13,
     font: helveticaBold,
     color: rgb(1, 1, 1),
-    characterSpacing: 4,
   });
 
   const subLabel = "PRE-IPO PRIVATE PLACEMENT";
@@ -80,7 +79,6 @@ router.get("/certificate", requireEnabledUser, async (req: Request, res: Respons
     size: 8,
     font: helvetica,
     color: rgb(0.5, 0.5, 0.5),
-    characterSpacing: 3,
   });
 
   page.drawLine({ start: { x: 48, y: height - 158 }, end: { x: width - 48, y: height - 158 }, color: rgb(0.18, 0.18, 0.18), thickness: 0.5 });
@@ -92,7 +90,6 @@ router.get("/certificate", requireEnabledUser, async (req: Request, res: Respons
     size: 9,
     font: courier,
     color: rgb(0.7, 0.7, 0.7),
-    characterSpacing: 1,
   });
 
   page.drawLine({ start: { x: 48, y: height - 188 }, end: { x: width - 48, y: height - 188 }, color: rgb(0.18, 0.18, 0.18), thickness: 0.5 });
@@ -104,7 +101,6 @@ router.get("/certificate", requireEnabledUser, async (req: Request, res: Respons
     size: 9,
     font: helvetica,
     color: rgb(0.5, 0.5, 0.5),
-    characterSpacing: 3,
   });
 
   const nameText = user.fullName.toUpperCase();
@@ -126,7 +122,6 @@ router.get("/certificate", requireEnabledUser, async (req: Request, res: Respons
     size: 9,
     font: helvetica,
     color: rgb(0.5, 0.5, 0.5),
-    characterSpacing: 3,
   });
 
   const sharesText = totalShares.toLocaleString("en-US");
@@ -144,7 +139,6 @@ router.get("/certificate", requireEnabledUser, async (req: Request, res: Respons
     size: 9,
     font: helveticaBold,
     color: rgb(0.6, 0.6, 0.6),
-    characterSpacing: 3,
   });
 
   page.drawText("SPACE EXPLORATION TECHNOLOGIES CORP.", {
@@ -153,7 +147,6 @@ router.get("/certificate", requireEnabledUser, async (req: Request, res: Respons
     size: 10,
     font: helveticaBold,
     color: rgb(1, 1, 1),
-    characterSpacing: 1,
   });
 
   const statsY = bodyY - 208;
@@ -174,7 +167,6 @@ router.get("/certificate", requireEnabledUser, async (req: Request, res: Respons
       size: 7,
       font: helvetica,
       color: rgb(0.45, 0.45, 0.45),
-      characterSpacing: 2,
     });
     page.drawText(stats[i].value, {
       x: cx2 - helveticaBold.widthOfTextAtSize(stats[i].value, 14) / 2,
@@ -220,12 +212,12 @@ router.get("/certificate", requireEnabledUser, async (req: Request, res: Respons
 
   const sigY = 110;
   page.drawLine({ start: { x: 72, y: sigY }, end: { x: 220, y: sigY }, color: rgb(0.35, 0.35, 0.35), thickness: 0.5 });
-  page.drawText("AUTHORISED SIGNATORY", { x: 72, y: sigY - 14, size: 6.5, font: helvetica, color: rgb(0.4, 0.4, 0.4), characterSpacing: 1.5 });
-  page.drawText("SPACE EXPLORATION TECHNOLOGIES CORP.", { x: 72, y: sigY - 26, size: 6, font: helvetica, color: rgb(0.3, 0.3, 0.3), characterSpacing: 0.5 });
+  page.drawText("AUTHORISED SIGNATORY", { x: 72, y: sigY - 14, size: 6.5, font: helvetica, color: rgb(0.4, 0.4, 0.4) });
+  page.drawText("SPACE EXPLORATION TECHNOLOGIES CORP.", { x: 72, y: sigY - 26, size: 6, font: helvetica, color: rgb(0.3, 0.3, 0.3) });
 
   const rightSigX = width - 220;
   page.drawLine({ start: { x: rightSigX, y: sigY }, end: { x: width - 72, y: sigY }, color: rgb(0.35, 0.35, 0.35), thickness: 0.5 });
-  page.drawText("DATE OF ISSUE", { x: rightSigX, y: sigY - 14, size: 6.5, font: helvetica, color: rgb(0.4, 0.4, 0.4), characterSpacing: 1.5 });
+  page.drawText("DATE OF ISSUE", { x: rightSigX, y: sigY - 14, size: 6.5, font: helvetica, color: rgb(0.4, 0.4, 0.4) });
   page.drawText(issueDate.toUpperCase(), { x: rightSigX, y: sigY - 26, size: 7, font: courier, color: rgb(0.6, 0.6, 0.6) });
 
   page.drawText("[ SEAL ]", {
@@ -244,7 +236,6 @@ router.get("/certificate", requireEnabledUser, async (req: Request, res: Respons
     size: 6.5,
     font: courier,
     color: rgb(0.3, 0.3, 0.3),
-    characterSpacing: 0.5,
   });
 
   const pdfBytes = await pdfDoc.save();

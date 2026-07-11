@@ -4,7 +4,7 @@ import { useAuth } from "@/contexts/AuthContext";
 import { useUser } from "@/hooks/useUser";
 import { api } from "@/lib/api";
 import { motion } from "framer-motion";
-import appLogo from "@assets/xpsca_1778445100452.png";
+import appLogo from "@/assets/logo.png";
 
 const PROFILE_PHOTO_KEY = "spacex_profile_photo";
 

@@ -2,7 +2,7 @@ import { useState, useMemo } from "react";
 import { useQuery } from "@tanstack/react-query";
 import { api, type OHLCPoint } from "@/lib/api";
 import { AreaChart, Area, XAxis, YAxis, Tooltip, ResponsiveContainer } from "recharts";
-import appLogo from "@assets/xpsca_1778445100452.png";
+import appLogo from "@/assets/logo.png";
 
 const BG = "#000000";
 
