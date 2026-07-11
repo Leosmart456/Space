@@ -1,0 +1,91 @@
+ I want you to implement a **dynamic transfer fee calculator** for crypto transfers. ONLY FOR ADDRESS TRANSAFERS
+
+GOAL
+When a user sends BTC, ETH, or USDT, the wallet should calculate a **5% fee based on the USD value of the transfer**. The fee must be displayed in the **native token of the blockchain network used for the transaction**.
+
+FUNCTIONAL REQUIREMENTS
+
+1. Detect the following inputs from the user:
+
+* crypto amount
+* crypto asset (i have BTC, ETH, USDT)
+* selected network (BNB Chain, Ethereum ERC20, TRON TRC20, Solana)
+
+2. Fetch live crypto prices from an API such as:
+
+* CoinGecko API
+
+3. Convert the crypto amount to USD value:
+
+usd_value = crypto_amount × crypto_price_usd
+
+4. Calculate the transfer fee:
+
+fee_rate = 0.05
+fee_usd = usd_value × fee_rate
+
+5. Convert the USD fee into the native token of the selected network:
+
+Examples:
+BNB Chain → convert fee_usd to BNB
+Ethereum → convert fee_usd to ETH
+TRON → convert fee_usd to TRX
+Solana → convert fee_usd to SOL
+
+formula:
+
+fee_token = fee_usd ÷ native_token_price
+
+6. Display the result to the user before confirmation:
+
+Example output:
+
+Transfer Amount: 0.000015 BTC
+USD Value: $1000
+
+Network: BNB Chain
+Fee: 0.083 BNB ($50)
+
+Total Cost: $1050
+
+7. The UI should update the fee **live while the user types the amount**.
+
+TECHNICAL REQUIREMENTS
+
+* Create a reusable function:
+
+calculateTransferFee(amount, cryptoPriceUSD, networkTokenPrice)
+
+* Integrate CoinGecko API to fetch:
+  BTC price
+  ETH price
+  BNB price
+  TRX price
+  SOL price
+
+* Handle decimals correctly (up to 8 decimals)
+
+* Ensure the fee updates dynamically in the transfer form
+
+* Display both:
+  token fee and USD equivalent
+
+OPTIONAL FEATURES
+
+* Cache price data for 30 seconds to reduce API calls
+* Add loading state while fetching price
+* Show error if price API fails
+
+TECH STACK
+
+Use the existing project stack in the repo.
+If needed create:
+
+* a price service module
+* a fee calculation utility
+* a UI component to display network fee.
+
+Ensure the feature works for BTC, ETH, and USDT transfers across multiple networks.
+
+
+ALSO MAKE SURE THE AMOUNT OF FEE TO SHOULD SHOW ON THE INSUFICENT  POP OUT THAT SHOWS WHEN USERS WANTS TO SEND OUT CRYUPTO VIA ADDRESS

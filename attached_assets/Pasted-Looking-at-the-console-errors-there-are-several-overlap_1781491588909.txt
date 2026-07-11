@@ -1,0 +1,31 @@
+Looking at the console errors, there are several overlapping issues that point to both **server-side misconfiguration** and **client-side handling problems**:
+
+### 🔎 Likely Causes
+- **JSON parsing error**:  
+  The message `Unexpected token '<', "<!DOCTYPE "... is not valid JSON` means the app expected JSON but got an HTML response (probably an error page). This usually happens when the API endpoint is misconfigured or returning the wrong content type.
+
+- **WebSocket failure**:  
+  `WebSocket connection to 'wss://www.lumirawallet.com/ws' failed` suggests the server either doesn’t support WebSockets at that path, or the connection is being blocked (e.g., by CORS, firewall, or protocol mismatch).
+
+- **405 Method Not Allowed**:  
+  The `Failed to load resource: the server responded with a status of 405` indicates the client is making a request with an HTTP method (like POST or PUT) that the server doesn’t allow for that endpoint.
+
+- **Fallback font warning**:  
+  Fonts failing to load could be due to slow network or incorrect resource paths, but this is more of a secondary issue compared to the API/WebSocket failures.
+
+- **Repeated disconnections (`SyncroRedux`)**:  
+  The app’s state management (likely Redux middleware) is reporting disconnections because the WebSocket or API calls keep failing, cascading into repeated retries.
+
+### 🧩 Putting it together
+The root cause is most likely:
+- The backend is misconfigured (wrong response type, unsupported WebSocket endpoint, or incorrect allowed methods).  
+- The frontend isn’t handling error responses gracefully, so it tries to parse HTML as JSON and keeps retrying connections.  
+- Network slowness is compounding the issue, but not the primary cause.
+
+👉 If you’re debugging this, I’d start by:
+1. Checking the API endpoint responses directly in the browser or with `curl` to confirm what’s being returned.  
+2. Verifying the WebSocket server is running and accessible at the expected path.  
+3. Reviewing CORS and server method configurations.  
+4. Adding error handling in the frontend to detect when HTML error pages are returned instead of JSON.
+
+Would you like me to break down **step-by-step fixes** you could apply on the frontend vs backend side?

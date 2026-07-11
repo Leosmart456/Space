@@ -1,0 +1,50 @@
+This error occurs because Vercel automatically detects any file inside your `api/` directory and attempts to compile and deploy it as an **independent, standalone Serverless Function**. 
+
+Looking at your logs, Vercel is treating paths like `/api/auth/login-pin` and `/api/user` as separate functions:
+
+
+- `api/auth/login-pin.ts`
+- `api/user.ts`
+
+Because these files are bundled individually by Vercel's serverless builder, they lose context of your other backend directories (like `server/db.ts` or `server/routes.ts`), which results in `ERR_MODULE_NOT_FOUND` errors when they attempt to import them.
+
+To fix this, you need to structure your project so Vercel only deploys **one** main entrypoint function for your entire Express server, and routes all traffic through it.
+
+### Step 1: Clean up your api/ folder
+
+Move all files from your `api/` directory (except for your main entrypoint) into your `server/` directory.
+
+- Your `api/` folder should contain **only** one file: `api/index.ts` (or `api/server.ts`). This file acts as your main Express server file.
+- All of your individual routes and auth files (like `user.ts`, `login-pin.ts`, etc.) should be moved into a different folder, like `server/routes/` or `server/controllers/`.
+
+### Step 2: Configure your main entrypoint
+
+Ensure your single `api/index.ts` file imports all of your routes and default exports the Express app instance:
+
+```ts
+import express from 'express';
+import authRoutes from '../server/routes/auth'; // Ensure this points to the new location
+
+const app = express();
+
+app.use('/api/auth', authRoutes);
+
+export default app;
+```
+
+### Step 3: Add the vercel.json rewrite rule
+
+Make sure you have a `vercel.json` file in your root folder that tells Vercel to route all `/api/*` traffic directly to your single `api/index.ts` serverless function:
+
+```json
+{
+  "rewrites": [
+    {
+      "source": "/api/(.*)",
+      "destination": "/api"
+    }
+  ]
+}
+```
+
+Once you move your route files out of the `api/` directory and configure the rewrite, Vercel will build just one serverless function that handles all of your Express API routes correctly, eliminating the module resolution errors!

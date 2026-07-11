@@ -1,0 +1,277 @@
+Lumirra — UI / UX Design Spec (ready-to-use)
+1) Design goals
+
+Trust-first: clear, calm visuals that communicate security and value.
+
+Simple onboarding: make seed creation & backup the hero flow.
+
+Scannable dashboards: balances, recent txs, and quick actions up front.
+
+Cross-platform parity: same visual language on Mobile (React Native) + Web (React).
+
+2) Core user flows (prioritized)
+
+Onboard (New user) — Welcome → Create wallet → Show seed → Confirm seed → Set PIN/biometric → Wallet home.
+
+Restore wallet — Welcome → Restore with mnemonic → Biometric/PIN → Home.
+
+Send funds — Home → Send → Enter recipient / scan QR → Select asset → Adjust gas/fee → Confirm → Broadcast → Receipt.
+
+Receive funds — Home → Receive → Show address + QR + copy → Optional “verify on device”.
+
+Add custom token — Tokens → Add token → Paste contract → Fetch metadata → Confirm.
+
+Connect dApp — Connect request via WalletConnect → Permission modal → Sign request → Confirmation.
+
+Swap — Swap tab → Select pair → Fetch quote → Preview gas & slippage → Confirm → Receipt.
+
+Account settings — Security (change PIN, manage seed), Nodes, Export logs (for support), About.
+
+3) Screen list + wireframe notes (mobile-first)
+
+I. Splash / Welcome
+
+Logo centered (diamond + bold L), tagline, “Create Wallet” and “Restore Wallet” CTAs.
+
+Small “Have an existing seed?” link.
+
+II. Create Wallet — Seed display
+
+Big safe-looking card with 12/24 words, copy & download buttons, “I wrote it down” checkbox.
+
+Visual cue: diamond watermark in background.
+
+Secondary CTA: “Hide seed” toggles for privacy.
+
+III. Confirm Seed
+
+Randomized word-selection test (3–4 words); success shows “Backup complete”.
+
+IV. PIN & Biometric Setup
+
+PIN entry (4-6 digits) + “Enable biometric” toggle.
+
+V. Home / Dashboard
+
+Top: total portfolio value (local currency), chain selector (dropdown).
+
+Middle: horizontal token cards (swipeable) for each token: icon, name, balance, fiat value.
+
+Quick-actions row: Send · Receive · Swap · dApp.
+
+Recent transactions list with status badges (pending/confirmed/failed).
+
+Floating Action Button (FAB) for primary action (Send).
+
+VI. Send Flow (multi-step)
+
+Step 1: recipient input (address/ENS/search/QR). Validate checksum.
+
+Step 2: asset & amount. Show fiat conversion inline.
+
+Step 3: fees editor: suggested (fast/normal/slow) + manual advanced gas slider.
+
+Step 4: review modal: show diamond emblem, big amount, recipient, fee, network. “Swipe to confirm” or big Confirm button.
+
+Step 5: success screen with TX hash copy/share button.
+
+VII. Receive
+
+QR modal with address, copy & share, optional message.
+
+VIII. Token Details
+
+Token header with big icon, balance, price chart (7d), send/receive buttons, token info tab (contract, decimals, holders).
+
+IX. Swap
+
+Pair selector with searchable dropdown, price impact & slippage warning, quote results with aggregator source, confirm & success.
+
+X. Settings
+
+Security: change PIN, export logs, app lock timeout.
+
+Network: manage RPC lists, custom RPC add.
+
+About & legal: privacy policy, terms, contact support.
+
+4) Design system (visual tokens)
+Primary palette
+
+Lumirra Blue (primary) — #1677FF (use for primary CTAs & diamond).
+
+Deep Navy (text / headings) — #0B1320
+
+Slate Gray (secondary text) — #5B6670
+
+Success Green — #2ECC71
+
+Warning / Accent — #FFB020
+
+Background / Surface — #FFFFFF (light) and #0F1724 (dark mode background)
+
+Neutral scale
+
+100: #F7F9FB
+
+200: #EDF2F7
+
+300: #E2E8F0
+
+400: #CBD5E1
+
+500: #94A3B8
+
+Elevation / shadows
+
+Soft card shadow: rgba(4, 12, 20, 0.04) 0px 4px 12px
+
+Strong modal shadow: rgba(4, 12, 20, 0.12) 0px 12px 24px
+
+Typography
+
+Headline (H1) — Inter / Poppins SemiBold, 28–36sp (mobile), 48–64px (web).
+
+H2 — 20–24sp SemiBold.
+
+Body — Inter Regular 16sp (mobile), 18px (web).
+
+UI labels — 12–14sp Medium.
+
+Use variable font where possible for performance.
+
+Iconography
+
+Geometric, 2px stroke icons for actions; filled primary icons for major actions (send/receive).
+
+Diamond emblem as unique app mark — provide SVG & PNG (48, 72, 96, 128, 256 px).
+
+Spacing scale (rem-based)
+
+4, 8, 12, 16, 24, 32, 48, 64
+
+5) Component library (atomic)
+
+Provide components in Figma/React (Tailwind-ready):
+
+App Bar — chain selector + profile menu + hamburger.
+
+Card — token card with icon, balance, fiat conversion.
+
+Primary Button — filled rounded (height 44px), primary color.
+
+Secondary Button — outline.
+
+FAB — circular, 56px, shadow.
+
+Input — single-line, with validation states & copy icon.
+
+Modal — centered, with header, body, footer CTAs.
+
+Toast — success/error messages.
+
+Transaction row — icon, label, amount, timestamp, status badge.
+
+Gas slider — presets + manual slider.
+
+Mnemonic display — tokenized word chips (selectable for confirm).
+
+QR modal — scannable large QR, copy & share.
+
+6) Micro-interactions & motion
+
+Onboarding seed reveal: subtle upward reveal + shimmer on each word to encourage focus.
+
+Button press: 98% scale with quick easing.
+
+Transaction success: confetti particle (subtle) + success toast.
+
+Network switch: small modal with network icon, elastic dropdown.
+
+Swipe to confirm (optional): tactile, with progress fill and haptic.
+
+(Animation durations: 120–240ms for micro interactions; 400–600ms for full-screen transitions.)
+
+7) Accessibility & localization
+
+Text contrast >= 4.5:1 for body, >=3:1 for large text.
+
+Support dynamic type on mobile; responsive font scaling on web.
+
+All controls reachable by keyboard; labels present for screen readers.
+
+Localize strings (i18n), format currencies with Intl API, store language resources.
+
+8) Dark mode
+
+Primary: Lumirra Blue on dark surfaces uses lighter tints.
+
+Use subtle card elevations and soft glows for diamond emblem.
+
+Ensure QR and address copy contrast in dark theme.
+
+9) Assets & export specs
+
+Logo: SVG vector (master). Export PNG sizes: 48, 72, 96, 128, 256, 512. Provide transparent background cutout.
+
+Icon set: 24px / 32px / 48px PNG + single-page SVG sprite.
+
+Fonts: host via Google Fonts (Inter) or self-host variable fonts for app.
+
+Color tokens: JSON theme for devs, e.g.
+
+{
+  "colors": {
+    "primary": "#1677FF",
+    "text": "#0B1320",
+    "bg": "#FFFFFF",
+    "success": "#2ECC71"
+  }
+}
+
+
+Spacing & typography: export as Tailwind config or design tokens (JSON) for direct use.
+
+10) Developer handoff (what to include in PRs)
+
+Figma link (or zipped design file).
+
+Token JSON + Tailwind config.
+
+Component library docs (props, variants, states).
+
+Example screen snapshots + asset folder.
+
+Accessibility checklist & test cases.
+
+11) Example UI text / microcopy (copy-ready)
+
+Onboarding header: “Welcome to Lumirra — Your secure crypto vault.”
+
+Seed warning: “Write down your recovery phrase and store it offline. Lumirra cannot recover your funds without it.”
+
+Confirm send CTA: “Confirm & Sign”
+
+Error for low gas: “Insufficient gas fee — increase gas or choose a faster preset.”
+
+12) Quick Figma brief (copy into Figma request)
+
+Canvas: Mobile (iPhone 14) + Web (1366x768) frames.
+
+Pages: 1) Design System, 2) Wireframes (low-fi), 3) High-fidelity screens, 4) Interactions (prototype).
+
+Deliverables: Figma file with components, responsive variants, exported PNG/SVG assets, and a clickable prototype for onboarding + send flow.
+
+13) Sample task list you can paste into Replit agent or Jira (first 2 sprints)
+
+Create Figma design system (colors, typography, tokens).
+
+Create wireframes for onboarding, home, send, receive, token details.
+
+Produce high-fidelity mockups for onboarding + send + swap.
+
+Export SVG assets (logo, icons) and produce JSON design tokens.
+
+Deliver clickable prototype for onboarding + send flow.
+
+Handoff: design tokens + component specs to devs.

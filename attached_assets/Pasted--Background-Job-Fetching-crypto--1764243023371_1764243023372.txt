@@ -1,0 +1,82 @@
+  ==> ///////////////////////////////////////////////////////////
+[Background Job] Fetching crypto news...
+[Background Job] CryptoPanic API error: Too Many Requests
+[Background Job] Checking price alerts...
+[Background Job] No active alerts to check
+WebSocket upgrade request received for /ws
+WebSocket upgrade rejected: no session
+WebSocket upgrade request received for /ws
+WebSocket upgrade rejected: no session
+WebSocket upgrade request received for /ws
+WebSocket upgrade rejected: no session
+WebSocket upgrade request received for /ws
+WebSocket upgrade rejected: no session
+WebSocket upgrade request received for /ws
+WebSocket upgrade rejected: no session
+WebSocket upgrade request received for /ws
+WebSocket upgrade rejected: no session
+WebSocket upgrade request received for /ws
+WebSocket upgrade rejected: no session
+WebSocket upgrade request received for /ws
+WebSocket upgrade rejected: no session
+WebSocket upgrade request received for /ws
+WebSocket upgrade rejected: no session
+[Background Job] Checking price alerts...
+[Background Job] No active alerts to check
+     ==> Detected service running on port 10000
+WebSocket upgrade request received for /ws
+WebSocket upgrade rejected: no session
+     ==> Docs on specifying a port: https://render.com/docs/web-services#port-binding
+WebSocket upgrade request received for /ws
+WebSocket upgrade rejected: no session
+WebSocket upgrade request received for /ws
+WebSocket upgrade rejected: no session
+WebSocket upgrade request received for /ws
+WebSocket upgrade rejected: no session
+WebSocket upgrade request received for /ws
+WebSocket upgrade rejected: no session
+WebSocket upgrade request received for /ws
+WebSocket upgrade rejected: no session
+WebSocket upgrade request received for /ws
+WebSocket upgrade rejected: no session
+WebSocket upgrade request received for /ws
+WebSocket upgrade rejected: no session
+WebSocket upgrade request received for /ws
+WebSocket upgrade rejected: no session
+WebSocket upgrade request received for /ws
+WebSocket upgrade rejected: no session
+[Background Job] Checking price alerts...
+[Background Job] No active alerts to check
+WebSocket upgrade request received for /ws
+WebSocket upgrade rejected: no session
+7:27:16 AM [express] GET /api/user 200 in 1ms
+7:27:16 AM [express] GET /api/auth/user 401 in 2ms :: {"error":"Authentication required"}
+WebSocket upgrade request received for /ws
+WebSocket upgrade rejected: no session
+WebSocket upgrade request received for /ws
+WebSocket upgrade rejected: no session
+WebSocket upgrade request received for /ws
+WebSocket upgrade rejected: no session
+[Email Service] Attempting to send email to: leesmart995456@gmail.com
+[Email Service] Subject: Lumirra Wallet - Password Reset Code
+WebSocket upgrade request received for /ws
+WebSocket upgrade rejected: no session
+WebSocket upgrade request received for /ws
+WebSocket upgrade rejected: no session
+WebSocket upgrade request received for /ws
+WebSocket upgrade rejected: no session
+[Email Service] Failed to send email to: leesmart995456@gmail.com
+[Email Service] Error code: ETIMEDOUT
+[Email Service] Error message: Connection timeout
+[Email Service] Connection timed out - SMTP port may be blocked by firewall.
+[Email Service] Full error: Error: Connection timeout
+    at SMTPConnection._formatError (/opt/render/project/src/node_modules/nodemailer/lib/smtp-connection/index.js:809:19)
+    at SMTPConnection._onError (/opt/render/project/src/node_modules/nodemailer/lib/smtp-connection/index.js:795:20)
+    at Timeout.<anonymous> (/opt/render/project/src/node_modules/nodemailer/lib/smtp-connection/index.js:237:22)
+    at listOnTimeout (node:internal/timers:588:17)
+    at process.processTimers (node:internal/timers:523:7) {
+  code: 'ETIMEDOUT',
+  command: 'CONN'
+}
+7:27:54 AM [express] POST /api/auth/send-reset-code 500 in 30303ms :: {"error":"Failed to send reset…
+WebSocket upgrade request received for /ws
