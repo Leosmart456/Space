@@ -1,0 +1,168 @@
+16:51:34.961 Running build in Washington, D.C., USA (East) – iad1
+16:51:34.962 Build machine configuration: 2 cores, 8 GB
+16:51:34.975 Cloning github.com/Leosmart456/Space (Branch: main, Commit: abc16d3)
+16:51:34.976 Skipping build cache, deployment was triggered without cache.
+16:51:36.499 Cloning completed: 1.524s
+16:51:37.273 Running "vercel build"
+16:51:37.291 Vercel CLI 54.11.1
+16:51:38.070 Installing dependencies...
+16:51:43.180 npm warn deprecated @esbuild-kit/esm-loader@2.6.5: Merged into tsx: https://tsx.is
+16:51:43.223 npm warn deprecated @esbuild-kit/core-utils@3.3.2: Merged into tsx: https://tsx.is
+16:51:53.248 
+16:51:53.249 added 690 packages in 15s
+16:51:53.249 
+16:51:53.249 77 packages are looking for funding
+16:51:53.250   run `npm fund` for details
+16:51:53.572 vite v5.4.21 building for production...
+16:51:53.641 transforming...
+16:51:53.809 [baseline-browser-mapping] The data in this module is over two months old.  To ensure accurate Baseline data, please update: `npm i baseline-browser-mapping@latest -D`
+16:51:53.937 Browserslist: browsers data (caniuse-lite) is 7 months old. Please run:
+16:51:53.938   npx update-browserslist-db@latest
+16:51:53.938   Why you should do it regularly: https://github.com/browserslist/update-db#readme
+16:51:55.482 
+16:51:55.483 A PostCSS plugin did not pass the `from` option to `postcss.parse`. This may cause imported assets to be incorrectly transformed. If you've recently added a PostCSS plugin that raised this warning, please contact the package author to fix the issue.
+16:52:04.594 ✓ 3190 modules transformed.
+16:52:05.298 rendering chunks...
+16:52:06.202 [plugin:vite:reporter] [plugin vite:reporter] 
+16:52:06.203 (!) /vercel/path1/client/src/lib/sound.ts is dynamically imported by /vercel/path1/client/src/lib/websocket.tsx but also statically imported by /vercel/path1/client/src/pages/dashboard.tsx, /vercel/path1/client/src/pages/send.tsx, /vercel/path1/client/src/pages/swap.tsx, dynamic import will not move module into another chunk.
+16:52:06.204 
+16:52:06.316 computing gzip size...
+16:52:06.964 ../dist/public/assets/3101e014191d4923a19db3414a699551_1761779869124-BDXx19xn.png      7.80 kB
+16:52:06.964 ../dist/public/index.html                                                              8.58 kB │ gzip:   3.18 kB
+16:52:06.964 ../dist/public/assets/apps_bridgers_1761781872710-seZCgDKv.png                        12.02 kB
+16:52:06.965 ../dist/public/assets/image_1761911657612-Cd4BqCtx.png                                22.05 kB
+16:52:06.965 ../dist/public/assets/0de69ab328f64be1b87dfdafb031fb57_1761696781474-C4osSubH.png     22.31 kB
+16:52:06.965 ../dist/public/assets/Lumirra Logo Design (original)_1761608943046-CALTtGGK.png       29.47 kB
+16:52:06.965 ../dist/public/assets/image_1761911686745-De-YRC-m.png                                40.62 kB
+16:52:06.965 ../dist/public/assets/Lumirra Logo Design_1761873279867-CDkiwffj.png                 863.27 kB
+16:52:06.966 ../dist/public/assets/LIGHT_THEME_1775364086941-ZwhCuAE3.png                       6,148.57 kB
+16:52:06.966 ../dist/public/assets/DARK_THEME_1775364086943-DLK83idQ.png                        8,734.35 kB
+16:52:06.966 ../dist/public/assets/index-BaWWlpAr.css                                             142.62 kB │ gzip:  22.35 kB
+16:52:06.967 ../dist/public/assets/common-BNDecYDs.js                                               8.94 kB │ gzip:   4.30 kB
+16:52:06.967 ../dist/public/assets/common-Brszt57o.js                                               9.13 kB │ gzip:   4.17 kB
+16:52:06.967 ../dist/public/assets/common-Bb3mnE1B.js                                               9.48 kB │ gzip:   4.23 kB
+16:52:06.967 ../dist/public/assets/common-6U2U7xlx.js                                               9.52 kB │ gzip:   3.63 kB
+16:52:06.968 ../dist/public/assets/common-VZfrDp3s.js                                               9.52 kB │ gzip:   3.63 kB
+16:52:06.968 ../dist/public/assets/common-CK5VjOF_.js                                               9.52 kB │ gzip:   3.63 kB
+16:52:06.968 ../dist/public/assets/common-DMkt8lpq.js                                               9.52 kB │ gzip:   3.63 kB
+16:52:06.968 ../dist/public/assets/common-VIFAei6Y.js                                               9.52 kB │ gzip:   3.63 kB
+16:52:06.968 ../dist/public/assets/common-CorZ0weH.js                                               9.52 kB │ gzip:   3.63 kB
+16:52:06.968 ../dist/public/assets/common-BcyOgDu7.js                                               9.52 kB │ gzip:   3.63 kB
+16:52:06.969 ../dist/public/assets/common-Beqo6pTT.js                                               9.52 kB │ gzip:   3.63 kB
+16:52:06.969 ../dist/public/assets/common-CIg71IKJ.js                                               9.52 kB │ gzip:   3.63 kB
+16:52:06.969 ../dist/public/assets/common-BHh_jEtL.js                                               9.52 kB │ gzip:   3.63 kB
+16:52:06.969 ../dist/public/assets/common-DBUoAiBe.js                                               9.52 kB │ gzip:   3.63 kB
+16:52:06.969 ../dist/public/assets/common-Bm3wqMXY.js                                               9.52 kB │ gzip:   3.63 kB
+16:52:06.969 ../dist/public/assets/common-BBgrmFny.js                                               9.52 kB │ gzip:   3.63 kB
+16:52:06.970 ../dist/public/assets/common-CLXoJB-f.js                                               9.52 kB │ gzip:   3.63 kB
+16:52:06.976 ../dist/public/assets/common-3-ps1vkD.js                                               9.52 kB │ gzip:   3.63 kB
+16:52:06.977 ../dist/public/assets/common-Boqi_XAv.js                                               9.52 kB │ gzip:   3.63 kB
+16:52:06.977 ../dist/public/assets/common-BI2wZcXO.js                                               9.52 kB │ gzip:   3.63 kB
+16:52:06.978 ../dist/public/assets/common-5S8JmLbJ.js                                               9.52 kB │ gzip:   3.63 kB
+16:52:06.978 ../dist/public/assets/common-Cv31OERs.js                                               9.52 kB │ gzip:   3.63 kB
+16:52:06.978 ../dist/public/assets/common-DN8JwFn8.js                                               9.52 kB │ gzip:   3.63 kB
+16:52:06.978 ../dist/public/assets/common-B4oVX7YB.js                                               9.52 kB │ gzip:   3.63 kB
+16:52:06.979 ../dist/public/assets/common-DW7FKXSG.js                                               9.52 kB │ gzip:   3.63 kB
+16:52:06.979 ../dist/public/assets/common-BmZgNh8C.js                                               9.52 kB │ gzip:   3.63 kB
+16:52:06.979 ../dist/public/assets/common-D6io8tBC.js                                               9.52 kB │ gzip:   3.63 kB
+16:52:06.979 ../dist/public/assets/common-9q6u0_gy.js                                               9.52 kB │ gzip:   3.63 kB
+16:52:06.979 ../dist/public/assets/common-CoVNjVP0.js                                               9.52 kB │ gzip:   3.63 kB
+16:52:06.979 ../dist/public/assets/common-vUpKRHTc.js                                               9.52 kB │ gzip:   3.63 kB
+16:52:06.984 ../dist/public/assets/common--MBy7Bg7.js                                               9.52 kB │ gzip:   3.63 kB
+16:52:06.985 ../dist/public/assets/common-BBIqzY7C.js                                               9.52 kB │ gzip:   3.63 kB
+16:52:06.985 ../dist/public/assets/common-9cbC97b4.js                                               9.52 kB │ gzip:   3.63 kB
+16:52:06.985 ../dist/public/assets/common-CMurqurN.js                                               9.52 kB │ gzip:   3.63 kB
+16:52:06.986 ../dist/public/assets/common-AJFYGGnK.js                                               9.52 kB │ gzip:   3.63 kB
+16:52:06.986 ../dist/public/assets/common-CDnDELNp.js                                               9.52 kB │ gzip:   3.63 kB
+16:52:06.986 ../dist/public/assets/common-CLpwYDb-.js                                               9.52 kB │ gzip:   3.63 kB
+16:52:06.986 ../dist/public/assets/common-q40njset.js                                               9.52 kB │ gzip:   3.63 kB
+16:52:06.986 ../dist/public/assets/common-BU4yFOxt.js                                               9.52 kB │ gzip:   3.63 kB
+16:52:06.987 ../dist/public/assets/common-Uwuqc8H9.js                                               9.52 kB │ gzip:   3.63 kB
+16:52:06.987 ../dist/public/assets/common-BUqkOMpl.js                                               9.52 kB │ gzip:   3.63 kB
+16:52:06.987 ../dist/public/assets/common-Cz9zbWNO.js                                               9.52 kB │ gzip:   3.63 kB
+16:52:06.991 ../dist/public/assets/common-BHYnWPX9.js                                               9.52 kB │ gzip:   3.63 kB
+16:52:06.991 ../dist/public/assets/common-d295E5RX.js                                               9.52 kB │ gzip:   3.63 kB
+16:52:06.991 ../dist/public/assets/common-600Zlwys.js                                               9.52 kB │ gzip:   3.63 kB
+16:52:06.992 ../dist/public/assets/common-Dcti5ryG.js                                               9.52 kB │ gzip:   3.63 kB
+16:52:06.992 ../dist/public/assets/common-DdMMLWCW.js                                               9.52 kB │ gzip:   3.63 kB
+16:52:06.992 ../dist/public/assets/common-BYPkqW2V.js                                               9.52 kB │ gzip:   3.63 kB
+16:52:06.992 ../dist/public/assets/common-CunGk91g.js                                               9.52 kB │ gzip:   3.63 kB
+16:52:06.992 ../dist/public/assets/common-B7HvnFlU.js                                               9.52 kB │ gzip:   3.63 kB
+16:52:06.993 ../dist/public/assets/common-a9UGbXNW.js                                               9.52 kB │ gzip:   3.63 kB
+16:52:06.993 ../dist/public/assets/common-BS0SMpGR.js                                               9.52 kB │ gzip:   3.63 kB
+16:52:06.993 ../dist/public/assets/common-6Fm9_l5s.js                                               9.52 kB │ gzip:   3.63 kB
+16:52:06.993 ../dist/public/assets/common-DKtSjK6X.js                                               9.52 kB │ gzip:   3.63 kB
+16:52:06.993 ../dist/public/assets/common-CbJ2tx-H.js                                               9.52 kB │ gzip:   3.63 kB
+16:52:06.994 ../dist/public/assets/common-BCdIFygm.js                                               9.52 kB │ gzip:   3.63 kB
+16:52:06.994 ../dist/public/assets/common-C-n83Y71.js                                               9.52 kB │ gzip:   3.63 kB
+16:52:06.994 ../dist/public/assets/common-DNrUaDmr.js                                               9.52 kB │ gzip:   3.63 kB
+16:52:06.994 ../dist/public/assets/common-Dqns4bqu.js                                               9.52 kB │ gzip:   3.63 kB
+16:52:06.994 ../dist/public/assets/common-DAFYNMXM.js                                               9.52 kB │ gzip:   3.63 kB
+16:52:06.994 ../dist/public/assets/common-CC2hOwU2.js                                               9.52 kB │ gzip:   3.63 kB
+16:52:06.995 ../dist/public/assets/common-BUUWopWd.js                                               9.52 kB │ gzip:   3.63 kB
+16:52:06.995 ../dist/public/assets/common-BdJHN_b5.js                                               9.52 kB │ gzip:   3.63 kB
+16:52:06.995 ../dist/public/assets/common-BmtETXxm.js                                               9.52 kB │ gzip:   3.63 kB
+16:52:06.995 ../dist/public/assets/common-CZbud7uJ.js                                               9.52 kB │ gzip:   3.63 kB
+16:52:06.995 ../dist/public/assets/common-pctl_7R0.js                                               9.52 kB │ gzip:   3.63 kB
+16:52:06.996 ../dist/public/assets/common-CEwttLLK.js                                               9.52 kB │ gzip:   3.63 kB
+16:52:06.996 ../dist/public/assets/common-u5wFQq6o.js                                               9.52 kB │ gzip:   3.63 kB
+16:52:06.996 ../dist/public/assets/common-ByAxaa2l.js                                               9.52 kB │ gzip:   3.63 kB
+16:52:06.996 ../dist/public/assets/common-C1Lf5arv.js                                               9.52 kB │ gzip:   3.63 kB
+16:52:06.996 ../dist/public/assets/common-Dn65RYqW.js                                               9.52 kB │ gzip:   3.63 kB
+16:52:06.997 ../dist/public/assets/common-CoWzQ9LM.js                                               9.52 kB │ gzip:   3.63 kB
+16:52:06.997 ../dist/public/assets/common-C8qSe9B1.js                                               9.52 kB │ gzip:   3.63 kB
+16:52:06.997 ../dist/public/assets/common-CuG60Rql.js                                               9.52 kB │ gzip:   3.63 kB
+16:52:06.997 ../dist/public/assets/common-C8M2lXUF.js                                               9.52 kB │ gzip:   3.63 kB
+16:52:06.997 ../dist/public/assets/common-CAGNnGdr.js                                               9.52 kB │ gzip:   3.63 kB
+16:52:06.998 ../dist/public/assets/common-Be3ia44a.js                                               9.52 kB │ gzip:   3.63 kB
+16:52:06.998 ../dist/public/assets/common-BSbmdUvy.js                                               9.52 kB │ gzip:   3.63 kB
+16:52:06.998 ../dist/public/assets/common-BuRQYJx7.js                                               9.52 kB │ gzip:   3.63 kB
+16:52:06.998 ../dist/public/assets/common-DZiYO-Bt.js                                               9.52 kB │ gzip:   3.63 kB
+16:52:06.998 ../dist/public/assets/common-B1sZuYMA.js                                               9.52 kB │ gzip:   3.63 kB
+16:52:06.999 ../dist/public/assets/common-L5jdm_iv.js                                               9.52 kB │ gzip:   3.63 kB
+16:52:06.999 ../dist/public/assets/common-XOrGlkam.js                                               9.52 kB │ gzip:   3.63 kB
+16:52:06.999 ../dist/public/assets/common-edsLJbTI.js                                               9.52 kB │ gzip:   3.63 kB
+16:52:07.000 ../dist/public/assets/common-DbRmIh4B.js                                               9.52 kB │ gzip:   3.63 kB
+16:52:07.001 ../dist/public/assets/common-DGu-dk5e.js                                               9.52 kB │ gzip:   3.63 kB
+16:52:07.001 ../dist/public/assets/common-CZdaqyOM.js                                               9.52 kB │ gzip:   3.63 kB
+16:52:07.001 ../dist/public/assets/common-MMu-tiJ8.js                                               9.52 kB │ gzip:   3.63 kB
+16:52:07.001 ../dist/public/assets/common-BQXTse9h.js                                               9.52 kB │ gzip:   3.63 kB
+16:52:07.002 ../dist/public/assets/common-VbXOLEVL.js                                               9.52 kB │ gzip:   3.63 kB
+16:52:07.005 ../dist/public/assets/common-IIaEWBtP.js                                               9.52 kB │ gzip:   3.63 kB
+16:52:07.005 ../dist/public/assets/common-C_PqX4UB.js                                               9.52 kB │ gzip:   3.63 kB
+16:52:07.012 ../dist/public/assets/common-Eh48okCe.js                                               9.52 kB │ gzip:   3.63 kB
+16:52:07.013 ../dist/public/assets/common-BDkCYL4H.js                                               9.52 kB │ gzip:   3.63 kB
+16:52:07.013 ../dist/public/assets/common-Dvuc7lDW.js                                               9.52 kB │ gzip:   3.63 kB
+16:52:07.013 ../dist/public/assets/common-DSLZdb_9.js                                               9.52 kB │ gzip:   3.63 kB
+16:52:07.014 ../dist/public/assets/common-cr7j1WUe.js                                               9.60 kB │ gzip:   3.96 kB
+16:52:07.014 ../dist/public/assets/common-BvyDe6wu.js                                               9.66 kB │ gzip:   4.38 kB
+16:52:07.014 ../dist/public/assets/common-6aFVWnOc.js                                               9.68 kB │ gzip:   3.86 kB
+16:52:07.014 ../dist/public/assets/common-7vjRVViR.js                                               9.78 kB │ gzip:   3.96 kB
+16:52:07.014 ../dist/public/assets/common-BQ7Y4ANt.js                                               9.79 kB │ gzip:   3.96 kB
+16:52:07.015 ../dist/public/assets/common-DLBG6unk.js                                               9.83 kB │ gzip:   3.96 kB
+16:52:07.015 ../dist/public/assets/common-DUSwYhDI.js                                               9.92 kB │ gzip:   3.99 kB
+16:52:07.015 ../dist/public/assets/index-CfQTZrLX.js                                            2,239.47 kB │ gzip: 619.37 kB
+16:52:07.015 ✓ built in 13.37s
+16:52:07.015 
+16:52:07.016 (!) Some chunks are larger than 500 kB after minification. Consider:
+16:52:07.016 - Using dynamic import() to code-split the application
+16:52:07.016 - Use build.rollupOptions.output.manualChunks to improve chunking: https://rollupjs.org/configuration-options/#output-manualchunks
+16:52:07.016 - Adjust chunk size limit for this warning via build.chunkSizeWarningLimit.
+16:52:07.414 Using TypeScript 5.6.3 (local user-provided)
+16:52:16.768 server/db.ts(18,28): error TS2345: Argument of type 'string | undefined' is not assignable to parameter of type 'string'.
+16:52:16.769   Type 'undefined' is not assignable to type 'string'.
+16:52:16.769 
+16:52:19.525 server/routes.ts(3266,31): error TS2345: Argument of type 'ObjectId' is not assignable to parameter of type 'string'.
+16:52:19.526 server/routes.ts(3348,31): error TS2345: Argument of type 'ObjectId' is not assignable to parameter of type 'string'.
+16:52:19.526 server/routes.ts(4345,24): error TS2339: Property 'type' does not exist on type 'object'.
+16:52:19.526 server/routes.ts(4345,70): error TS2339: Property 'title' does not exist on type 'object'.
+16:52:19.527 server/routes.ts(4347,31): error TS2339: Property 'title' does not exist on type 'object'.
+16:52:19.527 server/routes.ts(4348,30): error TS2339: Property 'body' does not exist on type 'object'.
+16:52:19.527 
+16:52:19.770 server/services/background-jobs.ts(108,23): error TS18049: 'sub.keys' is possibly 'null' or 'undefined'.
+16:52:19.770 server/services/background-jobs.ts(109,21): error TS18049: 'sub.keys' is possibly 'null' or 'undefined'.
+16:52:19.771 server/services/background-jobs.ts(147,23): error TS18049: 'sub.keys' is possibly 'null' or 'undefined'.
+16:52:19.771 server/services/background-jobs.ts(148,21): error TS18049: 'sub.keys' is possibly 'null' or 'undefined'.
+16:52:19.771 
+16:52:20.146 server/utils/crypto.ts(44,15): error TS2554: Expected 0 arguments, but got 1.
+16:52:20.147 

@@ -1,0 +1,23 @@
+I am so sorry to hear you are experiencing 500 errors on your API requests. I have investigated your deployment logs, and I can confirm that Vercel is auto-compiling your files and overwriting your custom bundle.
+
+Here are the answers to your specific questions:
+
+- **Build steps:** The Vite build succeeded, and your esbuild step successfully produced a 291.0kb bundle.
+- **Overwriting:** Yes, Vercel auto-compiles the TypeScript files after your build command runs. This process overwrote your bundled file with a transpile-only file that is only about 1kb.
+- **Build compiler errors:** Because Vercel compiled your raw source files without bundling, it threw massive TypeScript compilation errors. For example, it reported that Express has no call signatures and could not find modules like nanoid.
+- **Runtime errors:** Because the bundle was overwritten with an unbundled 1kb file, your function crashes instantly on boot. The runtime error is a missing module error for express.
+- **Database and Secrets:** The function does not reach MongoDB or session secret runtime errors because it fails to import its basic dependencies first. Your environment variables are correctly set in your dashboard.
+
+To resolve these 500 errors, you will need to prevent Vercel from compiling your source files during the post-build phase. Here's what you can do:
+
+
+- **Move the source entrypoint:** Move or rename your source file api/index.ts out of the api folder in your repository, for example, to server/index.ts.
+- Since your custom build command uses server/vercel-handler.ts as the entrypoint, you do not need api/index.ts in your repository's api folder.
+
+- **Update your gitignore:** Add api/index.js to your gitignore file.
+- This ensures you do not commit your local build outputs to your repository.
+
+- **Deploy clean bundle:** Commit and push your changes to redeploy.
+- With the api directory empty of TypeScript files in your repository, your custom build command will generate the bundled api/index.js, and Vercel will deploy it directly without attempting to compile it again.
+
+If you need further assistance with resolving this problem, let me know, and I can help you create a support case!

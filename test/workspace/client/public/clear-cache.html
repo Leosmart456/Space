@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Clearing Cache...</title>
+  <style>
+    body {
+      font-family: system-ui;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      margin: 0;
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      color: white;
+    }
+    .container {
+      text-align: center;
+    }
+    .spinner {
+      border: 4px solid rgba(255,255,255,0.3);
+      border-top: 4px solid white;
+      border-radius: 50%;
+      width: 40px;
+      height: 40px;
+      animation: spin 1s linear infinite;
+      margin: 20px auto;
+    }
+    @keyframes spin {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Fixing App...</h1>
+    <div class="spinner"></div>
+    <p>Clearing cache and reloading...</p>
+  </div>
+  <script>
+    // Clear all storage
+    localStorage.clear();
+    sessionStorage.clear();
+    
+    // Clear IndexedDB
+    if (window.indexedDB && window.indexedDB.databases) {
+      window.indexedDB.databases().then((dbs) => {
+        dbs.forEach(db => {
+          window.indexedDB.deleteDatabase(db.name);
+        });
+      });
+    }
+    
+    // Clear all cookies
+    document.cookie.split(";").forEach((c) => {
+      document.cookie = c.replace(/^ +/, "").replace(/=.*/, "=;expires=" + new Date().toUTCString() + ";path=/");
+    });
+    
+    // Wait 2 seconds then redirect to home
+    setTimeout(() => {
+      window.location.href = '/';
+    }, 2000);
+  </script>
+</body>
+</html>

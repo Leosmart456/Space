@@ -1,0 +1,40 @@
+A **405 Method Not Allowed** error means that the server (or Vercel's CDN) received an HTTP request method (such as `POST` for your login form) that is not supported or allowed on that specific URL path.
+
+In your specific Vite + Express setup, this is incredibly common and almost always points to one of the following issues:
+
+
+- **SPA Rewrite Hijacking (Most Common):**
+- If your `vercel.json` has a wildcard rewrite rule to support your SPA router (which sends unmatched URLs to `/index.html`), but doesn't have a rule specifically routing your `/api` paths to your backend function, then Vercel tries to rewrite your `POST /api/auth/login` request to the static `/index.html` file.
+- Since Vercel's Edge CDN does not allow `POST` requests to be sent to static HTML files, it instantly blocks the request and returns a `405 Method Not Allowed`.
+
+- **To fix this, check your `vercel.json` file. Ensure you define an explicit rewrite rule for your `/api` path above the catch-all rule, like this:**
+
+```json
+{
+  "rewrites": [
+    { "source": "/api/:path*", "destination": "/api/index.js" },
+    { "source": "/(.*)", "destination": "/index.html" }
+  ]
+}
+```
+
+- **Express Router Method Misconfiguration:**
+- If the request is reaching your Serverless Function, but your backend Router is not configured to accept `POST` requests on `/api/auth/login`, it will return a 405 or a 404.
+- Make sure that you are utilizing `.post()` instead of `.get()` for your login endpoint in your backend code (such as in `server/routes.ts` or `server/app.ts`):
+
+```ts
+router.post('/api/auth/login', (req, res) => {
+  // Your login logic here
+});
+```
+
+- **CORS / OPTIONS Preflight Requests:**
+- Modern web browsers will automatically send an `OPTIONS` request (known as a preflight request) to your API endpoint before sending the actual `POST` request. If your backend doesn't handle the `OPTIONS` method or fails to return a `200` or `204` status, the browser will block the login.
+- You can resolve this by adding CORS middleware to your Express configuration to handle preflight requests automatically:
+
+```ts
+import cors from 'cors';
+app.use(cors({ origin: true, credentials: true }));
+```
+
+Take a look at your `vercel.json` rewrites and your Express route definitions. Let me know which of these aligns with your configuration, and we can get it sorted!

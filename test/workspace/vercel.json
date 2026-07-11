@@ -1,0 +1,15 @@
+{
+  "installCommand": "npx pnpm@9 install --ignore-scripts --no-frozen-lockfile",
+  "buildCommand": "vite build && esbuild server/vercel-handler.ts --bundle --platform=node --packages=external --format=esm --outfile=api/index.js",
+  "outputDirectory": "dist/public",
+  "rewrites": [
+    {
+      "source": "/api/:path*",
+      "destination": "/api/index.js"
+    },
+    {
+      "source": "/(.*)",
+      "destination": "/index.html"
+    }
+  ]
+}
