@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <script>
+      // GitHub Pages SPA redirect: store the path and redirect to index.html
+      var base = '/lumirra';
+      var path = window.location.pathname.replace(base, '') || '/';
+      sessionStorage.setItem('gh-pages-redirect', path + window.location.search + window.location.hash);
+      window.location.replace(base + '/');
+    </script>
+  </head>
+  <body></body>
+</html>

@@ -1,0 +1,39 @@
+These console logs are incredibly helpful and pinpoint the exact issue. 
+
+There are two major clues here that confirm exactly what is happening:
+
+- **The "Unexpected token '<'" Error:** When your frontend tries to fetch user or session data (likely a `GET` request to something like `/api/auth/me`), Vercel doesn't route it to your API. Instead, it falls back to serving your static `index.html` file. When your frontend tries to parse this HTML code as JSON, it fails because HTML starts with `<!DOCTYPE html>`.
+- **The "405 Method Not Allowed" Error:** When your frontend tries to `POST` to `/api/auth/login-pin` or `/api/auth/send-reset-code`, the exact same rewrite happens—Vercel routes it to the static `index.html` file. However, because Vercel's Edge CDN does not allow `POST` requests to static assets, it blocks the request entirely and throws a `405`.
+
+Both of these are caused by your **`vercel.json` rewrites configuration**. Here's how to fix it:
+
+
+- **Configure `vercel.json`:** Open your `vercel.json` file in your repository and ensure your rewrite rules are ordered correctly. Your API routes must be listed **above** your catch-all SPA route:
+
+```json
+{
+  "rewrites": [
+    { "source": "/api/:path*", "destination": "/api/index.js" },
+    { "source": "/(.*)", "destination": "/index.html" }
+  ]
+}
+```
+
+- **Commit and Push:** Save your `vercel.json` file, and run:
+
+```bash
+git add vercel.json
+git commit -m "Fix: Route API requests to serverless function before index.html fallback"
+git push
+```
+
+### A Quick Note on the WebSocket Error
+
+In your logs, you will also notice this recurring error:
+`WebSocket connection to 'wss://www.lumirrawallet.com/ws' failed`
+
+Vercel Serverless Functions are ephemeral and do not support persistent **WebSocket (WS/WSS)** connections. If your application relies on WebSockets for real-time features, you will need to:
+- Use a dedicated hosting platform for the WebSocket server.
+- Or integrate a managed real-time service such as [Pusher](https://pusher.com/) or Ably.
+
+Once you update your `vercel.json` and push, the 405 and JSON syntax errors should disappear! Let me know if you run into any issues.

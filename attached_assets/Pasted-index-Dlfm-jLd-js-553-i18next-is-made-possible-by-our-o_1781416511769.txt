@@ -1,0 +1,31 @@
+index-Dlfm-jLd.js:553 🌐 i18next is made possible by our own product, Locize — consider powering your project with managed localization (AI, CDN, integrations): https://locize.com 💙
+login:1 [Intervention] Slow network is detected. See https://www.chromestatus.com/feature/5636954674692096 for more details. Fallback font will be used while loading: https://www.lumirrawallet.com/MPC51JkWNRhq6HXWQHAO1aVUBSMDHIsgQWI9g3XLbjcnDaIXZpBEAbUrr8Z-YJiL2w6Lw7Qkv8m9ZgSc_73mlomrmBPLDVoCu7U3j9Y7VvVBUWFFENT1KDnILUvXG13BUgsJhc1obKF1jqvO7VX0p9uSFpAqdocBFdE50y4X9vqmjFOrzFm1KK4uD9eYzQDhmNJ5S5dBQMDyQ5M8aBeqBTYBL0JIXQ19sMeIfnhxG51UshXn0vsbChYRA7FwcW6if22sQtPNbFPtdURSUMZqMq6rVF8fMlmXoK47UxWS-CmJuiz_ZI0VmtNQb8YCbCl09Ddb_NF0OzrJH42PU4p5oHUsYrvtgT_J4bxLeNbpwNMBP4XK-z6k5NdS6AEUUrXY0mXxxTwJxcWPcpLKc3Rc2KP9Ihq15jOzoSQdpOaAOamOvQIc-nTpvUw44SAhiqfm42XS-84ei6rhDqt8cEO5PAb3ew
+index-Dlfm-jLd.js:40 [Intervention] Slow network is detected. See https://www.chromestatus.com/feature/5636954674692096 for more details. Fallback font will be used while loading: https://www.lumirrawallet.com/uFueLTWFvye1B_uC_xMl4mgkqiGQouq8FxgnlgcDt27D7aLyIG5JGTPRwFJ3i96zSdw2mVA1dwWqJAbJB0MYTQVBuvhKaSNxXa7UMnDK5dj-6Jug5buMCZvuastN5wBinIFKfGbj5VHxMmf4LlRHaEr2NSbRihoDsP6F5Hl3JheiCKciZlCEmhImlfNdLFqkw_mC6hoGQVlMBV_SMYjMOGvZH07K2ZTXhq7MpBRe816Cd2wPsFSmTjGEcF-1b7MdwtUd0ohXMtvLt5X2EHhsHmiZd-2vx5FOhLEM1ZhNF659FtkmVd4lt7ZZKGrAg3zB0eI8luS6F5FoGjeySeR5dLM5pzaJa6JNTpCCGuRARWl9tLcYVOFdrpxr23t63EkSW_uhUbnAr8P5XuachorEBkNgKpSDeyUNEoZFHOs4nKcDVYVZWA7tcNUig3N1YEoAN5o
+index-Dlfm-jLd.js:553 Auth verification error: SyntaxError: Unexpected token '<', "<!DOCTYPE "... is not valid JSON
+(anonymous) @ index-Dlfm-jLd.js:553
+index-Dlfm-jLd.js:555 WebSocket connection to 'wss://www.lumirrawallet.com/ws' failed: 
+connect @ index-Dlfm-jLd.js:555
+index-Dlfm-jLd.js:555 WebSocket connection to 'wss://www.lumirrawallet.com/ws' failed: 
+connect @ index-Dlfm-jLd.js:555
+index-Dlfm-jLd.js:555 WebSocket connection to 'wss://www.lumirrawallet.com/ws' failed: 
+connect @ index-Dlfm-jLd.js:555
+api/auth/login-pin:1  Failed to load resource: the server responded with a status of 405 ()
+index-Dlfm-jLd.js:555 WebSocket connection to 'wss://www.lumirrawallet.com/ws' failed: 
+connect @ index-Dlfm-jLd.js:555
+index-Dlfm-jLd.js:555 WebSocket connection to 'wss://www.lumirrawallet.com/ws' failed: 
+connect @ index-Dlfm-jLd.js:555
+index-Dlfm-jLd.js:555 WebSocket connection to 'wss://www.lumirrawallet.com/ws' failed: 
+connect @ index-Dlfm-jLd.js:555
+index-Dlfm-jLd.js:555 WebSocket connection to 'wss://www.lumirrawallet.com/ws' failed: 
+connect @ index-Dlfm-jLd.js:555
+api/auth/login-pin:1  Failed to load resource: the server responded with a status of 405 ()
+api/auth/send-reset-code:1  Failed to load resource: the server responded with a status of 405 ()
+api/auth/send-reset-code:1  Failed to load resource: the server responded with a status of 405 ()
+index-Dlfm-jLd.js:555 WebSocket connection to 'wss://www.lumirrawallet.com/ws' failed: 
+connect @ index-Dlfm-jLd.js:555
+api/auth/send-reset-code:1  Failed to load resource: the server responded with a status of 405 ()
+index-Dlfm-jLd.js:555 WebSocket connection to 'wss://www.lumirrawallet.com/ws' failed: 
+connect @ index-Dlfm-jLd.js:555
+index-Dlfm-jLd.js:555 WebSocket connection to 'wss://www.lumirrawallet.com/ws' failed: 
+connect @ index-Dlfm-jLd.js:555
+(anonymous) @ index-Dlfm-jLd.js:555
