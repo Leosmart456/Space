@@ -1,10 +1,6 @@
 import { createContext, useContext, ReactNode } from "react";
 import { queryClient } from "./queryClient";
 
-const WS_API_BASE = import.meta.env.VITE_API_URL ?? "";
-const WS_HOST = WS_API_BASE ? WS_API_BASE.replace(/^https?:\/\//, "") : window.location.host;
-const WS_PROTOCOL = WS_API_BASE ? (WS_API_BASE.startsWith("https") ? "wss:" : "ws:") : (window.location.protocol === "https:" ? "wss:" : "ws:");
-
 interface WebSocketMessage {
   type: string;
   [key: string]: any;
@@ -36,7 +32,7 @@ class WebSocketManager {
 
   private async checkAuthAndConnect() {
     try {
-      const res = await fetch(`${WS_API_BASE}/api/user`, { credentials: "include", method: "GET" });
+      const res = await fetch("/api/user", { credentials: "include", method: "GET" });
       if (res.ok) {
         this.connect();
       }
@@ -83,7 +79,8 @@ class WebSocketManager {
       this.ws = null;
     }
     try {
-      const ws = new WebSocket(`${WS_PROTOCOL}//${WS_HOST}/ws`);
+      const protocol = window.location.protocol === "https:" ? "wss:" : "ws:";
+      const ws = new WebSocket(`${protocol}//${window.location.host}/ws`);
       this.ws = ws;
 
       ws.onopen = () => {

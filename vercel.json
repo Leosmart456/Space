@@ -1,15 +1,11 @@
- {
+{
   "installCommand": "npx pnpm@9 install --ignore-scripts --no-frozen-lockfile",
-  "buildCommand": "vite build",
+  "buildCommand": "vite build && npx esbuild server/vercel-handler.ts --bundle --platform=node --packages=external --format=esm --outfile=api/index.js",
   "outputDirectory": "dist/public",
   "rewrites": [
     {
       "source": "/api/:path*",
-      "destination": "https://space-production-a4d8.up.railway.app/api/:path*"
-    },
-    {
-      "source": "/ws",
-      "destination": "https://space-production-a4d8.up.railway.app/ws"
+      "destination": "/api/index.js"
     },
     {
       "source": "/(.*)",

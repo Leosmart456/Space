@@ -85,7 +85,7 @@ export function AdminAlertOverlay() {
     setLoggedOut(true);
     apiRequest("POST", "/api/auth/logout").catch(() => {});
     setTimeout(() => {
-      window.location.href = import.meta.env.BASE_URL;
+      window.location.href = "/";
     }, 3500);
   }, [isExpired, loggedOut]);
 

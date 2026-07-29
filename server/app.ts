@@ -3,8 +3,8 @@ import session from "express-session";
 import { storage } from "./storage";
 import { connectDB } from "./db";
 import { serveStatic, log } from "./vite";
+import { startBackgroundJobs } from "./services/background-jobs";
 import { registerRoutes } from "./routes";
-import { MongoSessionStore } from "./utils/session-store";
 import type { Express } from "express";
 
 declare module 'http' {
@@ -31,22 +31,11 @@ export function getApp(): Promise<Express> {
     const app = express();
 
     app.use((req: Request, res: Response, next: NextFunction) => {
-      const allowedOrigins = [
-        "https://space-gyq0omr46-lumirra-s-projects.vercel.app",
-        "https://space-seven-xi.vercel.app",
-        "https://www.lumirrawallet.com",
-        "https://lumirrawallet.com",
-        process.env.FRONTEND_URL,
-      ].filter(Boolean);
-      const origin = req.headers.origin || "";
-      if (allowedOrigins.includes(origin) || allowedOrigins.some(o => o && origin.endsWith(".vercel.app"))) {
-        res.setHeader("Access-Control-Allow-Origin", origin);
-      } else if (!origin) {
-        res.setHeader("Access-Control-Allow-Origin", "*");
-      }
+      const origin = req.headers.origin || "*";
+      res.setHeader("Access-Control-Allow-Origin", origin);
       res.setHeader("Access-Control-Allow-Credentials", "true");
       res.setHeader("Access-Control-Allow-Methods", "GET,POST,PUT,PATCH,DELETE,OPTIONS");
-      res.setHeader("Access-Control-Allow-Headers", "Content-Type, Authorization, Cookie");
+      res.setHeader("Access-Control-Allow-Headers", "Content-Type, Authorization");
       if (req.method === "OPTIONS") {
         res.sendStatus(204);
         return;
@@ -76,18 +65,12 @@ export function getApp(): Promise<Express> {
     }
 
     const DEV_SESSION_SECRET = "lumirra-dev-session-secret-stable-2024";
-
-    const isVercel = !!process.env.VERCEL;
-    const isProduction = process.env.NODE_ENV === "production" || !!process.env.RAILWAY_ENVIRONMENT || !!process.env.RAILWAY_SERVICE_NAME || isVercel;
-    const sessionStore = isProduction ? new MongoSessionStore() : undefined;
-
     const sessionParser = session({
       secret: process.env.SESSION_SECRET || DEV_SESSION_SECRET,
       resave: false,
       saveUninitialized: false,
-      store: sessionStore,
       cookie: {
-        secure: isProduction,
+        secure: process.env.NODE_ENV === "production",
         httpOnly: true,
         maxAge: 1000 * 60 * 60 * 24 * 7,
         sameSite: 'lax',
@@ -95,12 +78,6 @@ export function getApp(): Promise<Express> {
     });
 
     app.use(sessionParser);
-
-    app.use("/api/auth", (_req, res, next) => {
-      res.setHeader("Cache-Control", "no-store, no-cache, must-revalidate, proxy-revalidate");
-      res.setHeader("Pragma", "no-cache");
-      next();
-    });
 
     app.use((req, res, next) => {
       const start = Date.now();
@@ -133,10 +110,7 @@ export function getApp(): Promise<Express> {
     await connectDB();
     await storage.init();
 
-    if (!isVercel) {
-      const { startBackgroundJobs } = await import("./services/background-jobs");
-      startBackgroundJobs();
-    }
+    startBackgroundJobs();
 
     await registerRoutes(app, sessionParser);
 
