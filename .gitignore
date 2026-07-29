@@ -5,5 +5,3 @@ server/public
 vite.config.ts.*
 *.tar.gz
 api/index.js
-.local/share/
-.local/state/

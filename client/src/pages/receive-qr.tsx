@@ -9,7 +9,7 @@ import { useQuery } from "@tanstack/react-query";
 import { useWallet } from "@/contexts/wallet-context";
 import { QRCodeSVG } from "qrcode.react";
 import { getWalletAddress } from "@shared/wallet-addresses";
-import qrLogoImage from "@assets/WhatsApp Image 2025-10-29 at 00.54.14_f67a12fe_1761724701087.jpg";
+import qrLogoImage from "@assets/Lumirra Logo Design (original)_1761875532047.png";
 import html2canvas from "html2canvas";
 import { apiRequest } from "@/lib/queryClient";
 

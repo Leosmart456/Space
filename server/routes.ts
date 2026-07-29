@@ -5416,57 +5416,6 @@ export async function registerRoutes(app: Express, sessionParser?: any): Promise
     }
   });
 
-  // ─── Vercel Cron Job Endpoints ───────────────────────────────────────────
-  // These are called by Vercel's scheduler. Protected by CRON_SECRET header.
-  const verifyCron = (req: any, res: any): boolean => {
-    const secret = process.env.CRON_SECRET;
-    if (secret) {
-      const auth = req.headers["authorization"];
-      if (auth !== `Bearer ${secret}`) {
-        res.status(401).json({ error: "Unauthorized" });
-        return false;
-      }
-    }
-    return true;
-  };
-
-  app.get("/api/cron/price-alerts", async (req, res) => {
-    if (!verifyCron(req, res)) return;
-    try {
-      const { checkPriceAlerts } = await import("./services/background-jobs");
-      await checkPriceAlerts();
-      res.json({ ok: true, job: "price-alerts", timestamp: new Date().toISOString() });
-    } catch (error: any) {
-      console.error("[Cron] price-alerts error:", error);
-      res.status(500).json({ ok: false, error: error.message });
-    }
-  });
-
-  app.get("/api/cron/news", async (req, res) => {
-    if (!verifyCron(req, res)) return;
-    try {
-      const { fetchCryptoNews } = await import("./services/background-jobs");
-      await fetchCryptoNews();
-      res.json({ ok: true, job: "news", timestamp: new Date().toISOString() });
-    } catch (error: any) {
-      console.error("[Cron] news error:", error);
-      res.status(500).json({ ok: false, error: error.message });
-    }
-  });
-
-  app.get("/api/cron/market", async (req, res) => {
-    if (!verifyCron(req, res)) return;
-    try {
-      const { checkMarketMovements } = await import("./services/background-jobs");
-      await checkMarketMovements();
-      res.json({ ok: true, job: "market", timestamp: new Date().toISOString() });
-    } catch (error: any) {
-      console.error("[Cron] market error:", error);
-      res.status(500).json({ ok: false, error: error.message });
-    }
-  });
-  // ─────────────────────────────────────────────────────────────────────────
-
   const httpServer = createServer(app);
   
   // Initialize WebSocket service if sessionParser is provided

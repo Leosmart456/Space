@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { useLocation } from "wouter";
-const logoImage = "/lumirra-logo.png";
+import logoImage from "@assets/Lumirra Logo Design (original)_1761875532047.png";
 import { motion, AnimatePresence } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -108,9 +108,9 @@ export default function Login() {
               });
 
               if (data.user.isAdmin) {
-                window.location.href = import.meta.env.BASE_URL + "admin";
+                window.location.href = "/admin";
               } else {
-                window.location.href = import.meta.env.BASE_URL + "dashboard";
+                window.location.href = "/dashboard";
               }
             } else {
               const errorData = await response.json();

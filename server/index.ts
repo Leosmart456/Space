@@ -1,6 +1,6 @@
 import { createServer } from "http";
 import { registerRoutes } from "./routes";
-import { log } from "./logger";
+import { setupVite, log } from "./vite";
 import { storage } from "./storage";
 import { connectDB } from "./db";
 import { getApp } from "./app";
@@ -85,7 +85,6 @@ import { type Request, Response, NextFunction } from "express";
       next();
     });
 
-    const { setupVite } = await import("./vite");
     await setupVite(app, server);
 
     const port = parseInt(process.env.PORT || '5000', 10);
