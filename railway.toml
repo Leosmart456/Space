@@ -1,0 +1,9 @@
+[build]
+builder = "railpack"
+installCommand = "npm install"
+buildCommand = "npm run build"
+
+[deploy]
+startCommand = "npm run start"
+restartPolicyType = "on_failure"
+restartPolicyMaxRetries = 3
