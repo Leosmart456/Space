@@ -73,7 +73,9 @@ export function getApp(): Promise<Express> {
         secure: process.env.NODE_ENV === "production",
         httpOnly: true,
         maxAge: 1000 * 60 * 60 * 24 * 7,
-        sameSite: 'lax',
+        // 'none' is required when the frontend (Vercel) and backend (Railway)
+        // are on different origins — 'lax' blocks cross-site cookie sending.
+        sameSite: process.env.NODE_ENV === "production" ? "none" : "lax",
       }
     });
 

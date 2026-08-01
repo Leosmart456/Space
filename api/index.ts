@@ -5,5 +5,6 @@ const appPromise = getApp();
 
 export default async function handler(req: Request, res: Response) {
   const app = await appPromise;
-  app(req, res);
+  // Express Application is callable at runtime but lacks a call signature in its TypeScript types.
+  (app as unknown as (req: Request, res: Response) => void)(req, res);
 }

@@ -80,7 +80,13 @@ class WebSocketManager {
     }
     try {
       const protocol = window.location.protocol === "https:" ? "wss:" : "ws:";
-      const ws = new WebSocket(`${protocol}//${window.location.host}/ws`);
+      // VITE_BACKEND_URL lets the Vercel-hosted frontend reach the Railway WS server.
+      // e.g. VITE_BACKEND_URL=https://space.up.railway.app  → wss://space.up.railway.app/ws
+      const backendUrl = import.meta.env.VITE_BACKEND_URL as string | undefined;
+      const wsHost = backendUrl
+        ? backendUrl.replace(/^https?:\/\//, "")
+        : window.location.host;
+      const ws = new WebSocket(`${protocol}//${wsHost}/ws`);
       this.ws = ws;
 
       ws.onopen = () => {

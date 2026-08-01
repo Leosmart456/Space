@@ -3,6 +3,23 @@ import App from "./App";
 import "./index.css";
 import "./i18n";
 
+// When the frontend (Vercel) and backend (Railway) are on different domains,
+// set VITE_BACKEND_URL=https://your-service.up.railway.app in Vercel's env vars.
+// This interceptor transparently prefixes every /api/* and /ws fetch call so
+// no individual component needs to know about the backend URL.
+const _backendUrl = (import.meta.env.VITE_BACKEND_URL as string | undefined)?.replace(/\/$/, "");
+if (_backendUrl) {
+  const _origFetch = window.fetch.bind(window);
+  window.fetch = (input: RequestInfo | URL, init?: RequestInit) => {
+    const url = typeof input === "string" ? input : input instanceof URL ? input.href : (input as Request).url;
+    if (url.startsWith("/api") || url.startsWith("/ws")) {
+      const prefixed = `${_backendUrl}${url}`;
+      return _origFetch(typeof input === "string" ? prefixed : new Request(prefixed, input as Request), init);
+    }
+    return _origFetch(input, init);
+  };
+}
+
 // ── Prevent pull-to-refresh & overscroll on Android WebView ──────────────────
 // CSS overscroll-behavior:none covers most cases but Android Chrome/WebView
 // still allows the native pull-to-refresh gesture via touch events. We block
