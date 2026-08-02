@@ -10,10 +10,12 @@ import "./i18n";
 // Falls back to the hardcoded Railway URL in production builds where the env
 // var is not injected at Vite build time.
 const RAILWAY_BACKEND = "https://space-production-679e.up.railway.app";
-const _backendUrl = (
-  (import.meta.env.VITE_BACKEND_URL as string | undefined) ??
-  (import.meta.env.PROD ? RAILWAY_BACKEND : "")
-)?.replace(/\/$/, "");
+function _normalizeBackend(raw: string | undefined): string {
+  if (!raw) return import.meta.env.PROD ? RAILWAY_BACKEND : "";
+  if (!raw.startsWith("http")) return `https://${raw.replace(/\/$/, "")}`;
+  return raw.replace(/\/$/, "");
+}
+const _backendUrl = _normalizeBackend(import.meta.env.VITE_BACKEND_URL as string | undefined);
 if (_backendUrl) {
   const _origFetch = window.fetch.bind(window);
   window.fetch = (input: RequestInfo | URL, init?: RequestInit) => {

@@ -83,10 +83,13 @@ class WebSocketManager {
       // VITE_BACKEND_URL lets the Vercel-hosted frontend reach the Railway WS server.
       // e.g. VITE_BACKEND_URL=https://space.up.railway.app  → wss://space.up.railway.app/ws
       // Falls back to the hardcoded Railway URL in production builds where the env
-      // var is not injected at Vite build time.
+      // var is not injected at Vite build time. Also normalizes missing https:// prefix.
       const RAILWAY_BACKEND = "https://space-production-679e.up.railway.app";
-      const backendUrl = (import.meta.env.VITE_BACKEND_URL as string | undefined) ??
+      const rawBackendUrl = (import.meta.env.VITE_BACKEND_URL as string | undefined) ??
         (import.meta.env.PROD ? RAILWAY_BACKEND : undefined);
+      const backendUrl = rawBackendUrl
+        ? (rawBackendUrl.startsWith("http") ? rawBackendUrl : `https://${rawBackendUrl}`)
+        : undefined;
       const wsHost = backendUrl
         ? backendUrl.replace(/^https?:\/\//, "")
         : window.location.host;

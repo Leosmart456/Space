@@ -6,9 +6,14 @@ import { QueryClient, QueryFunction } from "@tanstack/react-query";
 // Falls back to the hardcoded Railway URL in production builds where the env
 // var is not injected at Vite build time.
 const RAILWAY_BACKEND = "https://space-production-679e.up.railway.app";
-const API_BASE =
-  (import.meta.env.VITE_BACKEND_URL as string | undefined) ??
-  (import.meta.env.PROD ? RAILWAY_BACKEND : "");
+function normalizeBackendUrl(raw: string | undefined): string {
+  if (!raw) return import.meta.env.PROD ? RAILWAY_BACKEND : "";
+  // If the value is missing the protocol (e.g. set without https:// in Vercel dashboard)
+  // prepend https:// so it is never treated as a relative path.
+  if (!raw.startsWith("http")) return `https://${raw}`;
+  return raw.replace(/\/$/, "");
+}
+const API_BASE = normalizeBackendUrl(import.meta.env.VITE_BACKEND_URL as string | undefined);
 
 function resolveUrl(url: string): string {
   if (API_BASE && url.startsWith("/")) {
