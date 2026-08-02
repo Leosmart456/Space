@@ -3,30 +3,9 @@ import App from "./App";
 import "./index.css";
 import "./i18n";
 
-// When the frontend (Vercel) and backend (Railway) are on different domains,
-// set VITE_BACKEND_URL=https://your-service.up.railway.app in Vercel's env vars.
-// This interceptor transparently prefixes every /api/* and /ws fetch call so
-// no individual component needs to know about the backend URL.
-// Falls back to the hardcoded Railway URL in production builds where the env
-// var is not injected at Vite build time.
-const RAILWAY_BACKEND = "https://space-production-679e.up.railway.app";
-function _normalizeBackend(raw: string | undefined): string {
-  if (!raw) return import.meta.env.PROD ? RAILWAY_BACKEND : "";
-  if (!raw.startsWith("http")) return `https://${raw.replace(/\/$/, "")}`;
-  return raw.replace(/\/$/, "");
-}
-const _backendUrl = _normalizeBackend(import.meta.env.VITE_BACKEND_URL as string | undefined);
-if (_backendUrl) {
-  const _origFetch = window.fetch.bind(window);
-  window.fetch = (input: RequestInfo | URL, init?: RequestInit) => {
-    const url = typeof input === "string" ? input : input instanceof URL ? input.href : (input as Request).url;
-    if (url.startsWith("/api") || url.startsWith("/ws")) {
-      const prefixed = `${_backendUrl}${url}`;
-      return _origFetch(typeof input === "string" ? prefixed : new Request(prefixed, input as Request), init);
-    }
-    return _origFetch(input, init);
-  };
-}
+// All /api/* requests use relative URLs — Vercel proxies them to Railway.
+// See vercel.json rewrites: /api/:path* → https://space-production-679e.up.railway.app/api/:path*
+// No fetch interceptor needed; relative URLs work correctly through the proxy.
 
 // ── Prevent pull-to-refresh & overscroll on Android WebView ──────────────────
 // CSS overscroll-behavior:none covers most cases but Android Chrome/WebView

@@ -1,19 +1,10 @@
 import { QueryClient, QueryFunction } from "@tanstack/react-query";
 
-// When the frontend is on Vercel and the backend is on Railway, set
-// VITE_BACKEND_URL=https://your-service.up.railway.app in Vercel env vars.
-// All /api/* requests will be prefixed with that URL automatically.
-// Falls back to the hardcoded Railway URL in production builds where the env
-// var is not injected at Vite build time.
-const RAILWAY_BACKEND = "https://space-production-679e.up.railway.app";
-function normalizeBackendUrl(raw: string | undefined): string {
-  if (!raw) return import.meta.env.PROD ? RAILWAY_BACKEND : "";
-  // If the value is missing the protocol (e.g. set without https:// in Vercel dashboard)
-  // prepend https:// so it is never treated as a relative path.
-  if (!raw.startsWith("http")) return `https://${raw}`;
-  return raw.replace(/\/$/, "");
-}
-const API_BASE = normalizeBackendUrl(import.meta.env.VITE_BACKEND_URL as string | undefined);
+// All /api/* requests use relative URLs — Vercel proxies them to Railway.
+// See vercel.json rewrites: /api/:path* → https://space-production-679e.up.railway.app/api/:path*
+// This keeps session cookies first-party on the Vercel domain, which is
+// required for mobile browsers (Safari ITP blocks third-party cookies).
+const API_BASE = "";
 
 function resolveUrl(url: string): string {
   if (API_BASE && url.startsWith("/")) {
