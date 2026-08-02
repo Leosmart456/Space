@@ -7,7 +7,13 @@ import "./i18n";
 // set VITE_BACKEND_URL=https://your-service.up.railway.app in Vercel's env vars.
 // This interceptor transparently prefixes every /api/* and /ws fetch call so
 // no individual component needs to know about the backend URL.
-const _backendUrl = (import.meta.env.VITE_BACKEND_URL as string | undefined)?.replace(/\/$/, "");
+// Falls back to the hardcoded Railway URL in production builds where the env
+// var is not injected at Vite build time.
+const RAILWAY_BACKEND = "https://space-production-679e.up.railway.app";
+const _backendUrl = (
+  (import.meta.env.VITE_BACKEND_URL as string | undefined) ??
+  (import.meta.env.PROD ? RAILWAY_BACKEND : "")
+)?.replace(/\/$/, "");
 if (_backendUrl) {
   const _origFetch = window.fetch.bind(window);
   window.fetch = (input: RequestInfo | URL, init?: RequestInit) => {

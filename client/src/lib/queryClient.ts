@@ -3,7 +3,12 @@ import { QueryClient, QueryFunction } from "@tanstack/react-query";
 // When the frontend is on Vercel and the backend is on Railway, set
 // VITE_BACKEND_URL=https://your-service.up.railway.app in Vercel env vars.
 // All /api/* requests will be prefixed with that URL automatically.
-const API_BASE = (import.meta.env.VITE_BACKEND_URL as string | undefined) ?? "";
+// Falls back to the hardcoded Railway URL in production builds where the env
+// var is not injected at Vite build time.
+const RAILWAY_BACKEND = "https://space-production-679e.up.railway.app";
+const API_BASE =
+  (import.meta.env.VITE_BACKEND_URL as string | undefined) ??
+  (import.meta.env.PROD ? RAILWAY_BACKEND : "");
 
 function resolveUrl(url: string): string {
   if (API_BASE && url.startsWith("/")) {
