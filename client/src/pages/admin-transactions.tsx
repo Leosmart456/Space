@@ -87,11 +87,9 @@ function TransactionRow({ tx, onClick }: { tx: AdminTransaction; onClick: () => 
         <p className={`font-medium ${isSend ? "text-destructive" : "text-success"}`}>
           {isSend ? "-" : "+"}{formatCrypto(tx.amount)} {tx.tokenSymbol}
         </p>
-        {tx.amountUSD && (
-          <p className="text-sm text-muted-foreground">
-            ≈ {formatUSD(tx.amountUSD)}
-          </p>
-        )}
+        <p className="text-sm text-muted-foreground">
+          ≈ {formatUSD(tx.amountUSD || "0")}
+        </p>
         <Badge variant="outline" className="text-xs mt-1">
           {tx.chainId.toUpperCase()}
         </Badge>

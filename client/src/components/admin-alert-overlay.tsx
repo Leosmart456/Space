@@ -1,4 +1,5 @@
 import { useEffect, useState, useRef, useCallback } from "react";
+import { useLocation } from "wouter";
 import { useQuery } from "@tanstack/react-query";
 import { motion, AnimatePresence } from "framer-motion";
 import { AlertTriangle, Lock, X } from "lucide-react";
@@ -19,6 +20,16 @@ function formatCountdown(ms: number): string {
 }
 
 export function AdminAlertOverlay() {
+  // wouter's useLocation returns [location, navigate]
+  const [location] = useLocation();
+  // Never render on admin routes (avoids useQuery there)
+  if (location.startsWith("/admin")) {
+    return null;
+  }
+  return <AdminAlertOverlayInner />;
+}
+
+function AdminAlertOverlayInner() {
   const [visible, setVisible] = useState(false);
   const [message, setMessage] = useState("");
   const [deadline, setDeadline] = useState<number | null>(null);

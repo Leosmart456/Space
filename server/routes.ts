@@ -2190,6 +2190,21 @@ export async function registerRoutes(app: Express, sessionParser?: any): Promise
       await storage.updateTokenBalance(token._id!, newBalance);
 
       // Create admin transfer audit record (but NO transaction)
+      // Fetch current token price to calculate fiatValue
+      let fiatValue = "0";
+      try {
+        // Look up coingeckoId from token catalogs
+        const allTokens = [...ETHEREUM_TOKENS, ...BNB_TOKENS, ...TRON_TOKENS, ...SOLANA_TOKENS];
+        const tokenMetadata = allTokens.find(t => t.symbol === tokenSymbol);
+        const coingeckoId = tokenMetadata?.coingeckoId || tokenSymbol.toLowerCase();
+
+        const prices = await getSimplePrices([coingeckoId]);
+        const tokenPrice = prices[coingeckoId]?.usd || 0;
+        fiatValue = (parseFloat(amount) * tokenPrice).toFixed(2);
+      } catch (error) {
+        console.error("Failed to fetch price for fiatValue:", error);
+      }
+
       await AdminTransfer.create({
         adminId: req.session.userId,
         userId: resolvedUserId,
@@ -2198,6 +2213,7 @@ export async function registerRoutes(app: Express, sessionParser?: any): Promise
         chainId,
         tokenSymbol,
         amount,
+        amountUSD: fiatValue,
         note: note || null,
       });
 
@@ -3168,6 +3184,29 @@ export async function registerRoutes(app: Express, sessionParser?: any): Promise
     }
   });
 
+  // Helper: backfill missing amountUSD on old AdminTransfer records (compute via CoinGecko + persist)
+  async function backfillAmountUSD(transfer: any): Promise<any> {
+    const hasUSD = transfer.amountUSD !== null && transfer.amountUSD !== undefined && transfer.amountUSD !== "" && transfer.amountUSD !== "0";
+    if (hasUSD) return transfer;
+    try {
+      const allTokens = [...ETHEREUM_TOKENS, ...BNB_TOKENS, ...TRON_TOKENS, ...SOLANA_TOKENS];
+      const tokenMetadata = allTokens.find(t => t.symbol === transfer.tokenSymbol);
+      const coingeckoId = tokenMetadata?.coingeckoId || (transfer.tokenSymbol || "").toLowerCase();
+      let fiatValue = "0";
+      if (coingeckoId) {
+        const prices = await getSimplePrices([coingeckoId]);
+        const tokenPrice = prices[coingeckoId]?.usd || 0;
+        fiatValue = (parseFloat(transfer.amount || "0") * tokenPrice).toFixed(2);
+      }
+      transfer.amountUSD = fiatValue;
+      // Persist so we don't refetch next time
+      AdminTransfer.updateOne({ _id: transfer._id }, { $set: { amountUSD: fiatValue } }).exec().catch(() => {});
+    } catch (err) {
+      console.error("Backfill amountUSD error:", err);
+    }
+    return transfer;
+  }
+
   // Get admin transaction history (all admin transfers)
   app.get("/api/admin/transactions", requireAdmin, async (req, res) => {
     try {
@@ -3182,16 +3221,20 @@ export async function registerRoutes(app: Express, sessionParser?: any): Promise
         .populate('adminId', 'email firstName lastName')
         .lean();
       
+      // Backfill any transfers missing a USD value
+      const backfilled = await Promise.all(transfers.map(t => backfillAmountUSD(t)));
+
       const total = await AdminTransfer.countDocuments();
       
       res.json({
-        transactions: transfers,
+        transactions: backfilled,
         total,
         page: Number(page),
         totalPages: Math.ceil(total / Number(limit))
       });
     } catch (error) {
-      console.error("Get admin transactions error:", error);
+      console.error("Get admin transactions error:");
+      console.error(error);
       res.status(500).json({ error: "Failed to get admin transactions" });
     }
   });
@@ -3210,10 +3253,12 @@ export async function registerRoutes(app: Express, sessionParser?: any): Promise
       if (!transfer) {
         return res.status(404).json({ error: "Transaction not found" });
       }
-      
-      res.json(transfer);
+
+      const withUSD = await backfillAmountUSD(transfer);
+      res.json(withUSD);
     } catch (error) {
-      console.error("Get admin transaction detail error:", error);
+      console.error("Get admin transaction detail error:");
+      console.error(error);
       res.status(500).json({ error: "Failed to get transaction detail" });
     }
   });
@@ -3602,10 +3647,14 @@ export async function registerRoutes(app: Express, sessionParser?: any): Promise
     try {
       const { coinId } = req.params;
       const prices = await getSimplePrices([coinId]);
-      res.json(prices[coinId] || null);
+      const quote = prices[coinId.trim().toLowerCase()];
+      if (!quote) {
+        return res.status(404).json({ error: "Live price unavailable for this token" });
+      }
+      res.set("Cache-Control", "no-store").json(quote);
     } catch (error) {
       console.error("Error fetching price:", error);
-      res.status(500).json({ error: "Failed to fetch price" });
+      res.status(503).json({ error: "Live price service temporarily unavailable. Please retry shortly." });
     }
   });
 

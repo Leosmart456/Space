@@ -104,11 +104,9 @@ export default function AdminTransactionDetail() {
         <h2 className="text-4xl font-bold mb-2" data-testid="text-amount">
           -{formatCrypto(tx.amount)} {tx.tokenSymbol}
         </h2>
-        {tx.amountUSD && (
-          <p className="text-muted-foreground" data-testid="text-fiat-value">
-            ≈ {formatUSD(tx.amountUSD)}
-          </p>
-        )}
+        <p className="text-muted-foreground" data-testid="text-fiat-value">
+          ≈ {formatUSD(tx.amountUSD || "0")}
+        </p>
       </div>
 
       <div className="container mx-auto px-3 sm:px-4 max-w-2xl space-y-6">

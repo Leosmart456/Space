@@ -88,7 +88,7 @@ import { type Request, Response, NextFunction } from "express";
     await setupVite(app, server);
 
     const port = parseInt(process.env.PORT || '5000', 10);
-    server.listen({ port, host: "0.0.0.0", reusePort: true }, () => {
+    server.listen({ port, host: process.env.HOST || "0.0.0.0", reusePort: false }, () => {
       log(`serving on port ${port}`);
     });
   } else {
@@ -96,7 +96,7 @@ import { type Request, Response, NextFunction } from "express";
     const app = await getApp();
     const server = createServer(app);
     const port = parseInt(process.env.PORT || '5000', 10);
-    server.listen({ port, host: "0.0.0.0", reusePort: true }, () => {
+    server.listen({ port, host: process.env.HOST || "0.0.0.0", reusePort: false }, () => {
       log(`serving on port ${port}`);
     });
   }
