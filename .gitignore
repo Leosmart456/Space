@@ -6,3 +6,7 @@ vite.config.ts.*
 *.tar.gz
 api/index.js
 .env
+server.log
+test-server.js
+nul
+*.log
