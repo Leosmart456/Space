@@ -3670,17 +3670,32 @@ export async function registerRoutes(app: Express, sessionParser?: any): Promise
   });
 
   app.get("/api/chart/:coinId", async (req, res) => {
-    try {
-      const { coinId } = req.params;
-      const { period = "7" } = req.query;
-      const days = periodToDays(period as string);
-      const chartData = await getChartData(coinId, days);
-      res.json(chartData);
-    } catch (error) {
-      console.error("Error fetching chart data:", error);
-      res.status(500).json({ error: "Failed to fetch chart data" });
-    }
-  });
+      try {
+        let { coinId } = req.params;
+        const { period = "7" } = req.query;
+        const days = periodToDays(period as string);
+        // Map token symbols (e.g. "usdt") to proper CoinGecko IDs (e.g. "tether")
+        const allTokens = [...ETHEREUM_TOKENS, ...BNB_TOKENS, ...TRON_TOKENS, ...SOLANA_TOKENS];
+        const tokenMeta = allTokens.find((t: any) => t.symbol?.toLowerCase() === coinId.toLowerCase());
+        if (tokenMeta?.coingeckoId) {
+          coinId = tokenMeta.coingeckoId;
+        } else {
+          // Fallback for major coins not present in token catalogs
+          const majorIds: Record<string, string> = {
+            btc: "bitcoin", eth: "ethereum", bnb: "binancecoin", sol: "solana",
+            trx: "tron", xrp: "ripple", doge: "dogecoin", ada: "cardano",
+            usdt: "tether", usdc: "usd-coin", matic: "matic-network", dot: "polkadot",
+          };
+          coinId = majorIds[coinId.toLowerCase()] || coinId;
+        }
+        const chartData = await getChartData(coinId, days);
+        res.json(chartData);
+      } catch (error) {
+        console.error("Error fetching chart data:");
+        console.error(error);
+        res.status(500).json({ error: "Failed to fetch chart data" });
+      }
+    });
 
   // Wallet creation
   app.post("/api/wallet/create", async (req, res) => {
