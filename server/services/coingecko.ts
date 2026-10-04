@@ -55,9 +55,6 @@ interface CoinGeckoChartData {
  * @returns Price data for requested coins
  */
 export async function getSimplePrices(coinIds: string[]): Promise<CoinGeckoPrice> {
-  if (!API_KEY) {
-    throw new Error("COINGECKO_API_KEY is not configured");
-  }
 
   const ids = coinIds.join(",");
   // Include multiple fiat currencies for proper conversion
@@ -68,7 +65,7 @@ export async function getSimplePrices(coinIds: string[]): Promise<CoinGeckoPrice
     console.log(`[CoinGecko] Fetching prices for ${coinIds.length} coins from: ${url}`);
     const response = await fetch(url, {
       headers: {
-        "x-cg-demo-api-key": API_KEY,
+        ...(API_KEY ? { "x-cg-demo-api-key": API_KEY } : {}),
       },
     });
     
@@ -95,9 +92,6 @@ export async function getSimplePrices(coinIds: string[]): Promise<CoinGeckoPrice
  * @returns Market data for requested coins
  */
 export async function getMarketData(coinIds: string[]): Promise<CoinGeckoMarketData[]> {
-  if (!API_KEY) {
-    throw new Error("COINGECKO_API_KEY is not configured");
-  }
 
   const ids = coinIds.join(",");
   const url = `${COINGECKO_API_BASE}/coins/markets?vs_currency=usd&ids=${ids}&order=market_cap_desc&per_page=100&page=1&sparkline=false`;
@@ -105,7 +99,7 @@ export async function getMarketData(coinIds: string[]): Promise<CoinGeckoMarketD
   try {
     const response = await fetch(url, {
       headers: {
-        "x-cg-demo-api-key": API_KEY,
+        ...(API_KEY ? { "x-cg-demo-api-key": API_KEY } : {}),
       },
     });
     
@@ -131,16 +125,13 @@ export async function getChartData(
   coinId: string,
   days: string | number = 7
 ): Promise<CoinGeckoChartData> {
-  if (!API_KEY) {
-    throw new Error("COINGECKO_API_KEY is not configured");
-  }
 
   const url = `${COINGECKO_API_BASE}/coins/${coinId}/market_chart?vs_currency=usd&days=${days}`;
 
   try {
     const response = await fetch(url, {
       headers: {
-        "x-cg-demo-api-key": API_KEY,
+        ...(API_KEY ? { "x-cg-demo-api-key": API_KEY } : {}),
       },
     });
     
